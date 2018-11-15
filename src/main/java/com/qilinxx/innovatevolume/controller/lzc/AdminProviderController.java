@@ -157,42 +157,24 @@ public class AdminProviderController {
     @RequestMapping("admin-start-provider")
     @ResponseBody
     public String startProvide(String id, HttpServletRequest request) {
-        String str = providerService.startProvider(id);
+        String str = providerService.startActivity(id);
         // System.out.println("传过来的语句："+str);
         //  logService.insertLog(str,userId(request),userIp(request));
         return "success";
     }
 
-
     /**
-     * 通过用户账号查找对象，通过user的公司编码测试是否已经注册过提供商
-     * @param account
-     * @return
+     * 增加提供商页面跳转
+     * @return 增加页面
      */
-    @RequestMapping("admin-ajaxRegister")
-    @ResponseBody
-    public String userAjaxRegister(String account){
-        return userInfoService.ifRegisterProvider(account);
-    }
-    /**
-     * 修改提供商页面跳转
-     * @return 修改页面
-     */
-    @RequestMapping("admin-provider-update.html")
+    @RequestMapping("admin-provider-add.html")
     public String providerAddUI(){
-        return "admin-provider-update";
+        return "lzc/admin-provider-add";
     }
-
-    /**
-     * 添加商家的实现
-     * @return
-     */
     @RequestMapping("admin-provider-add")
     @ResponseBody
-    public String providerAdd(Provider provider){
-   System.out.println(provider.toString());
+    public String providerAdd(){
 
         return "success";
     }
-//    khkjhl
 }
