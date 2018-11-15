@@ -16,4 +16,33 @@ public class ProviderServiceImpl implements ProviderService {
     public List<Provider> selectAll() {
         return  providerMapper.selectAll();
     }
+
+    @Override
+    public Provider selectById(String code) {
+        return providerMapper.selectByPrimaryKey(code);
+    }
+
+    @Override
+    public String examineProvider(String id) {
+        Provider provider = providerMapper.selectByPrimaryKey(id);
+        provider.setState("0");
+        providerMapper.updateByPrimaryKeySelective(provider);
+        return null;
+    }
+
+    @Override
+    public String startActivity(String id) {
+        Provider provider = providerMapper.selectByPrimaryKey(id);
+        provider.setState("1");
+        providerMapper.updateByPrimaryKeySelective(provider);
+        return null;
+    }
+
+    @Override
+    public String noExamineProvider(String id) {
+        Provider provider = providerMapper.selectByPrimaryKey(id);
+        provider.setState("2");
+        providerMapper.updateByPrimaryKeySelective(provider);
+        return null;
+    }
 }
