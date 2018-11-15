@@ -12,7 +12,6 @@ public class ContractServiceImpl implements ContractService {
      @Autowired
     ContractMapper contractMapper;
     @Override
-    public List<Contract> selectAll() {
-        return contractMapper.selectAll();
+    public List<Contract> selectAll() { return contractMapper.selectAll();
     }
 }
