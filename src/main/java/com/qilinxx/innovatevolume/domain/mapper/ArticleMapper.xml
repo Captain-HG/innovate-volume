@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qilinxx.innovatevolume.domain.mapper.ArticleMapper">
+  <resultMap id="BaseResultMap" type="com.qilinxx.innovatevolume.domain.model.Article">
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="cate_no" jdbcType="VARCHAR" property="cateNo" />
+    <result column="cate_id" jdbcType="VARCHAR" property="cateId" />
+    <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="summary" jdbcType="VARCHAR" property="summary" />
+    <result column="img_if" jdbcType="CHAR" property="imgIf" />
+    <result column="top_if" jdbcType="CHAR" property="topIf" />
+    <result column="img_url" jdbcType="VARCHAR" property="imgUrl" />
+    <result column="checked" jdbcType="CHAR" property="checked" />
+    <result column="org_no" jdbcType="VARCHAR" property="orgNo" />
+    <result column="poster" jdbcType="VARCHAR" property="poster" />
+    <result column="sys_no" jdbcType="VARCHAR" property="sysNo" />
+    <result column="read_count" jdbcType="INTEGER" property="readCount" />
+    <result column="page_url" jdbcType="VARCHAR" property="pageUrl" />
+    <result column="is_use" jdbcType="CHAR" property="isUse" />
+    <result column="creater" jdbcType="VARCHAR" property="creater" />
+    <result column="create_time" jdbcType="BIGINT" property="createTime" />
+    <result column="updater" jdbcType="VARCHAR" property="updater" />
+    <result column="update_time" jdbcType="BIGINT" property="updateTime" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.qilinxx.innovatevolume.domain.model.Article">
+    <result column="content" jdbcType="LONGVARCHAR" property="content" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, cate_no, cate_id, title, summary, img_if, top_if, img_url, checked, org_no, poster, 
+    sys_no, read_count, page_url, is_use, creater, create_time, updater, update_time, 
+    remark
+  </sql>
+  <sql id="Blob_Column_List">
+    content
+  </sql>
+</mapper>
