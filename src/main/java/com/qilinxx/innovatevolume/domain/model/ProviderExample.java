@@ -494,63 +494,63 @@ public class ProviderExample {
             return (Criteria) this;
         }
 
-        public Criteria andReseachCountIsNull() {
-            addCriterion("reseach_count is null");
+        public Criteria andResearchCountIsNull() {
+            addCriterion("research_count is null");
             return (Criteria) this;
         }
 
-        public Criteria andReseachCountIsNotNull() {
-            addCriterion("reseach_count is not null");
+        public Criteria andResearchCountIsNotNull() {
+            addCriterion("research_count is not null");
             return (Criteria) this;
         }
 
-        public Criteria andReseachCountEqualTo(Integer value) {
-            addCriterion("reseach_count =", value, "reseachCount");
+        public Criteria andResearchCountEqualTo(Integer value) {
+            addCriterion("research_count =", value, "researchCount");
             return (Criteria) this;
         }
 
-        public Criteria andReseachCountNotEqualTo(Integer value) {
-            addCriterion("reseach_count <>", value, "reseachCount");
+        public Criteria andResearchCountNotEqualTo(Integer value) {
+            addCriterion("research_count <>", value, "researchCount");
             return (Criteria) this;
         }
 
-        public Criteria andReseachCountGreaterThan(Integer value) {
-            addCriterion("reseach_count >", value, "reseachCount");
+        public Criteria andResearchCountGreaterThan(Integer value) {
+            addCriterion("research_count >", value, "researchCount");
             return (Criteria) this;
         }
 
-        public Criteria andReseachCountGreaterThanOrEqualTo(Integer value) {
-            addCriterion("reseach_count >=", value, "reseachCount");
+        public Criteria andResearchCountGreaterThanOrEqualTo(Integer value) {
+            addCriterion("research_count >=", value, "researchCount");
             return (Criteria) this;
         }
 
-        public Criteria andReseachCountLessThan(Integer value) {
-            addCriterion("reseach_count <", value, "reseachCount");
+        public Criteria andResearchCountLessThan(Integer value) {
+            addCriterion("research_count <", value, "researchCount");
             return (Criteria) this;
         }
 
-        public Criteria andReseachCountLessThanOrEqualTo(Integer value) {
-            addCriterion("reseach_count <=", value, "reseachCount");
+        public Criteria andResearchCountLessThanOrEqualTo(Integer value) {
+            addCriterion("research_count <=", value, "researchCount");
             return (Criteria) this;
         }
 
-        public Criteria andReseachCountIn(List<Integer> values) {
-            addCriterion("reseach_count in", values, "reseachCount");
+        public Criteria andResearchCountIn(List<Integer> values) {
+            addCriterion("research_count in", values, "researchCount");
             return (Criteria) this;
         }
 
-        public Criteria andReseachCountNotIn(List<Integer> values) {
-            addCriterion("reseach_count not in", values, "reseachCount");
+        public Criteria andResearchCountNotIn(List<Integer> values) {
+            addCriterion("research_count not in", values, "researchCount");
             return (Criteria) this;
         }
 
-        public Criteria andReseachCountBetween(Integer value1, Integer value2) {
-            addCriterion("reseach_count between", value1, value2, "reseachCount");
+        public Criteria andResearchCountBetween(Integer value1, Integer value2) {
+            addCriterion("research_count between", value1, value2, "researchCount");
             return (Criteria) this;
         }
 
-        public Criteria andReseachCountNotBetween(Integer value1, Integer value2) {
-            addCriterion("reseach_count not between", value1, value2, "reseachCount");
+        public Criteria andResearchCountNotBetween(Integer value1, Integer value2) {
+            addCriterion("research_count not between", value1, value2, "researchCount");
             return (Criteria) this;
         }
 
@@ -1394,73 +1394,73 @@ public class ProviderExample {
             return (Criteria) this;
         }
 
-        public Criteria andDescIsNull() {
-            addCriterion("desc is null");
+        public Criteria andDetailIsNull() {
+            addCriterion("detail is null");
             return (Criteria) this;
         }
 
-        public Criteria andDescIsNotNull() {
-            addCriterion("desc is not null");
+        public Criteria andDetailIsNotNull() {
+            addCriterion("detail is not null");
             return (Criteria) this;
         }
 
-        public Criteria andDescEqualTo(String value) {
-            addCriterion("desc =", value, "desc");
+        public Criteria andDetailEqualTo(String value) {
+            addCriterion("detail =", value, "detail");
             return (Criteria) this;
         }
 
-        public Criteria andDescNotEqualTo(String value) {
-            addCriterion("desc <>", value, "desc");
+        public Criteria andDetailNotEqualTo(String value) {
+            addCriterion("detail <>", value, "detail");
             return (Criteria) this;
         }
 
-        public Criteria andDescGreaterThan(String value) {
-            addCriterion("desc >", value, "desc");
+        public Criteria andDetailGreaterThan(String value) {
+            addCriterion("detail >", value, "detail");
             return (Criteria) this;
         }
 
-        public Criteria andDescGreaterThanOrEqualTo(String value) {
-            addCriterion("desc >=", value, "desc");
+        public Criteria andDetailGreaterThanOrEqualTo(String value) {
+            addCriterion("detail >=", value, "detail");
             return (Criteria) this;
         }
 
-        public Criteria andDescLessThan(String value) {
-            addCriterion("desc <", value, "desc");
+        public Criteria andDetailLessThan(String value) {
+            addCriterion("detail <", value, "detail");
             return (Criteria) this;
         }
 
-        public Criteria andDescLessThanOrEqualTo(String value) {
-            addCriterion("desc <=", value, "desc");
+        public Criteria andDetailLessThanOrEqualTo(String value) {
+            addCriterion("detail <=", value, "detail");
             return (Criteria) this;
         }
 
-        public Criteria andDescLike(String value) {
-            addCriterion("desc like", value, "desc");
+        public Criteria andDetailLike(String value) {
+            addCriterion("detail like", value, "detail");
             return (Criteria) this;
         }
 
-        public Criteria andDescNotLike(String value) {
-            addCriterion("desc not like", value, "desc");
+        public Criteria andDetailNotLike(String value) {
+            addCriterion("detail not like", value, "detail");
             return (Criteria) this;
         }
 
-        public Criteria andDescIn(List<String> values) {
-            addCriterion("desc in", values, "desc");
+        public Criteria andDetailIn(List<String> values) {
+            addCriterion("detail in", values, "detail");
             return (Criteria) this;
         }
 
-        public Criteria andDescNotIn(List<String> values) {
-            addCriterion("desc not in", values, "desc");
+        public Criteria andDetailNotIn(List<String> values) {
+            addCriterion("detail not in", values, "detail");
             return (Criteria) this;
         }
 
-        public Criteria andDescBetween(String value1, String value2) {
-            addCriterion("desc between", value1, value2, "desc");
+        public Criteria andDetailBetween(String value1, String value2) {
+            addCriterion("detail between", value1, value2, "detail");
             return (Criteria) this;
         }
 
-        public Criteria andDescNotBetween(String value1, String value2) {
-            addCriterion("desc not between", value1, value2, "desc");
+        public Criteria andDetailNotBetween(String value1, String value2) {
+            addCriterion("detail not between", value1, value2, "detail");
             return (Criteria) this;
         }
 

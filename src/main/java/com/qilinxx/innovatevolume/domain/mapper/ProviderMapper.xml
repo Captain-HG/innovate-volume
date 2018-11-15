@@ -8,7 +8,7 @@
     <result column="type" jdbcType="VARCHAR" property="type" />
     <result column="establish_date" jdbcType="BIGINT" property="establishDate" />
     <result column="staff_count" jdbcType="INTEGER" property="staffCount" />
-    <result column="reseach_count" jdbcType="INTEGER" property="reseachCount" />
+    <result column="research_count" jdbcType="INTEGER" property="researchCount" />
     <result column="addr" jdbcType="VARCHAR" property="addr" />
     <result column="bank" jdbcType="VARCHAR" property="bank" />
     <result column="card_no" jdbcType="VARCHAR" property="cardNo" />
@@ -21,7 +21,7 @@
     <result column="contact_title" jdbcType="VARCHAR" property="contactTitle" />
     <result column="contact_email" jdbcType="VARCHAR" property="contactEmail" />
     <result column="contact_phone" jdbcType="VARCHAR" property="contactPhone" />
-    <result column="desc" jdbcType="VARCHAR" property="desc" />
+    <result column="detail" jdbcType="VARCHAR" property="detail" />
     <result column="research_content" jdbcType="VARCHAR" property="researchContent" />
     <result column="result" jdbcType="VARCHAR" property="result" />
     <result column="main_service" jdbcType="VARCHAR" property="mainService" />
@@ -94,9 +94,9 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, name, code, type, establish_date, staff_count, reseach_count, addr, bank, card_no, 
+    id, name, code, type, establish_date, staff_count, research_count, addr, bank, card_no, 
     card_owner, admin, admin_title, admin_email, admin_phone, contacter, contact_title, 
-    contact_email, contact_phone, desc, research_content, result, main_service, support_unit, 
+    contact_email, contact_phone, detail, research_content, result, main_service, support_unit, 
     support_admin, state, is_use, creater, create_time, updater, update_time, remark
   </sql>
 </mapper>

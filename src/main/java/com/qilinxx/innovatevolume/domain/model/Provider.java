@@ -24,8 +24,8 @@ public class Provider {
     @Column(name = "staff_count")
     private Integer staffCount;
 
-    @Column(name = "reseach_count")
-    private Integer reseachCount;
+    @Column(name = "research_count")
+    private Integer researchCount;
 
     @Column(name = "addr")
     private String addr;
@@ -63,8 +63,8 @@ public class Provider {
     @Column(name = "contact_phone")
     private String contactPhone;
 
-    @Column(name = "desc")
-    private String desc;
+    @Column(name = "detail")
+    private String detail;
 
     @Column(name = "research_content")
     private String researchContent;
@@ -150,12 +150,12 @@ public class Provider {
         this.staffCount = staffCount;
     }
 
-    public Integer getReseachCount() {
-        return reseachCount;
+    public Integer getResearchCount() {
+        return researchCount;
     }
 
-    public void setReseachCount(Integer reseachCount) {
-        this.reseachCount = reseachCount;
+    public void setResearchCount(Integer researchCount) {
+        this.researchCount = researchCount;
     }
 
     public String getAddr() {
@@ -254,12 +254,12 @@ public class Provider {
         this.contactPhone = contactPhone == null ? null : contactPhone.trim();
     }
 
-    public String getDesc() {
-        return desc;
+    public String getDetail() {
+        return detail;
     }
 
-    public void setDesc(String desc) {
-        this.desc = desc == null ? null : desc.trim();
+    public void setDetail(String detail) {
+        this.detail = detail == null ? null : detail.trim();
     }
 
     public String getResearchContent() {
@@ -367,7 +367,7 @@ public class Provider {
                 ", type='" + type + '\'' +
                 ", establishDate=" + establishDate +
                 ", staffCount=" + staffCount +
-                ", reseachCount=" + reseachCount +
+                ", researchCount=" + researchCount +
                 ", addr='" + addr + '\'' +
                 ", bank='" + bank + '\'' +
                 ", cardNo='" + cardNo + '\'' +
@@ -380,7 +380,7 @@ public class Provider {
                 ", contactTitle='" + contactTitle + '\'' +
                 ", contactEmail='" + contactEmail + '\'' +
                 ", contactPhone='" + contactPhone + '\'' +
-                ", desc='" + desc + '\'' +
+                ", detail='" + detail + '\'' +
                 ", researchContent='" + researchContent + '\'' +
                 ", result='" + result + '\'' +
                 ", mainService='" + mainService + '\'' +

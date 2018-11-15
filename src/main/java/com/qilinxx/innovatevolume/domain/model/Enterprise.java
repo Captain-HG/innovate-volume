@@ -58,8 +58,8 @@ public class Enterprise {
     @Column(name = "identify_no")
     private String identifyNo;
 
-    @Column(name = "desc")
-    private String desc;
+    @Column(name = "detail")
+    private String detail;
 
     @Column(name = "bank")
     private String bank;
@@ -233,12 +233,12 @@ public class Enterprise {
         this.identifyNo = identifyNo == null ? null : identifyNo.trim();
     }
 
-    public String getDesc() {
-        return desc;
+    public String getDetail() {
+        return detail;
     }
 
-    public void setDesc(String desc) {
-        this.desc = desc == null ? null : desc.trim();
+    public void setDetail(String detail) {
+        this.detail = detail == null ? null : detail.trim();
     }
 
     public String getBank() {
@@ -357,7 +357,7 @@ public class Enterprise {
                 ", domain='" + domain + '\'' +
                 ", identify='" + identify + '\'' +
                 ", identifyNo='" + identifyNo + '\'' +
-                ", desc='" + desc + '\'' +
+                ", detail='" + detail + '\'' +
                 ", bank='" + bank + '\'' +
                 ", cardNo='" + cardNo + '\'' +
                 ", cardOwner='" + cardOwner + '\'' +

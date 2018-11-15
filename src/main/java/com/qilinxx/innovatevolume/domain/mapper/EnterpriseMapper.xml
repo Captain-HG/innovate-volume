@@ -19,7 +19,7 @@
     <result column="domain" jdbcType="VARCHAR" property="domain" />
     <result column="identify" jdbcType="VARCHAR" property="identify" />
     <result column="identify_no" jdbcType="VARCHAR" property="identifyNo" />
-    <result column="desc" jdbcType="VARCHAR" property="desc" />
+    <result column="detail" jdbcType="VARCHAR" property="detail" />
     <result column="bank" jdbcType="VARCHAR" property="bank" />
     <result column="card_no" jdbcType="VARCHAR" property="cardNo" />
     <result column="card_owner" jdbcType="VARCHAR" property="cardOwner" />
@@ -93,7 +93,7 @@
   </sql>
   <sql id="Base_Column_List">
     id, name, code, admin, reg_date, found_date, reg_money, reg_addr, contact_addr, sales, 
-    taxs, net_assets, amount, type, domain, identify, identify_no, desc, bank, card_no, 
+    taxs, net_assets, amount, type, domain, identify, identify_no, detail, bank, card_no, 
     card_owner, contacter, contact_phone, contact_email, remark, is_use, creater, create_time, 
     updater, update_time
   </sql>

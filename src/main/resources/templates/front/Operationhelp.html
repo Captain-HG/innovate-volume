@@ -1,0 +1,288 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-Type" content="text/html;charset=UTF-8">
+    <meta http-equiv="Content-Language" content="zh-cn" />
+    <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=8" />
+    <meta name="format-detection" content="telephone=no">
+    <meta content="email=no" name="format-detection" />
+    <title>河北省创新创业券</title>
+    <link rel="stylesheet" type="text/css" href="css/layui.css" />
+    <link rel="stylesheet" type="text/css" href="css/css.css" />
+    <!--[if lt IE 9]>
+    <script src='js/min.js' type='text/javascript'></script>
+    <script src='js/min_1.js' type='text/javascript'></script>
+    <![endif]-->
+    <!--[if lt IE 10]>
+    <script src='/assets/NewFront/js/placeholder/min.js?v=9.4' type='text/javascript'></script>
+    <![endif]-->
+    <!--[if lt IE 8]>
+    <script src='http://ie7-js.googlecode.com/svn/version/2.0(beta)/IE8.js" type="text/javascript"></script>
+    <![endif]-->
+    <style>
+        .layui-carousel {
+            background-color: #f3f3f2 !important;
+        }
+
+        .layuicontent h4 {
+            text-align: left;
+            font-weight: 100;
+            font-size: 16px;
+        }
+
+        .layuicontentone h4 {
+            color: #FD482C;
+        }
+
+            .layuicontentone h4 span {
+                font-size: 28px;
+            }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="layui-container">
+            <div class="layui-row">
+                <div class="layui-col-lg6 layui-col-xs6 layui-col-md6">
+                    <h4>欢迎进入河北省创新券网站！</h4>
+                </div>
+                <div class="layui-col-lg6 layui-col-xs6  layui-col-md6 search" style="float: right;text-align: right;">
+                    <a href="/Login/Login" style="color:#0072c6;">登录</a>/<a href="/Login/Register">注册</a>
+                </div>
+            </div>
+        </div>
+    </header>
+    <nav>
+        <div class="layui-container">
+            <div class="layui-low">
+                <div class="layui-col-lg4 layui-col-md4 layui-col-xs4">
+                    <img src="images/logo.png" />
+                </div>
+                <div class="layui-col-lg8 layui-col-md8 layui-col-xs8">
+                    <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
+                        <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
+                            <ul class="layui-tab-title ulnav">
+                                <li><a href="/Home/HebVouchers">首页</a></li>
+                                <li class="layui-this"> <a href="/Home/VouchersPolicy">政策介绍</a></liclass="layui-this">
+                                <li> <a href="/Home/VouchersNews">最新动态</a></li>
+                                <li> <a href="/Home/AuditInstitutions">审核发放机构</a></li>
+                                <li>
+                                    <a class="OpeningLabs">服务提供机构<i class="layui-icon layui-icon-triangle-r"></i></a>
+                                    <div class="menuList">
+                                        <ul>
+                                            <li><a href="/Home/OpeningLabs"><span style="display: inline-block;width: 30px;"><img src="images/blockicon.png" /></span>河北省服务提供机构</a></li>
+                                            <!--<li><a href="/Home/Sciencetechnology"><span style="display: inline-block;width: 30px;"><img src="images/blockicon.png" /></span>京津冀开放实验室</a></li>-->
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li style="padding-right: 0 !important;"><a href="/Home/VouchersIntermediarys">服务中介介绍</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="banner">
+        <div class="layui-carousel" id="carousel" lay-filter="test1">
+            <div id="carousel-item" carousel-item style="width: 100%;">
+                <div><img src="images/banner1.jpg" /></div>
+                <div><img src="images/banner2.jpg" /></div>
+                <div><img src="images/banner4.jpg" /></div>
+                <div><img src="images/banner.jpg" /></div>>
+            </div>
+        </div>
+    </div>
+
+
+
+    <section style="padding-top: 0;background: #fff;">
+        <div class="row">
+            <div class="layui-tab layuitab layui-col-lg12 layui-col-md12 layui-col-xs12">
+                <ul class="layui-tab-title layuititle layui-col-lg2 layui-col-md2 layui-col-xs2">
+                    <li><a href="/Home/VouchersPolicy">政策介绍</a></li>
+                    <li><a href="/Home/VouchersNews">最新动态</a></li>
+                    <li><a href="/Home/AuditInstitutions">审核发放机构</a></li>
+                    <li><a href="/Home/OpeningLabs">河北省服务提供机构</a></li>
+                    <li><a href="/Home/Sciencetechnology">京津冀开放实验室</a></li>
+                    <li><a href="/Home/VouchersIntermediarys">服务中介介绍</a></li>
+                    <li><a href="/innovationVoucher.html">创新券政策解答</a></li>
+                    <li class="layui-this"><a href="/Operationhelp.html">创新券操作帮助</a></li>
+                </ul>
+                <div class="layui-tab-content layuicontent layui-col-lg10 layui-col-md10 layui-col-xs10">
+                    <div class="layui-tab-item layui-show layuitem">
+                        <div class="row">
+                            <div class="layui-col-lg12 layui-col-md12 layui-col-xs12 layuicontentone">
+                                <h4><span>1、</span>注册信息填写完整了，但提交时提示企业不存在？</h4>
+                                <p>
+                                    核查组织机构代码，填写的是否是申报科小时用的组织机构代码，此系统和河北省科小系统后台关联，如不一致，后台会自动检测不是科小或企业不存在，不予通过；
+                                </p>
+                            </div>
+                            <div class="layui-col-lg12 layui-col-md12 layui-col-xs12 layuicontentone">
+                                <h4><span>2、</span>填写申请表已经填写服务提供机构了但提交时还是提示填写服务提供机构？</h4>
+                                <p>
+                                    核查浏览器版本，建议使用IE浏览器10以上或者360、搜狗、火狐等高速浏览器；
+                                </p>
+
+
+                            </div>
+
+                            <div class="layui-col-lg12 layui-col-md12 layui-col-xs12 layuicontentone">
+                                <h4><span>3、</span>申请表用途已经填写了，提交的时候提示请填写使用用途？</h4>
+                                <p>
+                                    核查浏览器版本，建议使用IE浏览器10以上或者360、搜狗、火狐等高速浏览器；
+                                </p>
+
+                            </div>
+                            <div class="layui-col-lg12 layui-col-md12 layui-col-xs12 layuicontentone">
+                                <h4><span>4、</span>注册成功后，什么时候可以申请创新券？</h4>
+                                <p>
+                                    分批发放，关注省厅具体通知，在通知时间段内可填写申请表，并领取创新券，不在发布的时间段内，系统申领创新券界面是关闭的；
+                                </p>
+
+                            </div>
+                            <div class="layui-col-lg12 layui-col-md12 layui-col-xs12 layuicontentone">
+                                <h4><span>5、</span>申领创新券的申请表已经审核通过，什么时候可以发放创新券？</h4>
+                                <p>
+                                    所有申请表审核通过后，会在一个时间段集中发放；（一般在申请时间段结束后的第二天统一进行发放）
+                                </p>
+
+                            </div>
+                            <div class="layui-col-lg12 layui-col-md12 layui-col-xs12 layuicontentone">
+                                <h4><span>6、</span>申领创新券的申请已经审核通过为什么没有发券？</h4>
+                                <p>
+                                    发放的原则是“先到先得”的原则，根据申领的时间顺序进行发放，由于额度的限制，申请表时间靠后，可能会发放不到，建议第一时间完善信息，填写申请表提交；
+                                </p>
+
+                            </div>
+                            <div class="layui-col-lg12 layui-col-md12 layui-col-xs12 layuicontentone">
+                                <h4><span>7、</span>新注册的企业，近两年没有相关收入是否可以领创新券？</h4>
+                                <p>
+                                    可以，需提供无收入证明盖章确认，上传在财务报表处；
+                                </p>
+
+                            </div>
+                            <div class="layui-col-lg12 layui-col-md12 layui-col-xs12 layuicontentone">
+                                <h4><span>8、</span>服务提供机构是否可以领券用券？</h4>
+                                <p>
+                                    不可以，所有的相关服务机构包括审核发放机构、中介机构、兑付机构和服务提供机构及所属依托单位都不可以使用创新券；
+                                </p>
+
+                            </div>
+                            <div class="layui-col-lg12 layui-col-md12 layui-col-xs12 layuicontentone">
+                                <h4><span>9、</span>已经领到创新券，怎么用？接下来要做什么？</h4>
+                                <p>
+                                    和意向服务提供机构进行签订合同，完成相关创新服务进行合同备案，合同备案审核通过，即代表创新券已使用后台付给服务提供机构，服务提供机构收到券后进行兑付；
+                                </p>
+
+                            </div>
+                            <div class="layui-col-lg12 layui-col-md12 layui-col-xs12 layuicontentone">
+                                <h4><span>10、</span>领了创新券后，实际合作的服务提供机构是否可以和填写申请表时的服务提供机构不一致？</h4>
+                                <p>
+                                    可以，但是合同备案时要备注具体更换服务提供机构的原因；
+                                </p>
+
+                            </div>
+                            <div class="layui-col-lg12 layui-col-md12 layui-col-xs12 layuicontentone">
+                                <h4><span>11、</span>已领用的创新券，付给服务提供机构后需要对方开具发票吗？</h4>
+                                <p>
+                                    创新券部分属于政府补助资金，不需要开具发票，但是搭配的自付资金部分需要开具正规发票；
+                                </p>
+
+                            </div>
+                            <div class="layui-col-lg12 layui-col-md12 layui-col-xs12 layuicontentone">
+                                <h4><span>12、</span>兑付申请审核一般审核要点？</h4>
+                                <p>
+                                    （1）申请材料的完整性（对标集中兑付通知要求要件及形式要求）；
+                                </p>
+                                <p>
+                                    （2）申请材料要保持一致性，各相关材料涉及创新券金额、用途、供需当事双方、创新服务内容等相关描述必须彼此一致，涉及创新服务合同要求与验收交付相关材料能彼此印证。
+                                </p>
+                                <p>
+                                    （3）申请兑付项目完成日期，应为所用创新券申领到日期至创新券集中兑付通知发布截止日期之间。
+                                </p>
+                                <p>
+                                    （4）申请材料的充分性，要反映创新服务内容、创新工作量以及服务供需双方对结果的认可情况。
+                                </p>
+                                <p>
+                                    （5）最后确认涉及创新券兑付金额、时限以及自筹配比等符合规定。
+                                </p>
+                                <p>
+                                    （9）审核发放机构在系统中退回材料添加标注时，建议统一采用“审核日期+审核员名字或代码+审核意见”的格式，后期再添加“是否补充反馈+对反馈审核意见”等标注，以方便识别、追踪进展、机构间协调工作推进。
+                                </p>
+                                <p>
+                                    （7）审核发放机构在审核兑付中，若发现合同履行过程中相关创新方法或路径有重大调整的，或相关兑付申请方帐户信息有变化，或其它有可能影响兑付的重大情形，均应与申请方核实确认，不影响兑付的、也应在项目审核意见中进行明确标注，并记入汇总表。
+                                </p>
+                                <p>
+                                    （8）提供材料饱满度有欠缺不能确认真实性的，审核发放机构有权要求申请方补充材料。未完成科技服务、或提供的材料不足以证明完成服务，或未提交自筹部分财务证明等情形，审核不予兑付。
+                                </p>
+                                <p>
+                                    （9）审核发放机构在系统中退回材料添加标注时，建议统一采用“审核日期+审核员名字或代码+审核意见”的格式，后期再添加“是否补充反馈+对反馈审核意见”等标注，以方便识别、追踪进展、机构间协调工作推进。
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+            </div>
+        </div>
+
+    </section>
+
+    <div class="footer">
+        <div class="foot">
+            <div class="footcontent">
+                <ul>
+                    <li>
+                        <h4>申报咨询电话</h4>
+                        <p>0311-83110111</p>
+                    </li>
+                    <li>
+                        <h4 style="color: #59CE68;">申领开始时间</h4>
+                        <p>2017年12月06日</p>
+                    </li>
+                    <li>
+                        <h4 style="color: #ff9900;">申领方式</h4>
+                        <p>平台在线申领</p>
+                        <p>可致电我们进行咨询</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <div class="footbottom">
+            <p>版权所有：河北省科学技术厅  运维单位：河北百汇广联科技服务有限公司  服务热线：0311-83110111</p>
+        </div>
+    </div>
+    <script src="js/layui.all.js"></script>
+    <script type="text/javascript" src="js/jquery-1.10.1.min.js"></script>
+    <script>
+
+        //layui点击导航切换页面
+        layui.use(['element', 'carousel'], function () {
+            var element = layui.element,//导航的hover效果、二级菜单等功能，需要依赖element模块
+                carousel = layui.carousel;
+            //监听导航点击
+            element.on('nav(demo)', function (elem) { });
+            var imgH = $('#carousel-item img')[0].height;
+            $('#carousel-item').height(imgH);
+            window.onload = function () {
+                var bannerH = $('#carousel-item img')[0].height;
+                $('#carousel-item').css('height', bannerH + 'px');
+            }
+            carousel.render({
+                elem: '#carousel'
+                , arrow: 'always'
+                , width: "100%"
+                , height: "auto"
+            });
+        });
+    </script>
+    <script type="text/javascript" src="js/footer.js"></script>
+</body>
+</html>

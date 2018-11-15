@@ -22,8 +22,8 @@ public class ProviderService {
     @Column(name = "price")
     private BigDecimal price;
 
-    @Column(name = "desc")
-    private String desc;
+    @Column(name = "detail")
+    private String detail;
 
     @Column(name = "is_use")
     private String isUse;
@@ -83,12 +83,12 @@ public class ProviderService {
         this.price = price;
     }
 
-    public String getDesc() {
-        return desc;
+    public String getDetail() {
+        return detail;
     }
 
-    public void setDesc(String desc) {
-        this.desc = desc == null ? null : desc.trim();
+    public void setDetail(String detail) {
+        this.detail = detail == null ? null : detail.trim();
     }
 
     public String getIsUse() {
@@ -147,7 +147,7 @@ public class ProviderService {
                 ", name='" + name + '\'' +
                 ", spec='" + spec + '\'' +
                 ", price=" + price +
-                ", desc='" + desc + '\'' +
+                ", detail='" + detail + '\'' +
                 ", isUse='" + isUse + '\'' +
                 ", creater='" + creater + '\'' +
                 ", createTime=" + createTime +
