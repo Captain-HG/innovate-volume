@@ -31,7 +31,7 @@ public class ProviderServiceImpl implements ProviderService {
     }
 
     @Override
-    public String startActivity(String id) {
+    public String startProvider(String id) {
         Provider provider = providerMapper.selectByPrimaryKey(id);
         provider.setState("1");
         providerMapper.updateByPrimaryKeySelective(provider);

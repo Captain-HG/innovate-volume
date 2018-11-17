@@ -12,7 +12,7 @@ public interface ProviderService {
      /** 重新审核该提供商，设置状态为0*/
     String examineProvider(String id);
     /** 审核通过该商家*/
-    String startActivity(String id);
+    String startProvider(String id);
     /** 审核未通过*/
     String noExamineProvider(String id);
 }

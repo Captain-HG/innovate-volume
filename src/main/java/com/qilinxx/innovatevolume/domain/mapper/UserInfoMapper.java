@@ -8,4 +8,6 @@ import tk.mybatis.mapper.common.Mapper;
 public interface UserInfoMapper extends Mapper<UserInfo> {
     /**根据code公司编号查询*/
     UserInfo selectByCode(String code);
+    /** 根据用户账号查询*/
+    UserInfo selectByAccount(String account);
 }
