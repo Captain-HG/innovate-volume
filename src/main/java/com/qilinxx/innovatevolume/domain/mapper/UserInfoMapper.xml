@@ -81,4 +81,10 @@
     id, account, password, name, tel, phone, email, state, user_type, orgcode, is_use, 
     creater, create_time, updater, update_time, remark
   </sql>
+  <select id="selectByAccount" resultMap="BaseResultMap">
+    SELECT * FROM userifno WHERE  account=#{accuont}
+  </select>
+  <select id="selectByCode" resultMap="BaseResultMap">
+    SELECT * FROM userifon WHERE  orgcode=#{code}
+  </select>
 </mapper>
