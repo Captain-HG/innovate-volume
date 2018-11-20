@@ -85,6 +85,6 @@
     SELECT * FROM userifno WHERE  account=#{accuont}
   </select>
   <select id="selectByCode" resultMap="BaseResultMap">
-    SELECT * FROM userifon WHERE  orgcode=#{code}
+    SELECT * FROM userinfo WHERE  orgcode=#{code}
   </select>
 </mapper>
