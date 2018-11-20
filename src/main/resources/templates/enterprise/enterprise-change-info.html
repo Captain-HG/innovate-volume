@@ -33,7 +33,7 @@
 </head>
 <body>
 <div class="page-container">
-    <form action="#" method="post" class="form form-horizontal" id="from-change-info">
+    <form th:action="@{/enterprise-change-info}" method="post" class="form form-horizontal" id="from-change-info">
         <table>
             <tr>
                 <td>
@@ -66,8 +66,8 @@
                     <div class="row cl">
                         <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>企业注册时间：</label>
                         <div class="formControls col-xs-8 col-sm-9">
-                            <input id="regDate" type="text" name="regDate"
-                                   onfocus="WdatePicker({ dateFmt:'yyyy-MM-dd HH:mm' })"
+                            <input id="formatRegDate" type="text" name="formatRegDate"
+                                   onfocus="WdatePicker({ dateFmt:'yyyy-MM-dd HH:mm:ss' })"
                                    class="input-text Wdate" th:value="${dateKit.formatDateByUnixTime(enterprise.regDate)}">
                         </div>
                     </div>
@@ -78,8 +78,8 @@
                     <div class="row cl">
                         <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>企业成立时间：</label>
                         <div class="formControls col-xs-8 col-sm-9">
-                            <input id="foundDate" type="text" name="foundDate"
-                                   onfocus="WdatePicker({ dateFmt:'yyyy-MM-dd HH:mm' })"
+                            <input id="formatFoundDate" type="text" name="formatFoundDate"
+                                   onfocus="WdatePicker({ dateFmt:'yyyy-MM-dd HH:mm:ss' })"
                                    class="input-text Wdate" th:value="${dateKit.formatDateByUnixTime(enterprise.foundDate)}">
                         </div>
                     </div>
@@ -98,10 +98,21 @@
                     <div class="row cl">
                         <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>企业注册地址：</label>
                         <div class="formControls col-xs-8 col-sm-9">
+                            <input id="regAddr" type="text" class="input-text" th:value="${enterprise.regAddr}" name="regAddr">
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    <div class="row cl">
+                        <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>企业联系地址：</label>
+                        <div class="formControls col-xs-8 col-sm-9">
                             <input id="contactAddr" type="text" class="input-text" th:value="${enterprise.contactAddr}" name="contactAddr">
                         </div>
                     </div>
                 </td>
+
+            </tr>
+            <tr>
                 <td>
                     <div class="row cl">
                         <label class="form-label col-xs-4 col-sm-2">上一年销售额：</label>
@@ -110,8 +121,6 @@
                         </div>
                     </div>
                 </td>
-            </tr>
-            <tr>
                 <td>
                     <div class="row cl">
                         <label class="form-label col-xs-4 col-sm-2">上一年上缴税额：</label>
@@ -120,16 +129,17 @@
                         </div>
                     </div>
                 </td>
+
+            </tr>
+            <tr>
                 <td>
                     <div class="row cl">
-                        <label class="form-label col-xs-4 col-sm-2">上一年度净资产：</label>
+                        <label class="form-label col-xs-4 col-sm-2">上一年净资产：</label>
                         <div class="formControls col-xs-8 col-sm-9">
                             <input id="netAssets" type="text" class="input-text" th:value="${enterprise.netAssets}" name="netAssets">
                         </div>
                     </div>
                 </td>
-            </tr>
-            <tr>
                 <td>
                     <div class="row cl">
                         <label class="form-label col-xs-4 col-sm-2">职工总数：</label>
@@ -138,6 +148,9 @@
                         </div>
                     </div>
                 </td>
+
+            </tr>
+            <tr>
                 <td>
                     <div class="row cl">
                         <label class="form-label col-xs-4 col-sm-2">单位性质：</label>
@@ -146,8 +159,6 @@
                         </div>
                     </div>
                 </td>
-            </tr>
-            <tr>
                 <td>
                     <div class="row cl">
                         <label class="form-label col-xs-4 col-sm-2">产业领域：</label>
@@ -156,6 +167,9 @@
                         </div>
                     </div>
                 </td>
+
+            </tr>
+            <tr>
                 <td>
                     <div class="row cl">
                         <label class="form-label col-xs-4 col-sm-2">单位简介：</label>
@@ -164,8 +178,6 @@
                         </div>
                     </div>
                 </td>
-            </tr>
-            <tr>
                 <td>
                     <div class="row cl">
                         <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>企业认定情况：</label>
@@ -174,6 +186,9 @@
                         </div>
                     </div>
                 </td>
+
+            </tr>
+            <tr>
                 <td>
                     <div class="row cl">
                         <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>企业认证编号：</label>
@@ -182,8 +197,6 @@
                         </div>
                     </div>
                 </td>
-            </tr>
-            <tr>
                 <td>
                     <div class="row cl">
                         <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>开户行：</label>
@@ -192,6 +205,9 @@
                         </div>
                     </div>
                 </td>
+
+            </tr>
+            <tr>
                 <td>
                     <div class="row cl">
                         <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>银行账号：</label>
@@ -200,8 +216,6 @@
                         </div>
                     </div>
                 </td>
-            </tr>
-            <tr>
                 <td>
                     <div class="row cl">
                         <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>户名：</label>
@@ -210,6 +224,9 @@
                         </div>
                     </div>
                 </td>
+
+            </tr>
+            <tr>
                 <td>
                     <div class="row cl">
                         <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>联系人：</label>
@@ -218,8 +235,6 @@
                         </div>
                     </div>
                 </td>
-            </tr>
-            <tr>
                 <td>
                     <div class="row cl">
                         <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>联系手机：</label>
@@ -228,6 +243,9 @@
                         </div>
                     </div>
                 </td>
+
+            </tr>
+            <tr>
                 <td>
                     <div class="row cl">
                         <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>联系人邮箱：</label>
@@ -236,8 +254,6 @@
                         </div>
                     </div>
                 </td>
-            </tr>
-            <tr>
                 <td>
                     <div class="row cl">
                         <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>修改人：</label>
@@ -247,12 +263,28 @@
                     </div>
                 </td>
             </tr>
+            <tr>
+                <td colspan="2">
+                    <div class="row cl" >
+                        <label class="form-label col-xs-1 col-sm-1">备注：</label>
+                        <div class="formControls col-xs-8 col-sm-9">
+                            <textarea name="remark" th:text="${enterprise.remark}" cols="" rows="" class="textarea"  placeholder="说点什么...100个字符以内" dragonfly="true" onKeyUp="$.Huitextarealength(this,100)"></textarea>
+                            <p class="textarea-numberbar"><em class="textarea-length">0</em>/100</p>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <div class="row cl">
+                        <div class="col-xs-8 col-sm-9 col-xs-offset-1 col-sm-offset-3">
+                            <input id="" class="btn btn-primary radius" type="submit" value="&nbsp;&nbsp;确认修改&nbsp;&nbsp;">
+                            <button onClick="layer_close();" class="btn btn-default radius" type="button">&nbsp;&nbsp;取消&nbsp;&nbsp;</button>
+                        </div>
+                    </div>
+                </td>
+            </tr>
         </table>
-        <div class="row cl">
-            <div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-3">
-                <input id="" class="btn btn-primary radius" type="submit" value="&nbsp;&nbsp;提交&nbsp;&nbsp;">
-            </div>
-        </div>
     </form>
 </div>
 
@@ -295,12 +327,29 @@
                     required:true
                 },
                 foundDate :{
-                    required:true,
-                    dateISO:true
+                    required:true
                 },
                 regMoney :{
                     required:true,
                     number:true
+                },
+                regAddr :{
+                    required:true
+                },
+                contactAddr :{
+                    required:true
+                },
+                sales :{
+                    number:true
+                },
+                taxs :{
+                    number:true
+                },
+                netAssets :{
+                    number:true
+                },
+                amount :{
+                    digits:true
                 },
                 identify :{
                     required:true
@@ -330,25 +379,12 @@
                 updater:{
                     required:true
                 }
+            },message:{
+                isPhone:"请输入正确格式的手机号码"
             },
             onkeyup:false,
             focusCleanup:true,
-            success:"valid",
-            submitHandler:function(form){
-                $(form).ajaxSubmit({
-                    type: 'post',
-                    url: "xxxxxxx" ,
-                    success: function(data){
-                        layer.msg('添加成功!',{icon:1,time:1000});
-                    },
-                    error: function(XmlHttpRequest, textStatus, errorThrown){
-                        layer.msg('error!',{icon:1,time:1000});
-                    }
-                });
-                var index = parent.layer.getFrameIndex(window.name);
-                parent.$('.btn-refresh').click();
-                parent.layer.close(index);
-            }
+            success:"valid"
         });
     });
 </script>

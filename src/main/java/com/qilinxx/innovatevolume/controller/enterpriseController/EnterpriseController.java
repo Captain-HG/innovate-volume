@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 /**
  * 创新卷企业页面
@@ -32,7 +33,7 @@ public class EnterpriseController {
         userInfo.setOrgcode("111111111");
         this.enterprise= enterpriseService.selectEnterpriseByCode(userInfo.getOrgcode());
         model.addAttribute("enterprise",enterprise);
-        return "fys/enterprise-home";
+        return "enterprise/enterprise-home";
     }
     //后台的迎接页面
     /**
@@ -41,7 +42,7 @@ public class EnterpriseController {
      */
     @GetMapping("enterprise-welcome")
     public String enterpriseWelcome(){
-        return "fys/enterprise-welcome";
+        return "enterprise/enterprise-welcome";
     }
 
     /**
@@ -52,7 +53,7 @@ public class EnterpriseController {
     public String enterpriseInfo(Model model){
         model.addAttribute("dateKit",new DateKit());
         model.addAttribute("enterprise",enterprise);
-        return "fys/enterprise-info";
+        return "enterprise/enterprise-info";
     }
     /**
      * 修改个人资料
@@ -62,6 +63,14 @@ public class EnterpriseController {
     public String enterpriseChangeInfo(Model model){
         model.addAttribute("dateKit",new DateKit());
         model.addAttribute("enterprise",enterprise);
-        return "fys/enterprise-change-info";
+        return "enterprise/enterprise-change-info";
+    }
+    @PostMapping("enterprise-change-info")
+    public String enterpriseChangeInfo(Enterprise enterprise,String  formatRegDate,String  formatFoundDate){
+        enterprise.setRegDate(Long.parseLong(String.valueOf(DateKit.getUnixTimeByDate(DateKit.dateFormat(formatRegDate)))));
+        enterprise.setFoundDate(Long.parseLong(String.valueOf(DateKit.getUnixTimeByDate(DateKit.dateFormat(formatFoundDate)))));
+        enterprise.setUpdateTime(Long.parseLong(String.valueOf(DateKit.getUnixTimeByDate(DateKit.getNowTime()))));
+        System.out.println(enterprise);
+        return "redirect:enterprise-info.html";
     }
 }

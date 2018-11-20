@@ -59,7 +59,7 @@
             <td><span th:text="${enterprise.regAddr}"></span></td>
         </tr>
         <tr>
-            <th>联系地址:</th>
+            <th>企业联系地址:</th>
             <td><span th:text="${enterprise.contactAddr}"></span></td>
         </tr>
         <tr>
@@ -129,6 +129,10 @@
         <tr>
             <th>创建时间:</th>
             <td><span th:text="${dateKit.formatDateByUnixTime(enterprise.createTime)}"></span></td>
+        </tr>
+        <tr>
+            <th>备注：</th>
+            <td><span th:text="${enterprise.remark}"></span></td>
         </tr>
         </tbody>
     </table>
