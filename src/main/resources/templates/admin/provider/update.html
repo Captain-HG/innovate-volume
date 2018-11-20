@@ -31,13 +31,8 @@
 <body>
 <article class="page-container">
 	<div class="Huiform">
-		<form class="form form-horizontal" id="form-article-add" action="admin-provider-add" th:method="post">
-			<div class="row cl">
-				<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>活动名：</label>
-				<div class="formControls col-xs-8 col-sm-9">
-					<input type="text" class="input-text"  placeholder="" id="aName" name="aName">
-				</div>
-			</div>
+		<form class="form form-horizontal" id="form-article-add" action="admin-provider-update" th:method="post">
+
 			<!--<div class="row cl">-->
 			<!--<label class="form-label col-xs-4 col-sm-2">举办的商家名：</label>-->
 			<!--<div class="formControls col-xs-5 col-sm-5">-->
@@ -45,27 +40,19 @@
 			<!--</div>-->
 			<!--</div>-->
 			<div class="row cl">
-				<label class="form-label col-xs-4 col-sm-2">用户账号：</label>
+				<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>商家名：</label>
 				<div class="formControls col-xs-4 col-sm-1" style="padding-right: 0px">
 				</div>
 				<div class="formControls col-xs-4 col-sm-8" style="padding-left: 0px">
-					<input type="text" class="input-text" placeholder="" name="userAccount" id="userAccountId"  />
+					<input type="text" class="input-text" placeholder="淮北市麒麟有限科技公司" name="name" id="nameId" th:value="${provider.name}" />
 				</div>
 			</div>
 			<div class="row cl">
-				<label class="form-label col-xs-4 col-sm-2">商家名：</label>
+				<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>商家18位社会统一信用代码或9位组织机构代码：</label>
 				<div class="formControls col-xs-4 col-sm-1" style="padding-right: 0px">
 				</div>
 				<div class="formControls col-xs-4 col-sm-8" style="padding-left: 0px">
-					<input type="text" class="input-text" placeholder="淮北市麒麟有限科技公司" name="name" id="nameId"  />
-				</div>
-			</div>
-			<div class="row cl">
-				<label class="form-label col-xs-4 col-sm-2">商家18位社会统一信用代码或9位组织机构代码：</label>
-				<div class="formControls col-xs-4 col-sm-1" style="padding-right: 0px">
-				</div>
-				<div class="formControls col-xs-4 col-sm-8" style="padding-left: 0px">
-					<input type="text" class="input-text" placeholder="" name="code" id="codeId"  />
+					<input type="text" class="input-text" placeholder="" name="code" id="codeId" th:value="${provider.code}" />
 				</div>
 			</div>
 			<div class="row cl">
@@ -73,7 +60,7 @@
 				<div class="formControls col-xs-4 col-sm-1" style="padding-right: 0px">
 				</div>
 				<div class="formControls col-xs-4 col-sm-8" style="padding-left: 0px">
-					<input type="text" class="input-text" placeholder="" name="type" id="typeId"  />
+					<input type="text" class="input-text" placeholder="" name="type" id="typeId" th:value="${provider.type}" />
 				</div>
 			</div>
 			<div class="row cl">
@@ -89,7 +76,7 @@
 				<div class="formControls col-xs-4 col-sm-1" style="padding-right: 0px">
 				</div>
 				<div class="formControls col-xs-4 col-sm-8" style="padding-left: 0px">
-					<input type="text" class="input-text" placeholder="199" name="staffCount" id="staffCountId"  />
+					<input type="text" class="input-text" placeholder="199" name="staffCount" id="staffCountId" th:value="${provider.staffCount}" />
 				</div>
 			</div>
 			<div class="row cl">
@@ -97,7 +84,7 @@
 				<div class="formControls col-xs-4 col-sm-1" style="padding-right: 0px">
 				</div>
 				<div class="formControls col-xs-4 col-sm-8" style="padding-left: 0px">
-					<input type="text" class="input-text" placeholder="199" name="researcherCount" id="researcherCountId"  />
+					<input type="text" class="input-text" placeholder="199" name="researcherCount" id="researcherCountId" th:value="${provider.researchCount}" />
 				</div>
 			</div>
 			<div class="row cl">
@@ -105,7 +92,7 @@
 				<div class="formControls col-xs-4 col-sm-1" style="padding-right: 0px">
 				</div>
 				<div class="formControls col-xs-4 col-sm-8" style="padding-left: 0px">
-					<input type="text" class="input-text" placeholder="安徽省淮北市" name="addr" id="addrId"  />
+					<input type="text" class="input-text" placeholder="安徽省淮北市" name="addr" id="addrId" th:value="${provider.addr}" />
 				</div>
 			</div>
 			<div class="row cl">
@@ -113,7 +100,7 @@
 				<div class="formControls col-xs-4 col-sm-1" style="padding-right: 0px">
 				</div>
 				<div class="formControls col-xs-4 col-sm-8" style="padding-left: 0px">
-					<input type="text" class="input-text" placeholder="中国银行" name="bank" id="bankId"  />
+					<input type="text" class="input-text" placeholder="中国银行" name="bank" id="bankId" th:value="${provider.bank}" />
 				</div>
 			</div>
 			<div class="row cl">
@@ -121,7 +108,7 @@
 				<div class="formControls col-xs-4 col-sm-1" style="padding-right: 0px">
 				</div>
 				<div class="formControls col-xs-4 col-sm-8" style="padding-left: 0px">
-					<input type="text" class="input-text" placeholder="银行的账号" name="cardNo" id="cardNoId" onchange ="ajaxRegister()"  />
+					<input type="text" class="input-text" placeholder="银行的账号" name="cardNo" id="cardNoId" th:value="${provider.cardNo}" onchange ="ajaxRegister()"  />
 				</div>
 			</div>
 			<div class="row cl">
@@ -129,15 +116,15 @@
 				<div class="formControls col-xs-4 col-sm-1" style="padding-right: 0px">
 				</div>
 				<div class="formControls col-xs-4 col-sm-8" style="padding-left: 0px">
-					<input type="text" class="input-text" placeholder="安徽省淮北市" name="cardOwner" id="cardOwnerId"  />
+					<input type="text" class="input-text" placeholder="安徽省淮北市" name="cardOwner" id="cardOwnerId" th:value="${provider.cardOwner}" />
 				</div>
 			</div>
 			<div class="row cl">
-				<label class="form-label col-xs-4 col-sm-2">负责人姓名：</label>
+				<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>负责人姓名：</label>
 				<div class="formControls col-xs-4 col-sm-1" style="padding-right: 0px">
 				</div>
 				<div class="formControls col-xs-4 col-sm-8" style="padding-left: 0px">
-					<input type="text" class="input-text" placeholder="张三" name="admin" id="adminId"  />
+					<input type="text" class="input-text" placeholder="张三" name="admin" id="adminId" th:value="${provider.admin}" />
 				</div>
 			</div>
 			<div class="row cl">
@@ -145,7 +132,7 @@
 				<div class="formControls col-xs-4 col-sm-1" style="padding-right: 0px">
 				</div>
 				<div class="formControls col-xs-4 col-sm-8" style="padding-left: 0px">
-					<input type="text" class="input-text" placeholder="书记" name="adminTitle" id="adminTitleId"  />
+					<input type="text" class="input-text" placeholder="书记" name="adminTitle" id="adminTitleId" th:value="${provider.adminTitle}" />
 				</div>
 			</div>
 			<div class="row cl">
@@ -153,23 +140,23 @@
 				<div class="formControls col-xs-4 col-sm-1" style="padding-right: 0px">
 				</div>
 				<div class="formControls col-xs-4 col-sm-8" style="padding-left: 0px">
-					<input type="text" class="input-text" placeholder="1451@qq.com" name="adminEmail" id="adminEmailId"  />
+					<input type="text" class="input-text" placeholder="1451@qq.com" name="adminEmail" id="adminEmailId" th:value="${provider.adminEmail}" />
 				</div>
 			</div>
 			<div class="row cl">
-				<label class="form-label col-xs-4 col-sm-2">负责人手机：</label>
+				<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>负责人手机：</label>
 				<div class="formControls col-xs-4 col-sm-1" style="padding-right: 0px">
 				</div>
 				<div class="formControls col-xs-4 col-sm-8" style="padding-left: 0px">
-					<input type="text" class="input-text" placeholder="18846525654" name="adminPhone" id="adminPhoneId"  />
+					<input type="text" class="input-text" placeholder="18846525654" name="adminPhone" id="adminPhoneId" th:value="${provider.adminPhone}" />
 				</div>
 			</div>
 			<div class="row cl">
-				<label class="form-label col-xs-4 col-sm-2">联系人姓名：</label>
+				<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>联系人姓名：</label>
 				<div class="formControls col-xs-4 col-sm-1" style="padding-right: 0px">
 				</div>
 				<div class="formControls col-xs-4 col-sm-8" style="padding-left: 0px">
-					<input type="text" class="input-text" placeholder="" name="contacter" id="contacterId"  />
+					<input type="text" class="input-text" placeholder="" name="contacter" id="contacterId" th:value="${provider.contacter}" />
 				</div>
 			</div>
 			<div class="row cl">
@@ -177,7 +164,7 @@
 				<div class="formControls col-xs-4 col-sm-1" style="padding-right: 0px">
 				</div>
 				<div class="formControls col-xs-4 col-sm-8" style="padding-left: 0px">
-					<input type="text" class="input-text" placeholder="秘书" name="contactTitle" id="contactTitleId"  />
+					<input type="text" class="input-text" placeholder="秘书" name="contactTitle" id="contactTitleId" th:value="${provider.contactTitle}" />
 				</div>
 			</div>
 			<div class="row cl">
@@ -185,15 +172,15 @@
 				<div class="formControls col-xs-4 col-sm-1" style="padding-right: 0px">
 				</div>
 				<div class="formControls col-xs-4 col-sm-8" style="padding-left: 0px">
-					<input type="text" class="input-text" placeholder="1253@qq.com" name="contactEmail" id="contactEmailId"  />
+					<input type="text" class="input-text" placeholder="1253@qq.com" name="contactEmail" id="contactEmailId" th:value="${provider.contactEmail}" />
 				</div>
 			</div>
 			<div class="row cl">
-				<label class="form-label col-xs-4 col-sm-2">联系人手机：</label>
+				<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>联系人手机：</label>
 				<div class="formControls col-xs-4 col-sm-1" style="padding-right: 0px">
 				</div>
 				<div class="formControls col-xs-4 col-sm-8" style="padding-left: 0px">
-					<input type="text" class="input-text" placeholder="14561656516" name="contactPhone" id="contactPhoneId"  />
+					<input type="text" class="input-text" placeholder="14561656516" name="contactPhone" id="contactPhoneId" th:value="${provider.contactPhone}" />
 				</div>
 			</div>
 			<div class="row cl">
@@ -201,7 +188,7 @@
 				<div class="formControls col-xs-4 col-sm-1" style="padding-right: 0px">
 				</div>
 				<div class="formControls col-xs-4 col-sm-8" style="padding-left: 0px">
-					<input type="text" class="input-text" placeholder="" name="supportUnit" id="supportUnitId"  />
+					<input type="text" class="input-text" placeholder="" name="supportUnit" id="supportUnitId" th:value="${provider.supportUnit}" />
 				</div>
 			</div>
 			<div class="row cl">
@@ -209,31 +196,32 @@
 				<div class="formControls col-xs-4 col-sm-1" style="padding-right: 0px">
 				</div>
 				<div class="formControls col-xs-4 col-sm-8" style="padding-left: 0px">
-					<input type="text" class="input-text" placeholder="" name="supportAdmin" id="supportAdminId"  />
+					<input type="text" class="input-text" placeholder="" name="supportAdmin" id="supportAdminId" th:value="${provider.supportAdmin}" />
 				</div>
 			</div>
 			<div><input type="text" name="creater" id="creater" hidden="true" value=""></div>
 			<div class="row cl">
 				<label class="form-label col-xs-4 col-sm-2">机构简介：</label>
 				<div class="formControls col-xs-8 col-sm-9">
-					<textarea name="detail" id="detailId" cols="" rows="" class="textarea"  placeholder="说点什么...最少输入5个字符" datatype="*10-100" dragonfly="true" nullmsg="备注不能为空！" onKeyUp="$.Huitextarealength(this,100)" ></textarea>
+					<textarea name="detail" id="detailId" th:value="${provider.detail}" cols="" rows="" class="textarea"  placeholder="说点什么...最少输入5个字符" datatype="*10-100" dragonfly="true" nullmsg="备注不能为空！" onKeyUp="$.Huitextarealength(this,100)" ></textarea>
 					<!--<p class="textarea-numberbar"><em class="textarea-length">0</em>/200</p>-->
 				</div>
 			</div>
 			<div class="row cl">
 				<label class="form-label col-xs-4 col-sm-2">研究方向及注意研究内容：</label>
 				<div class="formControls col-xs-8 col-sm-9">
-					<textarea name="researchContent" id="researchContentId" cols="" rows="" class="textarea"  placeholder="说点什么...最少输入5个字符" datatype="*10-100" dragonfly="true" nullmsg="备注不能为空！" onKeyUp="$.Huitextarealength(this,100)" ></textarea>
+					<textarea name="researchContent" id="researchContentId" th:value="${provider.researchContent}" cols="" rows="" class="textarea"  placeholder="说点什么...最少输入5个字符" datatype="*10-100" dragonfly="true" nullmsg="备注不能为空！" onKeyUp="$.Huitextarealength(this,100)" ></textarea>
 					<!--<p class="textarea-numberbar"><em class="textarea-length">0</em>/200</p>-->
 				</div>
 			</div>
 			<div class="row cl">
 				<label class="form-label col-xs-4 col-sm-2">可提供的特殊注意服务内容：</label>
 				<div class="formControls col-xs-8 col-sm-9">
-					<textarea name="mainService" id="mainServiceId" cols="" rows="" class="textarea"  placeholder="说点什么...最少输入5个字符" datatype="*10-100" dragonfly="true" nullmsg="备注不能为空！" onKeyUp="$.Huitextarealength(this,100)" ></textarea>
+					<textarea name="mainService" id="mainServiceId" th:value="${provider.mainService}" cols="" rows="" class="textarea"  placeholder="说点什么...最少输入5个字符" datatype="*10-100" dragonfly="true" nullmsg="备注不能为空！" onKeyUp="$.Huitextarealength(this,100)" ></textarea>
 					<!--<p class="textarea-numberbar"><em class="textarea-length">0</em>/200</p>-->
 				</div>
 			</div>
+			<div><input type="text" th:value="${provider.id}" name="id" id="idId" hidden="true"></div>
 			<div class="row cl">
 				<div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-2">
 					<button  class="btn btn-primary radius" type="submit" id="btn-edit"><i class="Hui-iconfont">&#xe632;</i> 提交待审核</button>
@@ -263,15 +251,16 @@
 <script type="text/javascript" th:inline="javascript">
     var fys="error";
     function ajaxRegister(){
-        var account = $("#userAccountId").val();
+        var code = $("#codeId").val();
+        var id = $("#idId").val();
         $.ajax({
             url : "admin-ajaxRegister",
-            data :{"account" : account},
+            data :{"code" : code,"id":id},
             success: function(str) {
                 if ("true" != str) {
                     //帐号已经被注册
                     //  $("#accountId").append("<span> 帐号已经存在。请使用其它帐号！ </span>");
-                    alert("用户已经存在或者未创建。请使用其它帐号！");
+                    alert(str);
                     //定焦
                     fys="error";
                 }
@@ -292,10 +281,7 @@
 
     $("#form-article-add").validate({
         rules:{
-            userAccount:{
-                required:true,
-                isRightfulString:true
-			},
+
             name :{
                 required:true,
                 minlength:5,
@@ -304,21 +290,21 @@
             code :{
                 required:true
             },
-            aEndTime :{
-                required:true
-            },
-            aStartTime:{
-                required:true
-            },
-            aDetail:{
-                required:true,
-                minlength:5,
-                maxlength:16
-            },
-			aUrl:{
-                required:true,
-				url:true
-			},
+            // aEndTime :{
+            //     required:true
+            // },
+            // aStartTime:{
+            //     required:true
+            // },
+            // aDetail:{
+            //     required:true,
+            //     minlength:5,
+            //     maxlength:16
+            // },
+			// aUrl:{
+            //     required:true,
+			// 	url:true
+			// },
 
         },
         onkeyup:false,
@@ -327,7 +313,6 @@
         submitHandler:function(form){
             alert("更新完成");
             $("form").ajaxSubmit(function (data) {
-
                 if (fys=="true") {
                     $("form").ajaxSubmit(function (data) {
                         var index = parent.layer.getFrameIndex(window.name);

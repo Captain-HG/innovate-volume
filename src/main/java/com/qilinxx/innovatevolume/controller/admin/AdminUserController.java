@@ -1,4 +1,4 @@
-package com.qilinxx.innovatevolume.controller.lzc;
+package com.qilinxx.innovatevolume.controller.admin;
 
 import com.qilinxx.innovatevolume.domain.model.UserInfo;
 import com.qilinxx.innovatevolume.service.UserInfoService;

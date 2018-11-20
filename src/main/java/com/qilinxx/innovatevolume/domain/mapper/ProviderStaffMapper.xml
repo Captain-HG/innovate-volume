@@ -78,4 +78,7 @@
     id, provider_id, name, age, title, degree, category, is_use, creater, create_time, 
     updater, update_time, remark
   </sql>
+  <select id="selectAllByProviderId" resultMap="BaseResultMap">
+  SELECT * FROM provider_staff WHERE provider_id=#{id}
+</select>
 </mapper>

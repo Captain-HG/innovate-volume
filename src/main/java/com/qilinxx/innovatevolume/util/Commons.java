@@ -28,4 +28,20 @@ public class Commons {
         }
         return "";
     }
+//    /**
+//     * 格式化unix时间戳为日期
+//     *
+//     * @param unixTime unix格式时间
+//     * @param patten 日期格式样式
+//     * @return 转化后的String
+//     */
+//    public static String fmtdateLong(Long unixTime, String patten) {
+//        if (null != unixTime && StringUtils.isNotBlank(patten)) {
+//            return DateKit.formatDateByUnixTime(unixTime, patten);
+//        }
+//        return "";
+//    }
+//    public static String fmtdateLong(Integer unixTime) {
+//        return fmtdate(unixTime, "yyyy-MM-dd HH:mm");
+//    }
 }

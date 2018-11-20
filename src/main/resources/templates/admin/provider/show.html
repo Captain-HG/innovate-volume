@@ -19,45 +19,76 @@
 <script type="text/javascript" src="lib/DD_belatedPNG_0.0.8a-min.js" ></script>
 <script>DD_belatedPNG.fix('*');</script>
 <![endif]-->
-<title>用户查看</title>
+<title>服务提供商查看</title>
 </head>
 <body>
 <div class="cl pd-20" style=" background-color:#5bacb6">
 	<img class="avatar size-XL l" src="static/h-ui/images/ucnter/avatar-default.jpg">
 	<dl style="margin-left:80px; color:#fff">
 		<dt>
-			<span th:text="${userInfo.name}" thclass="f-18">张三</span>
+			<span th:text="${provider.name}" thclass="f-18">张三</span>
 		</dt>
-		<dd class="pt-10 f-12" style="margin-left:0">这家伙很懒，什么也没有留下</dd>
+		<dd class="pt-10 f-12" style="margin-left:0">优秀的企业，往往很低调</dd>
 	</dl>
 </div>
 <div class="pd-20">
 	<table class="table">
 		<tbody>
-
+			<tr>
+				<th class="text-r" width="80">组织机构码：</th>
+				<td th:text="${provider.code}">XXXX</td>
+			</tr>
+			<tr>
+				<th class="text-r">公司成立于：</th>
+				<td th:text="${commons.fmtdate(provider.establishDate)}"></td>
+			</tr>
+			<tr>
+				<th class="text-r">人员规模：</th>
+				<td th:text="${provider.staffCount}"></td>
+			</tr>
+			<tr>
+				<th class="text-r">研究人员数量：</th>
+				<td th:text="${provider.researchCount}">XXX</td>
+			</tr>
+			<tr>
+				<th class="text-r">地址：</th>
+				<td th:text="${provider.addr}">XXX</td>
+			</tr>
+			<tr>
+				<th class="text-r">开户行：</th>
+				<td th:text="${provider.bank}"></td>
+			</tr>
 			<tr>
 				<th class="text-r">账号：</th>
-				<td th:text="${userInfo.account}">13000000000</td>
+				<td th:text="${provider.cardNo}"></td>
 			</tr>
 			<tr>
-				<th class="text-r" width="80">固定电话：</th>
-				<td th:text="${userInfo.tel}">XXXX</td>
+				<th class="text-r">户号：</th>
+				<td th:text="${provider.cardOwner}"></td>
 			</tr>
 			<tr>
-				<th class="text-r">手机：</th>
-				<td th:text="${userInfo.phone}">13000000000</td>
+				<th class="text-r">研究方向与内容：</th>
+				<td th:text="${provider.researchContent}"></td>
 			</tr>
 			<tr>
-				<th class="text-r">邮箱：</th>
-				<td th:text="${userInfo.email}">admin@mail.com</td>
+				<th class="text-r">代表性成果：</th>
+				<td th:text="${provider.result}"></td>
 			</tr>
 			<tr>
-				<th class="text-r">账号类别：</th>
-				<td th:text="${userInfo.userType}">XXX</td>
+				<th class="text-r">可提供主要服务：</th>
+				<td th:text="${provider.mainService}"></td>
 			</tr>
 			<tr>
-				<th class="text-r">创建时间：</th>
-				<td th:text="${userInfo.createTime}">2014.12.20</td>
+				<th class="text-r">依托单位名称：</th>
+				<td th:text="${provider.supportUnit}"></td>
+			</tr>
+			<tr>
+				<th class="text-r">依托单位法人：</th>
+				<td th:text="${provider.supportAdmin}"></td>
+			</tr>
+			<tr>
+				<th class="text-r">简介：</th>
+				<td th:text="${provider.detail}"></td>
 			</tr>
 		</tbody>
 	</table>
