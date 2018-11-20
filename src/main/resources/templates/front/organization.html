@@ -1,0 +1,320 @@
+﻿<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:with="active='organization'">
+<head th:replace="front/head::headerFragment(${active})"></head>
+<body>
+<div th:replace="front/head::head"></div>
+
+<section style="padding-top: 0;background: #fff;">
+    <div class="row">
+        <div class="layui-tab layuitab layui-col-lg12 layui-col-md12 layui-col-xs12">
+            <ul class="layui-tab-title layuititle layui-col-lg2 layui-col-md2 layui-col-xs2">
+                <li><a th:href="@{/policy}">政策介绍</a></li>
+                <li><a th:href="@{news}">最新动态</a></li>
+                <li class="layui-this"><a th:href="@{organization}">审核发放机构</a></li>
+                <li><a th:href="@{science}">河北省服务提供机构</a></li>
+                <li><a th:href="@{openinglabs}">京津冀开放实验室</a></li>
+                <li><a th:href="@{answer}">创新券政策解答</a></li>
+                <li><a th:href="@{help}">创新券操作帮助</a></li>
+            </ul>
+            <div class="layui-tab-content layuicontent layui-col-lg10 layui-col-md10 layui-col-xs10">
+                <div class="layui-tab-item  layui-show layuilist " style="float: right;width: 98%;">
+                    <table cellspacing="0" cellpadding="0" border="0" class="layui-table">
+                        <thead>
+                        <tr>
+
+                            <th>
+                                序号
+                            </th>
+
+                            <th>
+                                审核发放机构名称
+                            </th>
+                            <th>
+                                联系人
+                            </th>
+                            <th>
+                                联系电话
+                            </th>
+                            <th>
+                                联系地址
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr data-index="5" class="layui-table-hover">
+                            <td data-field="sign" data-minwidth="100">
+                                1
+                            </td>
+                            <td data-field="experience">
+                                <a onclick="Look(1); return false;">科技服务网</a>
+                            </td>
+                            <td data-field="score">
+                                欧艳冬
+                            </td>
+                            <td data-field="classify">
+                                0311-83110111、0311-66161060
+                            </td>
+                            <td data-field="wealth">
+                                石家庄高新区长江大道长江道壹号
+                            </td>
+                        </tr>
+                        <tr data-index="5" class="layui-table-hover">
+                            <td data-field="sign" data-minwidth="100">
+                                2
+                            </td>
+                            <td data-field="experience">
+                                <a onclick="Look(2); return false;">河北省协同创新中心</a>
+                            </td>
+                            <td data-field="score">
+                                苏爱勤
+                            </td>
+                            <td data-field="classify">
+                                0311-86056738、18631151595
+                            </td>
+                            <td data-field="wealth">
+                                石家庄市裕华东路105号
+                            </td>
+                        </tr>
+                        <tr data-index="5" class="layui-table-hover">
+                            <td data-field="sign" data-minwidth="100">
+                                3
+                            </td>
+                            <td data-field="experience">
+                                <a onclick="Look(3); return false;"> 石家庄高新技术创业服务中心</a>
+                            </td>
+                            <td data-field="score">
+                                王拓
+                            </td>
+                            <td data-field="classify">
+                                0311-83818940、15831181926
+                            </td>
+                            <td data-field="wealth">
+                                石家庄市新石北路368号
+                            </td>
+                        </tr>
+                        <tr data-index="5" class="layui-table-hover">
+                            <td data-field="sign" data-minwidth="100">
+                                4
+                            </td>
+                            <td data-field="experience">
+                                <a onclick="Look(4); return false;"> 石家庄科技大市场</a>
+                            </td>
+                            <td data-field="score">
+                                胡红燕
+                            </td>
+                            <td data-field="classify">
+                                0311-89928359
+                            </td>
+                            <td data-field="wealth">
+                                石家庄高新区黄河大道136号
+                            </td>
+                        </tr>
+                        <tr data-index="5" class="layui-table-hover">
+                            <td data-field="sign" data-minwidth="100">
+                                5
+                            </td>
+                            <td data-field="experience">
+                                <a onclick="Look(5); return false;"> 廊坊市生产力促进中心</a>
+                            </td>
+                            <td data-field="score">
+                                段学维
+                            </td>
+                            <td data-field="classify">
+                                0316-2235603
+                            </td>
+                            <td data-field="wealth">
+                                廊坊市龙河工业园富康道145号科技成果孵化园19号楼
+                            </td>
+                        </tr>
+                        <tr data-index="5" class="layui-table-hover">
+                            <td data-field="sign" data-minwidth="100">
+                                6
+                            </td>
+                            <td data-field="experience">
+                                <a onclick="Look(6); return false;"> 沧州市科技金融服务办公室</a>
+                            </td>
+                            <td data-field="score">
+                                刘逸舒
+                            </td>
+                            <td data-field="classify">
+                                0317-2129776
+                            </td>
+                            <td data-field="wealth">
+                                沧州市解放西路42号
+                            </td>
+                        </tr>
+                        <tr data-index="5" class="layui-table-hover">
+                            <td data-field="sign" data-minwidth="100">
+                                7
+                            </td>
+                            <td data-field="experience">
+                                <a onclick="Look(7); return false;"> 中国科学院唐山高新技术研究与转化中心</a>
+                            </td>
+                            <td data-field="score">
+                                刘雪静
+                            </td>
+                            <td data-field="classify">
+                                0315-3476397
+                            </td>
+                            <td data-field="wealth">
+                                唐山市高新区卫国路与大庆道交叉口（唐山科技中心4层）
+                            </td>
+                        </tr>
+                        <tr data-index="5" class="layui-table-hover">
+                            <td data-field="sign" data-minwidth="100">
+                                8
+                            </td>
+                            <td data-field="experience">
+                                <a onclick="Look(8); return false;"> 张家口市生产力促进中心</a>
+                            </td>
+                            <td data-field="score">
+                                张志明
+                            </td>
+                            <td data-field="classify">
+                                0313-4195823
+                            </td>
+                            <td data-field="wealth">
+                                张家口市清水河南路科技局办公楼502室
+                            </td>
+                        </tr>
+                        <tr data-index="5" class="layui-table-hover">
+                            <td data-field="sign" data-minwidth="100">
+                                9
+                            </td>
+                            <td data-field="experience">
+                                <a onclick="Look(9); return false;"> 衡水市生产力促进中心</a>
+                            </td>
+                            <td data-field="score">
+                                张国军
+                            </td>
+                            <td data-field="classify">
+                                0318-5265200
+                            </td>
+                            <td data-field="wealth">
+                                衡水市桃城区新华西路468号
+                            </td>
+                        </tr>
+                        <tr data-index="5" class="layui-table-hover">
+                            <td data-field="sign" data-minwidth="100">
+                                10
+                            </td>
+                            <td data-field="experience">
+                                <a onclick="Look(10); return false;"> 承德市生产力促进中心</a>
+                            </td>
+                            <td data-field="score">
+                                杨甲忠
+                            </td>
+                            <td data-field="classify">
+                                0314-2383069
+                            </td>
+                            <td data-field="wealth">
+                                承德市行政中心西楼524室
+                            </td>
+                        </tr>
+                        <tr data-index="5" class="layui-table-hover">
+                            <td data-field="sign" data-minwidth="100">
+                                11
+                            </td>
+                            <td data-field="experience">
+                                <a onclick="Look(11); return false;">辛集市科技创新服务中心</a>
+                            </td>
+                            <td data-field="score">
+                                张乔
+                            </td>
+                            <td data-field="classify">
+                                0311-83308695
+                            </td>
+                            <td data-field="wealth">
+                                河北省辛集市国际皮革城一楼（南二号门）
+                            </td>
+                        </tr>
+                        <tr data-index="5" class="layui-table-hover">
+                            <td data-field="sign" data-minwidth="100">
+                                12
+                            </td>
+                            <td data-field="experience">
+                                <a onclick="Look(12); return false;">保定市生产力促进中心</a>
+                            </td>
+                            <td data-field="score">
+                                王杰
+                            </td>
+                            <td data-field="classify">
+                                0312-6776360、0312-6776361
+                            </td>
+                            <td data-field="wealth">
+                                保定市朝阳北大街1799号中关村创新中心A座607
+                            </td>
+                        </tr>
+                        <tr data-index="5" class="layui-table-hover">
+                            <td data-field="sign" data-minwidth="100">
+                                13
+                            </td>
+                            <td data-field="experience">
+                                <a onclick="Look(13); return false;">秦皇岛市生产力促进中心</a>
+                            </td>
+                            <td data-field="score">
+                                王保权
+                            </td>
+                            <td data-field="classify">
+                                0335-3639706
+                            </td>
+                            <td data-field="wealth">
+                                河北省秦皇岛市海港区迎宾路98号
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+</section>
+<div th:replace="front/footer::footer"></div>
+<script>
+    //layui点击导航切换页面
+    layui.use(['element', 'carousel'], function () {
+        var element = layui.element,//导航的hover效果、二级菜单等功能，需要依赖element模块
+            carousel = layui.carousel;
+        //监听导航点击
+        element.on('nav(demo)', function (elem) {
+        });
+        //banner切换
+        var imgH = $('#carousel-item img')[0].height;
+        $('#carousel-item').height(imgH);
+        window.onload = function () {
+            var bannerH = $('#carousel-item img')[0].height;
+            $('#carousel-item').css('height', bannerH + 'px');
+        }
+        carousel.render({
+            elem: '#carousel'
+            , arrow: 'always'
+            , width: "100%"
+            , height: "auto"
+        });
+    });
+
+    function Look(tableId) {
+
+
+        layer.open({
+            title: "审核发放机构信息",
+            type: 1,
+            skin: 'layui-layer-rim', //加上边框
+            area: ['1204px', 'auto'], //宽高
+            content: $("#Mymodel" + tableId),
+            end: function () { //关闭后回调函数
+                $('.modal').hide();
+
+
+            }
+        });
+
+    }
+
+</script>
+</body>
+</html>
+

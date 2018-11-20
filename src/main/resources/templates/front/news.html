@@ -1,242 +1,156 @@
-﻿
-<!DOCTYPE html>
-<html>
-<head>
-    <meta http-equiv="content-Type" content="text/html;charset=gb2312">
-    <meta http-equiv="Content-Language" content="zh-cn" />
-    <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1">
-    <meta http-equiv="X-UA-Compatible" content="IE=8" />
-    <meta name="format-detection" content="telephone=no">
-    <meta content="email=no" name="format-detection" />
-    <link rel="shortcut icon" href="/images/favicon.png">
-    <title>河北省创新创业券</title>
-    <link rel="stylesheet" type="text/css" href="css/layui.css" />
-    <link rel="stylesheet" type="text/css" href="css/css.css" />
-    <!--[if lt IE 9]>
-    <script src='js/min.js' type='text/javascript'></script>
-    <script src='js/min_1.js' type='text/javascript'></script>
-    <![endif]-->
-    <!--[if lt IE 10]>
-    <script src='/assets/NewFront/js/placeholder/min.js?v=9.4' type='text/javascript'></script>
-    <![endif]-->
-    <!--[if lt IE 8]>
-    <script src='http://ie7-js.googlecode.com/svn/version/2.0(beta)/IE8.js" type="text/javascript"></script>
-    <![endif]-->
-    <style>
-        .layui-carousel {
-            background-color: #f3f3f2 !important;
-        }
-    </style>
-
-    <script>
-        var _hmt = _hmt || [];
-        (function () {
-            var hm = document.createElement("script");
-            hm.src = "//hm.baidu.com/hm.js?e3dde0791e1ea1c055b4b0b47418cd6c";
-            var s = document.getElementsByTagName("script")[0];
-            s.parentNode.insertBefore(hm, s);
-        })();
-    </script>
-</head>
+﻿<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"  th:with="active='news'">
+<head th:replace="front/head::headerFragment(${active})"></head>
 <body>
-    <header>
-        <div class="layui-container">
-            <div class="layui-row">
-                <div class="layui-col-lg6 layui-col-xs6 layui-col-md6">
-                    <h4>欢迎进入河北省创新券网站！</h4>
+<div th:replace="front/head::head"></div>
+<section style="padding-top: 0;background: #fff;">
+    <div class="row">
+        <div class="layui-tab layuitab layui-col-lg12 layui-col-md12 layui-col-xs12">
+            <ul class="layui-tab-title layuititle layui-col-lg2 layui-col-md2 layui-col-xs2">
+                <li><a th:href="@{/policy}">政策介绍</a></li>
+                <li  class="layui-this"><a th:href="@{news}">最新动态</a></li>
+                <li><a th:href="@{organization}">审核发放机构</a></li>
+                <li><a th:href="@{science}">河北省服务提供机构</a></li>
+                <li><a th:href="@{openinglabs}">京津冀开放实验室</a></li>
+                <li><a th:href="@{answer}">创新券政策解答</a></li>
+                <li><a th:href="@{help}">创新券操作帮助</a></li>
+            </ul>
+            <div class="layui-tab-content layuicontent layui-col-lg10 layui-col-md10 layui-col-xs10">
+                <div class="layui-tab-item  layui-show layuilist " style="float: right;width: 98%;">
+                    <h4><img th:src="@{front/images/imgtitle.png}"/></h4>
+                    <ul id="ul_news">
+                        <li><span class="dote"></span><a
+                                href="javascript:Look(75);">关于提供与京津企业开展科技创新券合作项目信息的通知 </a><span>2018-10-10 16:23:20 省科技厅</span>
+                        </li>
+                        <li><span class="dote"></span><a href="javascript:Look(73);">2017年第二批科技创新券拟兑付资金公示 </a><span>2018-05-25 10:33:11 省科技厅</span>
+                        </li>
+                        <li><span class="dote"></span><a href="javascript:Look(71);">关于将河北省科技创新券创新服务提供机构纳入京津冀三地创新券共享机构目录库的通知 </a><span>2017-09-28 18:07:32 省科技厅</span>
+                        </li>
+                        <li><span class="dote"></span><a href="javascript:Look(70);">关于开展2017年度科技创新券
+                            首批兑付工作的通知 </a><span>2017-08-06 21:12:07 省科技厅</span></li>
+                        <li><span class="dote"></span><a href="javascript:Look(69);">关于确定河北省首批科技创新券审核发放机构的通知 </a><span>2017-07-24 09:36:13 省科技厅</span>
+                        </li>
+                        <li><span class="dote"></span><a
+                                href="javascript:Look(67);">关于2017年度河北省科技创新券审核发放机构评审答辩会议的通知 </a><span>2017-06-22 17:37:31 省科技厅</span>
+                        </li>
+                        <li><span class="dote"></span><a
+                                href="javascript:Look(66);">关于公布河北省科技创新券创新服务提供机构（第二批）的通知 </a><span>2017-04-27 15:52:34 省科技厅</span>
+                        </li>
+                        <li><span class="dote"></span><a
+                                href="javascript:Look(65);">关于征集2017年度河北省科技创新券审核发放机构的通知 </a><span>2017-04-19 16:39:16 省科技厅</span>
+                        </li>
+                        <li><span class="dote"></span><a href="javascript:Look(64);">创新券服务平台开放通知 </a><span>2016-12-20 17:46:05 创新券工作平台</span>
+                        </li>
+                        <li><span class="dote"></span><a
+                                href="javascript:Look(63);">关于公布河北省首批科技创新券创新服务提供机构的通知 </a><span>2016-12-06 11:12:40 省科技厅</span>
+                        </li>
+                        <li><span class="dote"></span><a href="javascript:Look(62);">关于举办首次科技创新券培训会的通知 </a><span>2016-11-19 09:13:13 省科技厅</span>
+                        </li>
+                        <li><span class="dote"></span><a href="javascript:Look(61);">关于征集河北省科技创新券相关机构的补充通知 </a><span>2016-11-11 09:15:29 省科技厅</span>
+                        </li>
+                        <li><span class="dote"></span><a href="javascript:Look(60);">关于征集河北省科技创新券相关机构的通知 </a><span>2016-11-02 09:06:22 省科技厅</span>
+                        </li>
+                        <li><span class="dote"></span><a href="javascript:Look(53);">淮北市科学技术局
+                            河北省财政厅关于印发《河北省科技创新券实施细则（试行）》的通知 </a><span>2016-09-06 15:52:16 省科技厅</span></li>
+                    </ul>
                 </div>
-                <div class="layui-col-lg6 layui-col-xs6  layui-col-md6 search" style="float: right;text-align: right;">
-                    <a href="/Login/Login" style="color:#0072c6;">登录</a>/<a href="/Login/Register">注册</a>
-                </div>
-            </div>
-        </div>
-    </header>
-    <nav>
-        <div class="layui-container">
-            <div class="layui-low">
-                <div class="layui-col-lg4 layui-col-md4 layui-col-xs4">
-                    <img src="images/logo.png" />
-                </div>
-                <div class="layui-col-lg8 layui-col-md8 layui-col-xs8">
-                    <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
-                        <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
-                            <ul class="layui-tab-title ulnav">
-                                <li><a href="/Home/HebVouchers">首页</a></li>
-                                <li> <a href="/Home/VouchersPolicy">政策介绍</a></li>
-                                <li class="layui-this"> <a href="/Home/VouchersNews">最新动态</a></li>
-                                <li> <a href="/Home/AuditInstitutions">审核发放机构</a></li>
-                                <li>
-                                    <a class="OpeningLabs">服务提供机构<i class="layui-icon layui-icon-triangle-r"></i></a>
-                                    <div class="menuList">
-                                        <ul>
-                                            <li><a href="/Home/OpeningLabs"><span style="display: inline-block;width: 30px;"><img src="images/blockicon.png" /></span>河北省服务提供机构</a></li>
-                                            <li><a href="/Home/Sciencetechnology"><span style="display: inline-block;width: 30px;"><img src="images/blockicon.png" /></span>京津冀开放实验室</a></li>
-                                        </ul>
-                                    </div>
-                                </li>
-                                <li style="padding-right: 0 !important;"><a href="/Home/VouchersIntermediarys">服务中介介绍</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </nav>
 
-
-    <div class="banner">
-        <div class="layui-carousel" id="carousel" lay-filter="test1">
-            <div id="carousel-item" carousel-item style="width: 100%;">
-                <div><img src="images/banner1.jpg" /></div>
-                <div><img src="images/banner2.jpg" /></div>
-                <div><img src="images/banner4.jpg" /></div>
-                <div><img src="images/banner.jpg" /></div>>
             </div>
         </div>
     </div>
-
-    <section style="padding-top: 0;background: #fff;">
-        <div class="row">
-            <div class="layui-tab layuitab layui-col-lg12 layui-col-md12 layui-col-xs12">
-                <ul class="layui-tab-title layuititle layui-col-lg2 layui-col-md2 layui-col-xs2">
-                    <li><a href="/Home/VouchersPolicy">政策介绍</a></li>
-                    <li class="layui-this"><a href="/Home/VouchersNews">最新动态</a></li>
-                    <li><a href="/Home/AuditInstitutions">审核发放机构</a></li>
-                    <li><a href="/Home/OpeningLabs">河北省服务提供机构</a></li>
-                    <li><a href="/Home/Sciencetechnology">京津冀开放实验室</a></li>
-                    <li><a href="/Home/VouchersIntermediarys">服务中介介绍</a></li>
-                    <li><a href="/innovationVoucher.html">创新券政策解答</a></li>
-                    <li><a href="/Operationhelp.html">创新券操作帮助</a></li>
-                </ul>
-                <div class="layui-tab-content layuicontent layui-col-lg10 layui-col-md10 layui-col-xs10">
-                    <div class="layui-tab-item  layui-show layuilist " style="float: right;width: 98%;">
-                        <h4><img src="images/imgtitle.png" /></h4>
-                         <ul id="ul_news"><li><span class="dote"></span><a href="javascript:Look(75);">关于提供与京津企业开展科技创新券合作项目信息的通知 </a><span>2018-10-10 16:23:20 省科技厅</span></li><li><span class="dote"></span><a href="javascript:Look(73);">2017年第二批科技创新券拟兑付资金公示 </a><span>2018-05-25 10:33:11 省科技厅</span></li><li><span class="dote"></span><a href="javascript:Look(71);">关于将河北省科技创新券创新服务提供机构纳入京津冀三地创新券共享机构目录库的通知 </a><span>2017-09-28 18:07:32 省科技厅</span></li><li><span class="dote"></span><a href="javascript:Look(70);">关于开展2017年度科技创新券 首批兑付工作的通知 </a><span>2017-08-06 21:12:07 省科技厅</span></li><li><span class="dote"></span><a href="javascript:Look(69);">关于确定河北省首批科技创新券审核发放机构的通知 </a><span>2017-07-24 09:36:13 省科技厅</span></li><li><span class="dote"></span><a href="javascript:Look(67);">关于2017年度河北省科技创新券审核发放机构评审答辩会议的通知 </a><span>2017-06-22 17:37:31 省科技厅</span></li><li><span class="dote"></span><a href="javascript:Look(66);">关于公布河北省科技创新券创新服务提供机构（第二批）的通知 </a><span>2017-04-27 15:52:34 省科技厅</span></li><li><span class="dote"></span><a href="javascript:Look(65);">关于征集2017年度河北省科技创新券审核发放机构的通知 </a><span>2017-04-19 16:39:16 省科技厅</span></li><li><span class="dote"></span><a href="javascript:Look(64);">创新券服务平台开放通知 </a><span>2016-12-20 17:46:05 创新券工作平台</span></li><li><span class="dote"></span><a href="javascript:Look(63);">关于公布河北省首批科技创新券创新服务提供机构的通知 </a><span>2016-12-06 11:12:40 省科技厅</span></li><li><span class="dote"></span><a href="javascript:Look(62);">关于举办首次科技创新券培训会的通知 </a><span>2016-11-19 09:13:13 省科技厅</span></li><li><span class="dote"></span><a href="javascript:Look(61);">关于征集河北省科技创新券相关机构的补充通知 </a><span>2016-11-11 09:15:29 省科技厅</span></li><li><span class="dote"></span><a href="javascript:Look(60);">关于征集河北省科技创新券相关机构的通知 </a><span>2016-11-02 09:06:22 省科技厅</span></li><li><span class="dote"></span><a href="javascript:Look(53);">河北省科学技术厅 河北省财政厅关于印发《河北省科技创新券实施细则（试行）》的通知 </a><span>2016-09-06 15:52:16 省科技厅</span></li></ul>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-  </section>
-    <div class="footer">
-        <div class="foot">
-            <div class="footcontent">
-                <ul>
-                    <li>
-                        <h4>申报咨询电话</h4>
-                        <p>0311-83110111</p>
-                    </li>
-                    <li>
-                        <h4 style="color: #59CE68;">申领开始时间</h4>
-                        <p>2017年12月06日</p>
-                    </li>
-                    <li>
-                        <h4 style="color: #ff9900;">申领方式</h4>
-                        <p>平台在线申领</p>
-                        <p>可致电我们进行咨询</p>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <div class="clearfix"></div>
-        <div class="footbottom">
-            <p>版权所有：河北省科学技术厅  运维单位：河北百汇广联科技服务有限公司  服务热线：0311-83110111</p>
-        </div>
-    </div>
-    <div id="Mymodel" class="modal" style="display: none;">
-        <div class="modal-content">
-            <!--页面中各字段-->
-            <div class="modal-body" id="modal-Service1" style="max-height: 598.5px;">
-                <div id="myTabContent1" class="tab-content">
-                    <div class="kjq_help" style="margin: 20px 50px">
-                        <div id="div_html"></div>
-                        <div id="tr_file"></div>
-                    </div>
+</section>
+<div th:replace="front/footer::footer"></div>
+<div id="Mymodel" class="modal" style="display: none;">
+    <div class="modal-content">
+        <!--页面中各字段-->
+        <div class="modal-body" id="modal-Service1" style="max-height: 598.5px;">
+            <div id="myTabContent1" class="tab-content">
+                <div class="kjq_help" style="margin: 20px 50px">
+                    <div id="div_html"></div>
+                    <div id="tr_file"></div>
                 </div>
             </div>
         </div>
     </div>
-
-    <div class="backdrop fade in"></div>
-    <script src="js/layui.all.js"></script>
-    <script type="text/javascript" src="js/jquery-1.10.1.min.js"></script>
-    <script>
-        //layui点击导航切换页面
-        layui.use(['element', 'carousel'], function () {
-            var element = layui.element,//导航的hover效果、二级菜单等功能，需要依赖element模块
-                carousel = layui.carousel;
-            //监听导航点击
-            element.on('nav(demo)', function (elem) { });
-            var imgH = $('#carousel-item img')[0].height;
-            $('#carousel-item').height(imgH);
-            window.onload = function () {
-                var bannerH = $('#carousel-item img')[0].height;
-                $('#carousel-item').css('height', bannerH + 'px');
-            }
-            carousel.render({
-                elem: '#carousel'
-                , arrow: 'always'
-                , width: "100%"
-                , height: "auto"
-            });
+</div>
+<script>
+    //layui点击导航切换页面
+    layui.use(['element', 'carousel'], function () {
+        var element = layui.element,//导航的hover效果、二级菜单等功能，需要依赖element模块
+            carousel = layui.carousel;
+        //监听导航点击
+        element.on('nav(demo)', function (elem) {
         });
-        $.post("/Home/GetHomeNoticeList", {}, function (data) {
-            for (var o in data) {
-                //$("#ul_news").append("<li><span class='dote'></span><a href='VouchersNewList.html?ID=" + data[o].TableID + "'>" + data[o].Title + " </a><span>" + data[o].PTime + " " + data[o].Person + "</span></li>");
-                $("#ul_news").append("<li><span class='dote'></span><a href='javascript:Look(" + data[o].TableID + ");'>" + data[o].Title + " </a><span>" + data[o].PTime + " " + data[o].Person + "</span></li>");
-            }
-        });
-        function Look(id) {
-            $("#tr_file").hide();
-            $("#div_html").html("");
-            $.post("/Home/GetNewsNotice", { id: id }, function (data) {
-                if (data.Title != "") {
-                    var html = HtmlUtil.htmlDecode(data.Detail);
-                    $("#div_html").html(html);
-
-                    if ((data.File != null & data.File != "") == 1) {
-                        $("#tr_file").show();
-                        $("#tr_file").html("<a type=\"text\" title='下载' href=\"" + data.File + "\"  target='_blank'><img src='images/download.png' class=\"ic_PNG\"  style='width:3%;'></img><span  style='font-size:8pt'>下载附件</span></a>");
-                    }
-                    layer.open({
-                        title: data.Title,
-                        type: 1,
-                        skin: 'layui-layer-rim', //加上边框
-                        area: ['1204px', 'auto'], //宽高
-                        content: $("#Mymodel"),
-                        end: function () { //关闭后回调函数
-                            $('.modal').hide();
-                        }
-                    });
-                }
-            });
+        var imgH = $('#carousel-item img')[0].height;
+        $('#carousel-item').height(imgH);
+        window.onload = function () {
+            var bannerH = $('#carousel-item img')[0].height;
+            $('#carousel-item').css('height', bannerH + 'px');
         }
-        var HtmlUtil = {
-            /*1.用浏览器内部转换器实现html转码*/
-            htmlEncode: function (html) {
-                //1.首先动态创建一个容器标签元素，如DIV
-                var temp = document.createElement("div");
-                //2.然后将要转换的字符串设置为这个元素的innerText(ie支持)或者textContent(火狐，google支持)
-                (temp.textContent != undefined) ? (temp.textContent = html) : (temp.innerText = html);
-                //3.最后返回这个元素的innerHTML，即得到经过HTML编码转换的字符串了
-                var output = temp.innerHTML;
-                temp = null;
-                return output;
-            },
-            /*2.用浏览器内部转换器实现html解码*/
-            htmlDecode: function (text) {
-                //1.首先动态创建一个容器标签元素，如DIV
-                var temp = document.createElement("div");
-                //2.然后将要转换的字符串设置为这个元素的innerHTML(ie，火狐，google都支持)
-                temp.innerHTML = text;
-                //3.最后返回这个元素的innerText(ie支持)或者textContent(火狐，google支持)，即得到经过HTML解码的字符串了。
-                var output = temp.innerText || temp.textContent;
-                temp = null;
-                return output;
+        carousel.render({
+            elem: '#carousel'
+            , arrow: 'always'
+            , width: "100%"
+            , height: "auto"
+        });
+    });
+    $.post("#", {}, function (data) {
+        for (var o in data) {
+            //$("#ul_news").append("<li><span class='dote'></span><a href='VouchersNewList.html?ID=" + data[o].TableID + "'>" + data[o].Title + " </a><span>" + data[o].PTime + " " + data[o].Person + "</span></li>");
+            // $("#ul_news").append("<li><span class='dote'></span><a href='javascript:Look(" + data[o].TableID + ");'>" + data[o].Title + " </a><span>" + data[o].PTime + " " + data[o].Person + "</span></li>");
+        }
+    });
+
+    function Look(id) {
+        $("#tr_file").hide();
+        $("#div_html").html("");
+        $.post("/json", {id: id}, function (data) {
+            if (data.Title != "") {
+                var html = HtmlUtil.htmlDecode(data.Detail);
+                $("#div_html").html(html);
+
+                if ((data.File != null & data.File != "") == 1) {
+                    $("#tr_file").show();
+                    $("#tr_file").html("<a type=\"text\" title='下载' href=\"" + data.File + "\"  target='_blank'><img src='images/download.png' class=\"ic_PNG\"  style='width:3%;'></img><span  style='font-size:8pt'>下载附件</span></a>");
+                }
+                layer.open({
+                    title: data.Title,
+                    type: 1,
+                    skin: 'layui-layer-rim', //加上边框
+                    area: ['1204px', 'auto'], //宽高
+                    content: $("#Mymodel"),
+                    end: function () { //关闭后回调函数
+                        $('.modal').hide();
+                    }
+                });
             }
-        };
-    </script>
-    <script src="js/footer.js"></script>
+        });
+    }
+
+    var HtmlUtil = {
+        /*1.用浏览器内部转换器实现html转码*/
+        htmlEncode: function (html) {
+            //1.首先动态创建一个容器标签元素，如DIV
+            var temp = document.createElement("div");
+            //2.然后将要转换的字符串设置为这个元素的innerText(ie支持)或者textContent(火狐，google支持)
+            (temp.textContent != undefined) ? (temp.textContent = html) : (temp.innerText = html);
+            //3.最后返回这个元素的innerHTML，即得到经过HTML编码转换的字符串了
+            var output = temp.innerHTML;
+            temp = null;
+            return output;
+        },
+        /*2.用浏览器内部转换器实现html解码*/
+        htmlDecode: function (text) {
+            //1.首先动态创建一个容器标签元素，如DIV
+            var temp = document.createElement("div");
+            //2.然后将要转换的字符串设置为这个元素的innerHTML(ie，火狐，google都支持)
+            temp.innerHTML = text;
+            //3.最后返回这个元素的innerText(ie支持)或者textContent(火狐，google支持)，即得到经过HTML解码的字符串了。
+            var output = temp.innerText || temp.textContent;
+            temp = null;
+            return output;
+        }
+    };
+</script>
 </body>
 </html>

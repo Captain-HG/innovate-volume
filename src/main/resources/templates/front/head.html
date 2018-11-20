@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:fragment="head">
+<head th:fragment="headerFragment(active)">
+    <title>淮北市创新券</title>
+    <meta name="Keywords" content="创新券"/>
+    <meta name="description" content="淮北市科技创新券,淮北市创新券,淮北创新券,创新券">
+    <meta name="author" content="科技服务网">
+
+    <link rel="shortcut icon" th:href="@{front/images/favicon.png}">
+
+    <meta http-equiv="content-Type" content="text/html;charset=Utf-8">
+    <meta http-equiv="Content-Language" content="zh-cn"/>
+    <meta name="viewport"
+          content="width=device-width,height=device-height,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=8"/>
+    <meta name="format-detection" content="telephone=no">
+    <meta content="email=no" name="format-detection"/>
+    <link rel="stylesheet" type="text/css" th:href="@{front/css/layui.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{front/css/css.css}"/>
+    <!--[if lt IE 9]>
+    <script th:src="@{front/js/min.js}" type="text/javascript"></script>
+    <script th:src="@{front/js/min_1.js}" type="text/javascript"></script>
+    <![endif]-->
+    <!--[if lt IE 10]>
+    <script th:src="@{front/assets/NewFront/js/placeholder/min.js?v=9.4}" type="text/javascript"></script>
+    <![endif]-->
+    <!--&lt;!&ndash;[if lt IE 8]>-->
+    <!--<script th:src="http://ie7-js.googlecode.com/svn/version/2.0(beta)/IE8.js" type="text/javascript"></script>-->
+    <!--<![endif]&ndash;&gt;-->
+    <style>
+        .layui-carousel {
+            background-color: #f3f3f2 !important;
+        }
+
+        .layui-form-item {
+            margin: 0;
+        }
+
+        .layui-input-block {
+            margin: 0;
+        }
+
+        select {
+            width: 130px;
+            border: none;
+            background: none;
+        }
+
+        .helpList {
+            width: 235px;
+            position: absolute;
+            top: 40px;
+            left: 0px;
+            z-index: 999999;
+            opacity: 0.8;
+            display: none;
+            overflow: hidden;
+            padding: 5px 0px;
+            background: rgb(255, 255, 255);
+            filter:Alpha(opacity=80);
+        }
+
+        .helpList li {
+            width: 100%;
+            display: block;
+            text-align: left;
+            font-size: 14px;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" />
+    <script src="http://libs.baidu.com/jquery/1.11.3/jquery.min.js"></script>
+    <script th:src="@{front/js/jquery.dataTables.min.js}"></script>
+</head>
+<body>
+
+<header>
+    <div class="layui-container">
+        <div class="layui-row">
+            <div class="layui-col-lg6 layui-col-xs6 layui-col-md6">
+                <h4>欢迎进入淮北市创新券网站！</h4>
+            </div>
+            <div class="layui-col-lg6 layui-col-xs6  layui-col-md6 search" style="float: right;text-align: right;">
+                <a th:href="@{/login}" style="color:#0072c6;">登录</a>/<a th:href="@{register}">注册</a>
+            </div>
+        </div>
+    </div>
+</header>
+<nav>
+    <div class="layui-container">
+        <div class="layui-low">
+            <div class="layui-col-lg4 layui-col-md4 layui-col-xs4">
+                <img th:src="@{front/images/logo.png}"/>
+            </div>
+            <div class="layui-col-lg8 layui-col-md8 layui-col-xs8">
+                <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
+                    <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
+                        <ul class="layui-tab-title ulnav">
+                            <li th:class="${active}=='home'?'layui-this':''"><a th:href="@{/index}">首页</a></li>
+                            <li th:class="${active}=='policy'?'layui-this':''"><a th:href="@{/policy}">政策介绍</a></li>
+                            <li th:class="${active}=='news'?'layui-this':''"><a th:href="@{/news}">最新动态</a></li>
+                            <li th:class="${active}=='organization'?'layui-this':''"><a th:href="@{/organization}">审核发放机构</a>
+                            </li>
+                            <li th:class="${active}=='labs'?'layui-this':''">
+                                <a class="OpeningLabs">服务提供机构<i class="layui-icon layui-icon-triangle-r"></i></a>
+                                <div class="menuList">
+                                    <ul>
+                                        <li><a th:href="@{openinglabs}"><span
+                                                style="display: inline-block;width: 30px;"><img
+                                                th:src="@{front/images/blockicon.png}"/></span>河北省服务提供机构</a></li>
+                                        <li><a th:href="@{/science}"><span
+                                                style="display: inline-block;width: 30px;"><img
+                                                th:src="@{front/images/blockicon.png}"/></span>京津冀开放实验室</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li th:class="${active}=='help'?'layui-this':''">
+                                <a class="helpBtn">创新劵问题帮助<i class="layui-icon layui-icon-triangle-r"></i></a>
+                                <div class="helpList">
+                                    <ul>
+                                        <li><a th:href="@{answer}"><span
+                                                style="display: inline-block;width: 30px;"><img
+                                                th:src="@{front/images/blockicon.png}"/></span>创新劵政策解答</a></li>
+                                        <li><a th:href="@{/help}"><span
+                                                style="display: inline-block;width: 30px;"><img
+                                                th:src="@{front/images/blockicon.png}"/></span>创新劵操作帮助</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+<div class="banner">
+    <div class="layui-carousel" id="carousel" lay-filter="test1">
+        <div id="carousel-item" carousel-item style="width: 100%;">
+            <div><img src="front/images/banner1.jpg"/></div>
+            <div><img src="front/images/banner2.jpg"/></div>
+            <div><img src="front/images/banner4.jpg"/></div>
+            <div><img src="front/images/banner.jpg"/></div>
+        </div>
+    </div>
+</div>
+</body>
