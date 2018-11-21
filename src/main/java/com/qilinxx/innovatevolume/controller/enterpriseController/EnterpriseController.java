@@ -2,8 +2,10 @@ package com.qilinxx.innovatevolume.controller.enterpriseController;
 
 import com.qilinxx.innovatevolume.domain.model.Enterprise;
 import com.qilinxx.innovatevolume.domain.model.UserInfo;
+import com.qilinxx.innovatevolume.domain.model.Voucher;
 import com.qilinxx.innovatevolume.service.EnterpriseService;
 import com.qilinxx.innovatevolume.service.UserInfoService;
+import com.qilinxx.innovatevolume.service.VoucherService;
 import com.qilinxx.innovatevolume.util.DateKit;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,10 +16,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpSession;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
- * 创新卷企业页面
+ * 创新券企业页面
  * enterpriseController
  * 2018/11/15
  */
@@ -30,8 +33,10 @@ public class EnterpriseController {
     private UserInfoService userInfoService;
     @Autowired
     private EnterpriseService enterpriseService;
+    @Autowired
+    private VoucherService voucherService;
     /**
-     * 来到创新卷科技企业的页面
+     * 来到创新券科技企业的页面
      * @return 跳转企业主页面
      */
     @GetMapping({"/","enterprise-home"})
@@ -51,7 +56,7 @@ public class EnterpriseController {
     }
     //后台的迎接页面
     /**
-     * 来到创新卷科技企业的迎接面
+     * 来到创新券科技企业的迎接面
      * @return 欢迎页面
      */
     @GetMapping("enterprise-welcome")
@@ -121,13 +126,26 @@ public class EnterpriseController {
      */
     @ResponseBody
     @PostMapping("ajax-enterprise-change-password")
-    public Map<String,String> enterpriseChangePassword(UserInfo userInfo){
+    public Map<String,String> enterpriseChangePassword(UserInfo userInfo,HttpSession session){
         userInfo.setId(this.userInfo.getId());
         userInfo.setUpdateTime(Long.parseLong(String.valueOf(DateKit.getUnixTimeByDate(DateKit.getNowTime()))));
         this.userInfo= userInfoService.updateUserInfoPassword(userInfo);
+        session.setAttribute("user",this.userInfo);
         Map<String ,String > map=new HashMap<>();
         map.put("msg","修改成功！");
         return map;
+    }
+    /**
+     * 从企业角度查询可用创新券
+     * @return 来到查询券页面
+     */
+    @GetMapping("enterprise-voucher.html")
+    public String enterpriseVoucher(Model model){
+        List<Voucher> vouchers = voucherService.selectAll();
+        if(vouchers.size()!=0){
+
+        }
+        return "enterprise/enterprise-voucher";
     }
 
 }

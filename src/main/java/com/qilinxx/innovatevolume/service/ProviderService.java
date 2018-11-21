@@ -1,8 +1,10 @@
 package com.qilinxx.innovatevolume.service;
 
 import com.qilinxx.innovatevolume.domain.model.Provider;
+import com.qilinxx.innovatevolume.domain.model.Voucher;
 
 import java.util.List;
+import java.util.Map;
 
 public interface ProviderService {
     /**查询所有的提供商 */
@@ -19,4 +21,6 @@ public interface ProviderService {
     String ifCodeUse(String code);
     /** 更新商家*/
     void updateProvider(Provider provider);
+    /** 把传进来的创新券列表List，转换为Map，其中存储提供商的id和name*/
+    Map<String,String> voucherListToProviderMap(List<Voucher> vouchers);
 }

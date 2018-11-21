@@ -2,12 +2,16 @@ package com.qilinxx.innovatevolume.service.serviceImpl;
 
 import com.qilinxx.innovatevolume.domain.mapper.ProviderMapper;
 import com.qilinxx.innovatevolume.domain.model.Provider;
+import com.qilinxx.innovatevolume.domain.model.ProviderExample;
+import com.qilinxx.innovatevolume.domain.model.Voucher;
 import com.qilinxx.innovatevolume.service.ProviderService;
 import com.qilinxx.innovatevolume.util.DateKit;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class ProviderServiceImpl implements ProviderService {
@@ -64,5 +68,16 @@ public class ProviderServiceImpl implements ProviderService {
         provider.setUpdateTime((long) DateKit.getCurrentUnixTime());
         //provider.setUpdater();//这里相应的进行修改，如果管理员修改添加管理员的信息
         providerMapper.updateByPrimaryKeySelective(provider);
+    }
+
+    @Override
+    public Map<String, String> voucherListToProviderMap(List<Voucher> vouchers) {
+        Map<String ,String> map =new HashMap<>();
+        for (Voucher v:vouchers) {
+            ProviderExample providerExample=new ProviderExample();
+           // providerExample.createCriteria().andIdEqualTo(v.getProviderId());
+            providerMapper.selectByExample(providerExample).get(0).getName();
+        }
+        return null;
     }
 }
