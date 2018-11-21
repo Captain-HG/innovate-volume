@@ -21,6 +21,6 @@ public interface ProviderService {
     String ifCodeUse(String code);
     /** 更新商家*/
     void updateProvider(Provider provider);
-    /** 把传进来的创新券列表List，转换为Map，其中存储提供商的id和name*/
+    /** 由创新券list的中提供商的id找到提供商的名字，转换为Map，其中存储提供商的id和name*/
     Map<String,String> voucherListToProviderMap(List<Voucher> vouchers);
 }

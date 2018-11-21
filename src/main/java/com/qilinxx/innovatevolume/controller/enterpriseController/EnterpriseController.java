@@ -4,6 +4,7 @@ import com.qilinxx.innovatevolume.domain.model.Enterprise;
 import com.qilinxx.innovatevolume.domain.model.UserInfo;
 import com.qilinxx.innovatevolume.domain.model.Voucher;
 import com.qilinxx.innovatevolume.service.EnterpriseService;
+import com.qilinxx.innovatevolume.service.ProviderService;
 import com.qilinxx.innovatevolume.service.UserInfoService;
 import com.qilinxx.innovatevolume.service.VoucherService;
 import com.qilinxx.innovatevolume.util.DateKit;
@@ -35,6 +36,8 @@ public class EnterpriseController {
     private EnterpriseService enterpriseService;
     @Autowired
     private VoucherService voucherService;
+    @Autowired
+    private ProviderService providerService;
     /**
      * 来到创新券科技企业的页面
      * @return 跳转企业主页面
@@ -137,14 +140,17 @@ public class EnterpriseController {
     }
     /**
      * 从企业角度查询可用创新券
+     * providerMap中存储着发放过创新卷的提供商的id和name
      * @return 来到查询券页面
      */
     @GetMapping("enterprise-voucher.html")
     public String enterpriseVoucher(Model model){
         List<Voucher> vouchers = voucherService.selectAll();
         if(vouchers.size()!=0){
-
+            Map<String, String> providerMap = providerService.voucherListToProviderMap(vouchers);
+            model.addAttribute("providerMap",providerMap);
         }
+        model.addAttribute("vouchers",vouchers);
         return "enterprise/enterprise-voucher";
     }
 

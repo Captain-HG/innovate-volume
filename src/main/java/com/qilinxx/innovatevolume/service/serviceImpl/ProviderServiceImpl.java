@@ -72,12 +72,12 @@ public class ProviderServiceImpl implements ProviderService {
 
     @Override
     public Map<String, String> voucherListToProviderMap(List<Voucher> vouchers) {
-        Map<String ,String> map =new HashMap<>();
+        Map<String ,String> providerMap =new HashMap<>();
         for (Voucher v:vouchers) {
             ProviderExample providerExample=new ProviderExample();
             providerExample.createCriteria().andIdEqualTo(v.getProviderId());
-            providerMapper.selectByExample(providerExample).get(0).getName();
+            providerMap.put(v.getProviderId(), providerMapper.selectByExample(providerExample).get(0).getName());
         }
-        return null;
+        return providerMap;
     }
 }
