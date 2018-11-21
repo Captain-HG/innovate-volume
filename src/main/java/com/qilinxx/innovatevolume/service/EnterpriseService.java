@@ -9,4 +9,6 @@ public interface EnterpriseService {
  List<Enterprise> selectAll();
     /**通过组织机构代码得到该企业*/
  Enterprise selectEnterpriseByCode(String code);
+    /**更新企业信息，并且取出最新的企业信息*/
+    Enterprise updateEnterpriseInfo(Enterprise enterprise);
 }

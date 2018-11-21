@@ -1,0 +1,159 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="lib/html5shiv.js"></script>
+    <script type="text/javascript" src="lib/respond.min.js"></script>
+    <![endif]-->
+    <link rel="stylesheet" type="text/css" href="static/h-ui/css/H-ui.min.css" />
+    <link rel="stylesheet" type="text/css" href="static/h-ui.admin/css/H-ui.admin.css" />
+    <link rel="stylesheet" type="text/css" href="lib/Hui-iconfont/1.0.8/iconfont.css" />
+    <link rel="stylesheet" type="text/css" href="static/h-ui.admin/skin/default/skin.css" id="skin" />
+    <link rel="stylesheet" type="text/css" href="static/h-ui.admin/css/style.css" />
+    <!--[if IE 6]>
+    <script type="text/javascript" src="lib/DD_belatedPNG_0.0.8a-min.js" ></script>
+    <script>DD_belatedPNG.fix('*');</script>
+    <![endif]-->
+    <title>我的桌面</title>
+</head>
+<body>
+<div class="page-container">
+    <table class="table table-border table-bordered table-bg mt-20">
+        <thead>
+        <tr >
+            <th colspan="5" scope="col" class="text-c"><h4>企业注册信息</h4></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <th width="30%">企业名称:</th>
+            <td><span th:text="${enterprise.name}"></span></td>
+        </tr>
+        <tr>
+            <th>组织机构代码:</th>
+            <td><span th:text="${enterprise.code}"></span></td>
+        </tr>
+        <tr>
+            <th>法人代表:</th>
+            <td><span th:text="${enterprise.admin}"></span></td>
+        </tr>
+        <tr>
+            <th>企业注册时间:</th>
+            <td><span th:text="${dateKit.formatDateByUnixTime(enterprise.regDate)}"></span></td>
+        </tr>
+        <tr>
+            <th>企业成立时间:</th>
+            <td><span th:text="${dateKit.formatDateByUnixTime(enterprise.foundDate)}"></span></td>
+        </tr>
+        <tr>
+            <th>企业注册资本:</th>
+            <td><span th:text="${enterprise.regMoney}"></span>元</td>
+        </tr>
+        <tr>
+            <th>企业注册地址:</th>
+            <td><span th:text="${enterprise.regAddr}"></span></td>
+        </tr>
+        <tr>
+            <th>企业联系地址:</th>
+            <td><span th:text="${enterprise.contactAddr}"></span></td>
+        </tr>
+        <tr>
+            <th>上一年年度销售额:</th>
+            <td><span th:text="${enterprise.sales}"></span>元</td>
+        </tr>
+        <tr>
+            <th>上一年年底上缴税额:</th>
+            <td><span th:text="${enterprise.taxs}"></span>元</td>
+        </tr>
+        <tr>
+            <th>上一年度净资产:</th>
+            <td><span th:text="${enterprise.netAssets}"></span>元</td>
+        </tr>
+        <tr>
+            <th>职工总数:</th>
+            <td><span th:text="${enterprise.amount}"></span>人</td>
+        </tr>
+        <tr>
+            <th>单位性质:</th>
+            <td><span th:text="${enterprise.type}"></span></td>
+        </tr>
+        <tr>
+            <th>产业领域:</th>
+            <td><span th:text="${enterprise.domain}"></span></td>
+        </tr>
+        <tr>
+            <th>单位简介:</th>
+            <td><span th:text="${enterprise.detail}"></span></td>
+        </tr>
+        <tr>
+            <th>企业认定情况:</th>
+            <td><span th:text="${enterprise.identify}"></span></td>
+        </tr>
+        <tr>
+            <th>科技型企业认证编号:</th>
+            <td><span th:text="${enterprise.identifyNo}"></span></td>
+        </tr>
+        <tr>
+            <th>开户行:</th>
+            <td><span th:text="${enterprise.bank}"></span></td>
+        </tr>
+        <tr>
+            <th>银行账号:</th>
+            <td><span th:text="${enterprise.cardNo}"></span></td>
+        </tr>
+        <tr>
+            <th>户名:</th>
+            <td><span th:text="${enterprise.cardOwner}"></span></td>
+        </tr>
+        <tr>
+            <th>联系人:</th>
+            <td><span th:text="${enterprise.contacter}"></span></td>
+        </tr>
+        <tr>
+            <th>联系电话:</th>
+            <td><span th:text="${enterprise.contactPhone}"></span></td>
+        </tr>
+        <tr>
+            <th>联系人邮箱:</th>
+            <td><span th:text="${enterprise.contactEmail}"></span></td>
+        </tr>
+        <tr>
+            <th>创建人:</th>
+            <td><span th:text="${enterprise.creater}"></span></td>
+        </tr>
+        <tr>
+            <th>创建时间:</th>
+            <td><span th:text="${dateKit.formatDateByUnixTime(enterprise.createTime)}"></span></td>
+        </tr>
+        <tr>
+            <th>修改人：</th>
+            <td><span th:text="${enterprise.updater}"></span></td>
+        </tr>
+        <tr>
+            <th>修改时间：</th>
+            <td><span th:text="${dateKit.formatDateByUnixTime(enterprise.updateTime)}"></span></td>
+        </tr>
+        <tr>
+            <th>备注：</th>
+            <td><span th:text="${enterprise.remark}"></span></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<footer class="footer mt-20">
+    <div class="container">
+        <p>感谢jQuery、layer、laypage、Validform、UEditor、My97DatePicker、iconfont、Datatables、WebUploaded、icheck、highcharts、bootstrap-Switch<br>
+            Copyright &copy;2015-2017 H-ui.admin v3.1 All Rights Reserved.<br>
+            本后台系统由<a href="http://www.h-ui.net/" target="_blank" title="H-ui前端框架">H-ui前端框架</a>提供前端技术支持</p>
+        <p>More Templates <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a> - Collect from <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a></p>
+    </div>
+</footer>
+<script type="text/javascript" src="lib/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript" src="static/h-ui/js/H-ui.min.js"></script>
+
+</body>
