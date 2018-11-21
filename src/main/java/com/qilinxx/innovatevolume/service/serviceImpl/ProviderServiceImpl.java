@@ -75,7 +75,7 @@ public class ProviderServiceImpl implements ProviderService {
         Map<String ,String> map =new HashMap<>();
         for (Voucher v:vouchers) {
             ProviderExample providerExample=new ProviderExample();
-           // providerExample.createCriteria().andIdEqualTo(v.getProviderId());
+            providerExample.createCriteria().andIdEqualTo(v.getProviderId());
             providerMapper.selectByExample(providerExample).get(0).getName();
         }
         return null;
