@@ -29,7 +29,7 @@ public class AdminUserController {
     @ResponseBody
     public String  adminUserAdd(UserInfo userInfo){
         System.out.println(userInfo.toString());
-        userInfoService.addUser(userInfo);
+        //userInfoService.addUser(userInfo);
         return "success";
     }
     /**
@@ -41,7 +41,8 @@ public class AdminUserController {
     @RequestMapping("admin-user-ajaxRegister")
     @ResponseBody
     public String userAjaxRegister(String account,String orgCode) {
-      return userInfoService.ifUserAccountAndOrgCode(account,orgCode);
+     // return userInfoService.ifUserAccountAndOrgCode(account,orgCode);
+      return null;
     }
 
 }

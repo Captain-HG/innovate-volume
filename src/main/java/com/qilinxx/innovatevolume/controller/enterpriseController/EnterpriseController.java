@@ -118,8 +118,16 @@ public class EnterpriseController {
     }
     /**
      * ajax提交更改个人密码
-     *
      */
-
+    @ResponseBody
+    @PostMapping("ajax-enterprise-change-password")
+    public Map<String,String> enterpriseChangePassword(UserInfo userInfo){
+        userInfo.setId(this.userInfo.getId());
+        userInfo.setUpdateTime(Long.parseLong(String.valueOf(DateKit.getUnixTimeByDate(DateKit.getNowTime()))));
+        this.userInfo= userInfoService.updateUserInfoPassword(userInfo);
+        Map<String ,String > map=new HashMap<>();
+        map.put("msg","修改成功！");
+        return map;
+    }
 
 }
