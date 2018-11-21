@@ -107,4 +107,19 @@ public class EnterpriseController {
         map.put("msg","修改成功");
         return map;
     }
+    /**
+     * 修改个人密码
+     * @return 来到修改个人密码页面
+     */
+    @GetMapping("enterprise-change-password.html")
+    public String enterpriseChangePassword(Model model){
+        model.addAttribute("userName",this.userInfo.getName());
+        return "enterprise/enterprise-change-password";
+    }
+    /**
+     * ajax提交更改个人密码
+     *
+     */
+
+
 }
