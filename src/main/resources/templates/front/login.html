@@ -1,0 +1,149 @@
+﻿<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>创新券申领登记系统</title>
+    <link type="text/css" th:href="@{front/css/style.css}" rel="stylesheet"/>
+    <script type="text/javascript" th:src="@{front/js/jquery.min.js}"></script>
+    <script type="text/javascript" th:src="@{front/js/jquery.validate.min.js}"></script>
+
+    <link rel="shortcut icon" th:href="@{front/images/favicon.png}">
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <script type="application/x-javascript">
+
+        addEventListener("load", function () {
+            setTimeout(hideURLbar, 0);
+        }, false);
+
+        function hideURLbar() {
+            window.scrollTo(0, 1);
+        }
+    </script>
+    <script th:src="@{front/js/jquery-1.10.1.min.js}"></script>
+
+    <script type="text/javascript">
+        $(function () {
+            $('.loginbox').css({'position': 'absolute', 'left': ($(window).width() - 692) / 2});
+            $(window).resize(function () {
+                $('.loginbox').css({'position': 'absolute', 'left': ($(window).width() - 692) / 2});
+            });
+            //$("#VCode").focus(function ()
+            //{ var username = $(this).val(); if (username == '请输入验证码') { $(this).val(''); } });
+            //$("#VCode").focusout(function () { var username = $(this).val(); if (username == '') { $(this).val('请输入验证码'); } });
+            //首次加载
+            $("#valiCode").attr("src", "/identify?time=" + (new Date()).getTime());
+            //单击验证码事件
+            $("#valiCode").bind("click", function () {
+                this.src = "/identify?time=" + (new Date()).getTime();
+            });
+
+            var navigatorName = "Microsoft Internet Explorer";
+            var isIE = false;
+            if (navigator.appName == navigatorName) {
+                alert("您目前使用的ie浏览器版本过低，可能会影响浏览效果，为了保证页面的美观和兼容性，请改用10.0以上版本或其他带有高速模式的浏览器！")
+
+            } else {
+            }
+        });
+
+        function check() {
+            //检查name
+            var name = document.getElementById("Name");
+            if (name.value.length == 0) {
+                alert('用户名不能为空!');
+                name.focus();
+                return false;
+            } else {
+                var usern = /^[a-zA-Z0-9_]{1,20}$/;
+                if ($.trim(name.value).length > 20) {
+                    alert("用户名最多20个字符");
+                    name.focus();
+                    return false;
+                } else if (!$.trim(name.value).match(usern)) {
+                    //alert("用户名只能由字母数字下划线组成");
+                    //name.focus();
+                    //return false;
+                }
+            }
+            //检查password
+            var password = document.getElementById("Pwd");
+            if (password.value.length == 0) {
+                alert('密码不能为空!');
+                password.focus();
+                return false;
+            }
+
+            //检查vcode
+            var vcode = document.getElementById("VCode");
+            if (vcode.value.length == 0) {
+                alert('验证码不能为空!');
+                vcode.focus();
+                return false;
+            }
+        }
+
+    </script>
+</head>
+<body style="overflow: hidden; background-image: url(front/images/light.png); background-color: rgb(28, 119, 172); background-position: -139.5px 0px; background-repeat: no-repeat;">
+<!--SIGN UP-->
+<div id="mainBody">
+    <div id="cloud1" class="cloud" style="background-position: 668.900000000005px 100px;"></div>
+    <div id="cloud2" class="cloud" style="background-position: 199px 460px;"></div>
+</div>
+<div class="logintop">
+    <span></span>
+    <span style=" position:absolute;right:250px;"><b><a th:href="@{/index}" style="color:white;">首页&nbsp;&nbsp;&nbsp;</a></b></span>
+
+    <span style=" position:absolute;right:150px;"><b><a th:href="@{/register}" style="color:white;">用户注册&nbsp;&nbsp;&nbsp;</a></b></span>
+
+
+    <span style=" position:absolute;right:10px;"><b><a
+            href="/Document/%e6%b2%b3%e5%8c%97%e7%9c%81%e7%a7%91%e6%8a%80%e5%88%9b%e6%96%b0%e5%88%b8%e4%bd%bf%e7%94%a8%e8%af%b4%e6%98%8e.pdf"
+            target="_blank" style="color:white;">创新券系统使用说明</a></b></span>
+</div>
+<div class="loginbody">
+    <span class="systemlogo"></span>
+
+    <form id="formSignIn" name="frm" method="post" action="../Login/Logins" autocomplete="off"
+          onsubmit="return check()">
+        <div class="loginbox" style="position: absolute; left: 614px;">
+            <ul>
+                <li>
+                    <input id="Name" type="text" name="Name" class="loginuser" tabindex="1" placeholder="用户名"/>
+                </li>
+                <li>
+                    <input id="Pwd" type="password" name="Pwd" class="loginpwd" tabindex="2" placeholder="密码"/>
+                </li>
+                <li>
+                    <input class="loginCode" id="VCode" name="VCode" placeholder="请输入验证码" tabindex="3" type="text"
+                           value=""/>
+                    <span>&nbsp;&nbsp;&nbsp;&nbsp;<img id="valiCode" style="height:40px; width:100px;"/></span>
+                </li>
+                <li>
+                    <div class="key2">
+                        <select class="loginType" id="UserType" name="UserType" placeholder="选择用户类型" tabindex="4">
+                            <option value="3">科技型中小企业</option>
+                            <option value="7">创新创业团队</option>
+                            <option value="4">服务提供机构</option>
+                            <option value="2">审核发放机构</option>
+                            <option value="1">省科技厅</option>
+                            <option value="9">审核兑付机构</option>
+                            <option value="10">监督机构</option>
+                        </select><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input name="" type="submit" class="loginbtn"
+                                                                                  value="登录" tabindex="5"/></span>
+                        <div style="width:100px"></div>
+                    </div>
+                    <label id="lbErrorMsg" style="color: red;"></label>
+                </li>
+            </ul>
+        </div>
+    </form>
+</div>
+<div class="loginbm"><p>版权所有：淮北市科学技术局&nbsp;&nbsp;&nbsp;&nbsp;运维单位：淮北市麒麟信息科技有限公司&nbsp;&nbsp;&nbsp;&nbsp;咨询电话:0311-83110111 </p>
+</div>
+</body>
+</html>
+
+
+
+

@@ -77,4 +77,10 @@
     id, provider_id, type, path, name, term, is_use, creater, create_time, updater, update_time, 
     remark
   </sql>
+  <select id="selectAllByProviderId" resultMap="BaseResultMap">
+  SELECT * FROM provider_file WHERE provider_id=#{id}
+</select>
+  <select id="selectById" resultMap="BaseResultMap">
+  SELECT * FROM provider_file WHERE id=#{id}
+</select>
 </mapper>

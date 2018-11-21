@@ -77,4 +77,7 @@
     id, provider_id, name, spec, price, detail, is_use, creater, create_time, updater, 
     update_time, remark
   </sql>
+  <select id="selectAllByProviderId" resultMap="BaseResultMap">
+  SELECT * FROM provider_service WHERE provider_id=#{id}
+</select>
 </mapper>

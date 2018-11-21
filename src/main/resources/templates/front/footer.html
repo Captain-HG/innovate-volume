@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:fragment="footer">
+<div class="footer">
+    <div class="foot">
+        <div class="footcontent">
+            <ul>
+                <li>
+                    <h4>申报咨询电话</h4>
+                    <p>0311-83110111</p>
+                </li>
+                <li>
+                    <h4 style="color: #59CE68;">申领开始时间</h4>
+                    <p>2017年12月06日</p>
+                </li>
+                <li>
+                    <h4 style="color: #ff9900;">申领方式</h4>
+                    <p>平台在线申领</p>
+                    <p>可致电我们进行咨询</p>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+    <div class="footbottom">
+        <p>版权所有：淮北市科学技术厅 运维单位：淮北市麒麟信息科技有限公司 服务热线：0311-83110111</p>
+    </div>
+</div>
+<div id="Mymodel" class="modal" style="display: none;">
+    <div class="modal-content">
+        <!--页面中各字段-->
+        <div class="modal-body" id="modal-Service1" style="max-height: 598.5px;">
+            <div id="myTabContent1" class="tab-content">
+                <div class="kjq_help" style="margin: 20px 50px">
+                    <div id="div_html"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script th:src="@{front/js/layui.all.js}"></script>
+<script>
+    //layui点击导航切换页面
+    layui.use(['element', 'carousel'], function () {
+        var element = layui.element,//导航的hover效果、二级菜单等功能，需要依赖element模块
+            carousel = layui.carousel;
+        //监听导航点击
+        element.on('nav(demo)', function (elem) {
+        });
+        var imgH = $('#carousel-item img')[0].height;
+        $('#carousel-item').height(imgH);
+        window.onload = function () {
+            var bannerH = $('#carousel-item img')[0].height;
+            $('#carousel-item').css('height', bannerH + 'px');
+        }
+        carousel.render({
+            elem: '#carousel'
+            , arrow: 'always'
+            , width: "100%"
+            , height: "auto"
+        });
+    });
+
+
+</script>
+<script type="text/javascript" th:src="@{front/js/footer.js}"></script>
+</html>
