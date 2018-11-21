@@ -15,4 +15,9 @@ public class EnterpriseServiceImpl implements EnterpriseService {
     public List<Enterprise> selectAll() {
         return enterpriseMapper.selectAll();
     }
+
+    @Override
+    public Enterprise selectById(String id) {
+        return enterpriseMapper.selectByPrimaryKey(id);
+    }
 }

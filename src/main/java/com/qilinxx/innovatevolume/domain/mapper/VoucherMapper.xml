@@ -75,4 +75,7 @@
     id, name, type, is_use, creater, create_time, updater, update_time, provider_id, 
     remark
   </sql>
+  <select id="selectAllByProviderId" resultMap="BaseResultMap">
+  SELECT * FROM voucher WHERE provider_id=#{id}
+</select>
 </mapper>

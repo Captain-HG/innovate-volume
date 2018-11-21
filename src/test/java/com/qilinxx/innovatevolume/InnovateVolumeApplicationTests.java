@@ -4,6 +4,7 @@ import com.qilinxx.innovatevolume.domain.mapper.ProviderMapper;
 import com.qilinxx.innovatevolume.domain.mapper.UserInfoMapper;
 import com.qilinxx.innovatevolume.domain.model.Provider;
 import com.qilinxx.innovatevolume.domain.model.UserInfo;
+import com.qilinxx.innovatevolume.vo.ContractVo;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,5 +27,9 @@ public class InnovateVolumeApplicationTests {
         List<Provider> providers = providerMapper.selectAll();
         System.out.println(providers.size());
     }
+      @Test
+    public void test01(){
+          ContractVo contractVo = new ContractVo();
 
+    }
 }
