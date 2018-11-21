@@ -23,5 +23,9 @@ public class EnterpriseServiceImpl implements EnterpriseService {
         enterpriseExample.createCriteria().andCodeEqualTo(code);
         return enterpriseMapper.selectByExample(enterpriseExample).get(0);
     }
-
+    @Override
+    public Enterprise updateEnterpriseInfo(Enterprise enterprise) {
+        enterpriseMapper.updateByPrimaryKeySelective(enterprise);
+        return enterpriseMapper.selectByPrimaryKey(enterprise.getId());
+    }
 }

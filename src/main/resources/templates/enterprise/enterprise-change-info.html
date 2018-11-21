@@ -21,7 +21,7 @@
     <link rel="stylesheet" type="text/css" href="static/h-ui.admin/skin/default/skin.css" id="skin" />
     <link rel="stylesheet" type="text/css" href="static/h-ui.admin/css/style.css" />
     <!--[if IE 6]>
-    <!-- <script type="text/javascript" src="lib/DD_belatedPNG_0.0.8a-min.js" ></script> -->
+    <script type="text/javascript" src="lib/DD_belatedPNG_0.0.8a-min.js" ></script>
     <script>DD_belatedPNG.fix('*');</script>
     <![endif]-->
     <!--/meta 作为公共模版分离出去-->
@@ -278,8 +278,8 @@
                 <td colspan="2">
                     <div class="row cl">
                         <div class="col-xs-8 col-sm-9 col-xs-offset-1 col-sm-offset-3">
-                            <input id="" class="btn btn-primary radius" type="submit" value="&nbsp;&nbsp;确认修改&nbsp;&nbsp;">
-                            <button onClick="layer_close();" class="btn btn-default radius" type="button">&nbsp;&nbsp;取消&nbsp;&nbsp;</button>
+                            <button id="submit" class="btn btn-primary radius" >&nbsp;&nbsp;确认修改&nbsp;&nbsp;</button>
+                            <button id="close" class="btn btn-default radius" type="button">&nbsp;&nbsp;取消&nbsp;&nbsp;</button>
                         </div>
                     </div>
                 </td>
@@ -305,6 +305,11 @@
                 <script type="text/javascript" src="lib/ueditor/1.4.3/lang/zh-cn/zh-cn.js"></script>
 <script type="text/javascript">
     $(function(){
+        $("#close").click(function(){
+            alert("抱歉这个暂且不会！");
+
+        });
+
         $('.skin-minimal input').iCheck({
             checkboxClass: 'icheckbox-blue',
             radioClass: 'iradio-blue',
@@ -384,7 +389,20 @@
             },
             onkeyup:false,
             focusCleanup:true,
-            success:"valid"
+            success:"valid",
+            submitHandler:function(form){
+                $(form).ajaxSubmit({
+                    type: 'post',
+                    url: "/ajax-enterprise-change-info" ,
+                    dataType:"json",
+                    success: function(data){
+                        layer.msg(data.msg,{icon:1,time:1500});
+                    },
+                    error: function(XmlHttpRequest, textStatus, errorThrown){
+                        layer.msg('error!',{icon:1,time:1000});
+                    }
+                });
+            }
         });
     });
 </script>

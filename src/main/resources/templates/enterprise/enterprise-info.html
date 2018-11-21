@@ -26,7 +26,7 @@
     <table class="table table-border table-bordered table-bg mt-20">
         <thead>
         <tr >
-            <th colspan="5" scope="col"><h4>企业注册信息</h4></th>
+            <th colspan="5" scope="col" class="text-c"><h4>企业注册信息</h4></th>
         </tr>
         </thead>
         <tbody>
@@ -129,6 +129,14 @@
         <tr>
             <th>创建时间:</th>
             <td><span th:text="${dateKit.formatDateByUnixTime(enterprise.createTime)}"></span></td>
+        </tr>
+        <tr>
+            <th>修改人：</th>
+            <td><span th:text="${enterprise.updater}"></span></td>
+        </tr>
+        <tr>
+            <th>修改时间：</th>
+            <td><span th:text="${dateKit.formatDateByUnixTime(enterprise.updateTime)}"></span></td>
         </tr>
         <tr>
             <th>备注：</th>
