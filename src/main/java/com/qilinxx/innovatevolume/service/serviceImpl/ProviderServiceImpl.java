@@ -24,14 +24,12 @@ public class ProviderServiceImpl implements ProviderService {
 
     @Override
     public Provider selectById(String  id) {
-
-       return providerMapper.selectByPrimaryKey(Integer.parseInt(id));
-
+       return providerMapper.selectByPrimaryKey(id);
     }
 
     @Override
     public String examineProvider(String id) {
-        Provider provider = providerMapper.selectByPrimaryKey(Integer.parseInt(id));
+        Provider provider = providerMapper.selectByPrimaryKey(id);
         provider.setState("0");
         providerMapper.updateByPrimaryKeySelective(provider);
         return null;
@@ -39,7 +37,7 @@ public class ProviderServiceImpl implements ProviderService {
 
     @Override
     public String startProvider(String id) {
-        Provider provider = providerMapper.selectByPrimaryKey(Integer.parseInt(id));
+        Provider provider = providerMapper.selectByPrimaryKey(id);
         provider.setState("1");
         providerMapper.updateByPrimaryKeySelective(provider);
         return null;
@@ -47,7 +45,7 @@ public class ProviderServiceImpl implements ProviderService {
 
     @Override
     public String noExamineProvider(String id) {
-        Provider provider = providerMapper.selectByPrimaryKey(Integer.parseInt(id));
+        Provider provider = providerMapper.selectByPrimaryKey(id);
         provider.setState("2");
         providerMapper.updateByPrimaryKeySelective(provider);
         return null;
@@ -71,12 +69,14 @@ public class ProviderServiceImpl implements ProviderService {
     }
 
     @Override
-    public Map<String, String> voucherListToProviderMap(List<Voucher> vouchers) {
-        Map<String ,String> providerMap =new HashMap<>();
+    public Map<String, Provider> voucherListToProviderMap(List<Voucher> vouchers) {
+        Map<String ,Provider> providerMap =new HashMap<>();
         for (Voucher v:vouchers) {
             ProviderExample providerExample=new ProviderExample();
             providerExample.createCriteria().andIdEqualTo(v.getProviderId());
-            providerMap.put(v.getProviderId(), providerMapper.selectByExample(providerExample).get(0).getName());
+            if(!providerMap.containsKey(v.getProviderId())){
+                providerMap.put(v.getProviderId(), providerMapper.selectByExample(providerExample).get(0));
+            }
         }
         return providerMap;
     }

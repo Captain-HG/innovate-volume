@@ -1,12 +1,10 @@
 package com.qilinxx.innovatevolume.controller.enterpriseController;
 
 import com.qilinxx.innovatevolume.domain.model.Enterprise;
+import com.qilinxx.innovatevolume.domain.model.Provider;
 import com.qilinxx.innovatevolume.domain.model.UserInfo;
 import com.qilinxx.innovatevolume.domain.model.Voucher;
-import com.qilinxx.innovatevolume.service.EnterpriseService;
-import com.qilinxx.innovatevolume.service.ProviderService;
-import com.qilinxx.innovatevolume.service.UserInfoService;
-import com.qilinxx.innovatevolume.service.VoucherService;
+import com.qilinxx.innovatevolume.service.*;
 import com.qilinxx.innovatevolume.util.DateKit;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -38,6 +36,8 @@ public class EnterpriseController {
     private VoucherService voucherService;
     @Autowired
     private ProviderService providerService;
+    @Autowired
+    private ProviderServiceService providerServiceService;
     /**
      * 来到创新券科技企业的页面
      * @return 跳转企业主页面
@@ -140,18 +140,33 @@ public class EnterpriseController {
     }
     /**
      * 从企业角度查询可用创新券
-     * providerMap中存储着发放过创新卷的提供商的id和name
+     * providerMap中存储着发放过创新卷的提供商的所有信息
      * @return 来到查询券页面
      */
-    @GetMapping("enterprise-voucher.html")
+    @GetMapping("enterprise-voucher-list.html")
     public String enterpriseVoucher(Model model){
         List<Voucher> vouchers = voucherService.selectAll();
         if(vouchers.size()!=0){
-            Map<String, String> providerMap = providerService.voucherListToProviderMap(vouchers);
+            Map<String, Provider> providerMap = providerService.voucherListToProviderMap(vouchers);
             model.addAttribute("providerMap",providerMap);
         }
         model.addAttribute("vouchers",vouchers);
-        return "enterprise/enterprise-voucher";
+        model.addAttribute("dateKit",new DateKit());
+        return "enterprise/enterprise-voucher-list";
     }
-
+    /**
+     * 企业申请创新券
+     * id 为创新券表的id
+     * @return 来到创新券申请页面
+     */
+    @GetMapping("enterprise-voucher-apply.html")
+    public String enterpriseVoucherApply( String id,Model model){
+        Voucher voucher = voucherService.selectVoucherById(id);
+        Provider provider = providerService.selectById(voucher.getProviderId());
+        model.addAttribute("enterprise",this.enterprise);
+        model.addAttribute("voucher",voucher);
+        model.addAttribute("provider",provider);
+        model.addAttribute("providerServices",providerServiceService.selectAllByProviderId(provider.getId()));
+        return "enterprise/enterprise-voucher-apply";
+    }
 }

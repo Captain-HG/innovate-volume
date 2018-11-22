@@ -16,8 +16,14 @@ public class VoucherServiceImpl implements VoucherService {
     public List<Voucher> selectAll() {
         VoucherExample voucherExample=new VoucherExample();
         voucherExample.createCriteria().andIsUseEqualTo("1");
+        voucherExample.setOrderByClause("create_time desc");
         List<Voucher> vouchers = voucherMapper.selectByExample(voucherExample);
         return vouchers;
 
+    }
+
+    @Override
+    public Voucher selectVoucherById(String id) {
+        return  voucherMapper.selectByPrimaryKey(id);
     }
 }

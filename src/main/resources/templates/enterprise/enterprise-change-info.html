@@ -29,6 +29,7 @@
     <link href="lib/webuploader/0.1.5/webuploader.css" rel="stylesheet" type="text/css" />
     <style>
         td{word-break: keep-all;white-space:nowrap;}
+        input{size: auto}
     </style>
 </head>
 <body>
@@ -46,7 +47,7 @@
                 </td>
                 <td>
                     <div class="row cl">
-                        <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>组织机构代码：</label>
+                        <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>组织机构代码:</label>
                         <div class="formControls col-xs-8 col-sm-9">
                             <input id="code" type="text" class="input-text" th:value="${enterprise.code}" name="code">
                         </div>
@@ -123,7 +124,7 @@
                 </td>
                 <td>
                     <div class="row cl">
-                        <label class="form-label col-xs-4 col-sm-2">上一年上缴税额：</label>
+                        <label class="form-label col-xs-4 col-sm-2">上一年缴税额：</label>
                         <div class="formControls col-xs-8 col-sm-9">
                             <input id="taxs" type="text" class="input-text" th:value="${enterprise.taxs}" name="taxs">
                         </div>
