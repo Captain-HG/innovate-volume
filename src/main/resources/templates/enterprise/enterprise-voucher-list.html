@@ -27,6 +27,7 @@
         <table class="table table-border table-bordered table-hover table-bg table-sort">
             <thead>
             <tr class="text-c">
+                <th width="80">ID</th>
                 <th width="100">创新券名称</th>
                 <th width="100">类别</th>
                 <th width="150">服务商</th>
@@ -38,6 +39,7 @@
             </thead>
             <tbody>
             <tr class="text-c" th:if="${vouchers.size()!=0}" th:each="voucher:${vouchers}">
+                <td th:text="${vouchers.indexOf(voucher)+1}"></td>
                 <td th:text="${voucher.name}">1</td>
                 <td th:text="${voucher.type}"></td>
                 <td><u style="cursor:pointer" class="text-primary" onclick="provider_info(this.innerHTML,'enterprise-info.html','10001','1100','600')" th:text="${providerMap.get(voucher.providerId).name}">张三</u></td>
@@ -66,7 +68,7 @@
             "bStateSave": true,//状态保存
             "aoColumnDefs": [
                 //{"bVisible": false, "aTargets": [ 3 ]} //控制列的隐藏显示
-                {"orderable":false,"aTargets":[4,5,6]}// 制定列不参与排序
+                {"orderable":false,"aTargets":[5,6,7]}// 制定列不参与排序
             ]
         });
 

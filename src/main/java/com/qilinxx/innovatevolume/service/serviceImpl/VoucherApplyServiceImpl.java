@@ -19,6 +19,14 @@ public class VoucherApplyServiceImpl implements VoucherApplyService {
     }
 
     @Override
+    public void updateIsUseById(String id, String isUse) {
+        VoucherApply voucherApply=new VoucherApply();
+        voucherApply.setId(id);
+        voucherApply.setIsUse(isUse);
+        voucherApplyMapper.updateByPrimaryKeySelective(voucherApply);
+    }
+
+    @Override
     public void deleteVoucherApply(String id) {
         voucherApplyMapper.deleteByPrimaryKey(id);
     }
@@ -30,4 +38,13 @@ public class VoucherApplyServiceImpl implements VoucherApplyService {
         voucherApplyExample.setOrderByClause("create_time desc");
         return voucherApplyMapper.selectByExample(voucherApplyExample);
     }
+
+    @Override
+    public List<VoucherApply> selectVoucherApplyByProviderId(String providerId) {
+        VoucherApplyExample voucherApplyExample=new VoucherApplyExample();
+        voucherApplyExample.createCriteria().andProviderIdEqualTo(providerId);
+        voucherApplyExample.setOrderByClause("create_time desc");
+        return voucherApplyMapper.selectByExample(voucherApplyExample);
+    }
+
 }
