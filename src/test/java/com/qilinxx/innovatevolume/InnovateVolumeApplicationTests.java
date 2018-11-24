@@ -5,6 +5,7 @@ import com.qilinxx.innovatevolume.domain.model.UserInfo;
 import com.qilinxx.innovatevolume.service.EnterpriseService;
 import com.qilinxx.innovatevolume.service.UserInfoService;
 import com.qilinxx.innovatevolume.util.DateKit;
+import com.qilinxx.innovatevolume.util.UUID;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,6 +35,10 @@ public class InnovateVolumeApplicationTests {
     public void selectByCode(){
         UserInfo userInfo = userInfoService.selectByCode("654321");
         System.out.println(userInfo);
+    }
+    @Test
+    public void uuid(){
+        System.out.println(UUID.UU32());
     }
 
 }
