@@ -1,0 +1,117 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<meta name="renderer" content="webkit|ie-comp|ie-stand">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<!--[if lt IE 9]>
+<script type="text/javascript" src="lib/html5shiv.js"></script>
+<script type="text/javascript" src="lib/respond.min.js"></script>
+<![endif]-->
+<link rel="stylesheet" type="text/css" href="static/h-ui/css/H-ui.min.css" />
+<link rel="stylesheet" type="text/css" href="static/h-ui.admin/css/H-ui.admin.css" />
+<link rel="stylesheet" type="text/css" href="lib/Hui-iconfont/1.0.8/iconfont.css" />
+<link rel="stylesheet" type="text/css" href="static/h-ui.admin/skin/default/skin.css" id="skin" />
+<link rel="stylesheet" type="text/css" href="static/h-ui.admin/css/style.css" />
+<!--[if IE 6]>
+<script type="text/javascript" src="lib/DD_belatedPNG_0.0.8a-min.js" ></script>
+<script>DD_belatedPNG.fix('*');</script>
+<![endif]-->
+<title>服务提供商查看</title>
+</head>
+<body>
+<div class="cl pd-20" style=" background-color:#5bacb6">
+	<img class="avatar size-XL l" src="static/h-ui/images/ucnter/avatar-default.jpg">
+	<dl style="margin-left:80px; color:#fff">
+		<dt>
+			<span th:text="${enterprise.name}" thclass="f-18">张三</span>
+		</dt>
+		<dd class="pt-10 f-12" style="margin-left:0">优秀的企业，往往很低调</dd>
+	</dl>
+</div>
+<div class="pd-20">
+	<table class="table">
+		<tbody>
+			<tr>
+				<th class="text-r" width="80">组织机构码：</th>
+				<td th:text="${enterprise.code}">XXXX</td>
+			</tr>
+			<tr>
+				<th class="text-r">公司成立于：</th>
+				<td th:text="${commons.fmtdate(enterprise.foundDate)}"></td>
+			</tr>
+			<tr>
+				<th class="text-r">职工总数：</th>
+				<td th:text="${enterprise.amount}"></td>
+			</tr>
+			<tr>
+				<th class="text-r">注册地址：</th>
+				<td th:text="${enterprise.regAddr}">XXX</td>
+			</tr>
+			<tr>
+				<th class="text-r">注册资本：</th>
+				<td th:text="${enterprise.regMoney}"></td>
+			</tr>
+			<tr>
+				<th class="text-r">联系地址：</th>
+				<td th:text="${enterprise.contactAddr}"></td>
+			</tr>
+			<tr>
+				<th class="text-r">上一年度销售额：</th>
+				<td th:text="${enterprise.sales}"></td>
+			</tr>
+			<tr>
+				<th class="text-r">上一年底上缴税额: </th>
+				<td th:text="${enterprise.taxs}"></td>
+			</tr>
+			<tr>
+				<th class="text-r">上一年度净资产：</th>
+				<td th:text="${enterprise.netAssets}"></td>
+			</tr>
+			<tr>
+				<th class="text-r">单位性质：</th>
+				<td th:text="${enterprise.type}"></td>
+			</tr>
+			<tr>
+				<th class="text-r">产业领域：</th>
+				<td th:text="${enterprise.domain}"></td>
+			</tr>
+			<tr>
+				<th class="text-r">企业认定情况：</th>
+				<td th:text="${enterprise.identify}"></td>
+			</tr>
+			<tr>
+				<th class="text-r">科技企业认证编号：</th>
+				<td th:text="${enterprise.identifyNo}"></td>
+			</tr>
+			<tr>
+				<th class="text-r">开户行：</th>
+				<td th:text="${enterprise.bank}"></td>
+			</tr>
+			<tr>
+				<th class="text-r">银行账号：</th>
+				<td th:text="${enterprise.cardNo}"></td>
+			</tr>
+			<tr>
+				<th class="text-r">户名：</th>
+				<td th:text="${enterprise.cardOwner}"></td>
+			</tr>
+			<tr>
+				<th class="text-r">简介：</th>
+				<td th:text="${enterprise.detail}"></td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<!--_footer 作为公共模版分离出去-->
+<script type="text/javascript" src="lib/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript" src="lib/layer/2.4/layer.js"></script>
+<script type="text/javascript" src="static/h-ui/js/H-ui.min.js"></script>
+<script type="text/javascript" src="static/h-ui.admin/js/H-ui.admin.js"></script>
+<!--/_footer 作为公共模版分离出去-->
+
+<!--请在下方写此页面业务相关的脚本-->
+</body>
+</html>

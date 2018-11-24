@@ -8,6 +8,8 @@ import java.util.List;
 
 @Repository
 public interface ContractMapper extends Mapper<Contract>{
-    /** 根据商家id查询所有合同*/
+    /** 根据提供商家id查询所有合同*/
     List<Contract> selectAllByProviderId(String id);
+    /** 根据科技企业id查询所有合同*/
+    List<Contract> selectAllByEnterpriseId(String id);
 }

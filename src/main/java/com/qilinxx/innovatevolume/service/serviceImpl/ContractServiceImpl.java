@@ -62,6 +62,19 @@ public class ContractServiceImpl implements ContractService {
         contractMapper.updateByPrimaryKeySelective(contract);
     }
 
+    @Override
+    public List<ContractVo> selectAllByEnterpriseId(String id) {
+       List<Contract> contractList =contractMapper.selectAllByEnterpriseId(id);
+        System.out.println("list大小"+contractList.size());
+        List<ContractVo> contractVoList = new ArrayList<>();
+        for (Contract c:contractList){
+            System.out.println(c.toString());
+            contractVoList.add(copy(c));
+
+        }
+        return contractVoList;
+    }
+
     private ContractVo copy(Contract contract){
         ContractVo contractVo = new ContractVo();
         Enterprise enterprise =enterpriseService.selectById(contract.getEnterpriseId());
@@ -70,6 +83,9 @@ public class ContractServiceImpl implements ContractService {
         contractVo.setEnterpriseName(enterpriseService.selectById(contract.getEnterpriseId()).getName());
         contractVo.setProviderName(providerService.selectById(contract.getProviderId()).getName());
         contractVo.setVoucherName(applyService.selectVoucherNameById(contract.getApplyId()));
+        contractVo.setEnterpriseId(contract.getEnterpriseId());
+        contractVo.setProviderId(contract.getProviderId());
+        contractVo.setApplyId(contract.getApplyId());
         contractVo.setMoney(contract.getMoney());
         contractVo.setName(contract.getName());
         contractVo.setPath(contract.getPath());
@@ -79,6 +95,9 @@ public class ContractServiceImpl implements ContractService {
         contractVo.setCreater(contract.getCreater());
         contractVo.setCreateTime(contract.getCreateTime());
         contractVo.setIsUse(contract.getIsUse());
+        contractVo.setUpdater(contract.getUpdater());
+        contractVo.setUpdateTime(contract.getUpdateTime());
+        contractVo.setRemark(contract.getRemark());
         return contractVo;
     }
 

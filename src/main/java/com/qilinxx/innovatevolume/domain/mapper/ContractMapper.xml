@@ -85,4 +85,7 @@
   <select id="selectAllByProviderId" resultMap="BaseResultMap">
   SELECT * FROM contract WHERE provider_id=#{id}
 </select>
+  <select id="selectAllByEnterpriseId" resultMap="BaseResultMap">
+  SELECT * FROM contract WHERE enterprise_id=#{id}
+</select>
 </mapper>

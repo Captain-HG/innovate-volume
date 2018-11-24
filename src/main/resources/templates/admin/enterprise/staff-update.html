@@ -31,7 +31,7 @@
 <body>
 <article class="page-container">
 	<div class="Huiform">
-		<form class="form form-horizontal" id="form-article-add" action="admin-provider-staff-update" th:method="post">
+		<form class="form form-horizontal" id="form-article-add" action="admin-enterprise-staff-update" th:method="post">
 
 			<!--<div class="row cl">-->
 			<!--<label class="form-label col-xs-4 col-sm-2">举办的商家名：</label>-->
@@ -44,7 +44,7 @@
 				<div class="formControls col-xs-4 col-sm-1" style="padding-right: 0px">
 				</div>
 				<div class="formControls col-xs-4 col-sm-8" style="padding-left: 0px">
-					<input type="text" class="input-text" placeholder="张三" name="name" id="nameId" th:value="${providerStaff.name}" />
+					<input type="text" class="input-text" placeholder="张三" name="name" id="nameId" th:value="${enterpriseStaff.name}" />
 				</div>
 			</div>
 
@@ -53,7 +53,7 @@
 				<div class="formControls col-xs-4 col-sm-1" style="padding-right: 0px">
 				</div>
 				<div class="formControls col-xs-4 col-sm-8" style="padding-left: 0px">
-					<input type="text" class="input-text" placeholder="" name="age" id="ageId" th:value="${providerStaff.age}" />
+					<input type="text" class="input-text" placeholder="" name="age" id="ageId" th:value="${enterpriseStaff.age}" />
 				</div>
 			</div>
 
@@ -62,7 +62,7 @@
 				<div class="formControls col-xs-4 col-sm-1" style="padding-right: 0px">
 				</div>
 				<div class="formControls col-xs-4 col-sm-8" style="padding-left: 0px">
-					<input type="text" class="input-text" placeholder="199" name="title" id="titleId" th:value="${providerStaff.title}" />
+					<input type="text" class="input-text" placeholder="199" name="title" id="titleId" th:value="${enterpriseStaff.title}" />
 				</div>
 			</div>
 			<div class="row cl">
@@ -70,23 +70,16 @@
 				<div class="formControls col-xs-4 col-sm-1" style="padding-right: 0px">
 				</div>
 				<div class="formControls col-xs-4 col-sm-8" style="padding-left: 0px">
-					<input type="text" class="input-text" placeholder="199" name="degree" id="degreeId" th:value="${providerStaff.degree}" />
+					<input type="text" class="input-text" placeholder="199" name="degree" id="degreeId" th:value="${enterpriseStaff.degree}" />
 				</div>
 			</div>
-			<div class="row cl">
-				<label class="form-label col-xs-4 col-sm-2">人才类别：</label>
-				<div class="formControls col-xs-4 col-sm-1" style="padding-right: 0px">
-				</div>
-				<div class="formControls col-xs-4 col-sm-8" style="padding-left: 0px">
-					<input type="text" class="input-text" placeholder="优秀" name="category" id="categoryId" th:value="${providerStaff.category}" />
-				</div>
-			</div>
+
 			<div class="row cl">
 				<label class="form-label col-xs-4 col-sm-2">创建人：</label>
 				<div class="formControls col-xs-4 col-sm-1" style="padding-right: 0px">
 				</div>
 				<div class="formControls col-xs-4 col-sm-8" style="padding-left: 0px">
-					<input type="text" class="input-text" placeholder="优秀" name="creater" id="createrId" th:value="${providerStaff.creater}" readonly/>
+					<input type="text" class="input-text" placeholder="优秀" name="creater" id="createrId" th:value="${enterpriseStaff.creater}" readonly/>
 				</div>
 			</div>
 			<div class="row cl">
@@ -94,12 +87,12 @@
 				<div class="formControls col-xs-4 col-sm-1" style="padding-right: 0px">
 				</div>
 				<div class="formControls col-xs-4 col-sm-8" style="padding-left: 0px">
-					<input type="text" class="input-text" placeholder="优秀"  id="createTimeId" th:value="${commons.fmtdate(providerStaff.createTime)}" readonly/>
+					<input type="text" class="input-text" placeholder="优秀"  id="createTimeId" th:value="${commons.fmtdate(enterpriseStaff.createTime)}" readonly/>
 				</div>
 			</div>
 
-			<div><input type="text" th:value="${providerStaff.id}" name="id" id="idId" hidden="true"></div>
-			<div><input type="text" th:value="${providerStaff.providerId}" name="providerId" id="providerId" hidden="true"></div>
+			<div><input type="text" th:value="${enterpriseStaff.id}" name="id" id="idId" hidden="true"></div>
+			<div><input type="text" th:value="${enterpriseStaff.enterpriseId}" name="enterpriseId" id="enterpriseId" hidden="true"></div>
 
 			<div class="row cl">
 				<div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-2">

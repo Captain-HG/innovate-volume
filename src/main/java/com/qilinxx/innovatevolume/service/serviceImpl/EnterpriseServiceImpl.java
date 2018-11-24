@@ -3,6 +3,7 @@ package com.qilinxx.innovatevolume.service.serviceImpl;
 import com.qilinxx.innovatevolume.domain.mapper.EnterpriseMapper;
 import com.qilinxx.innovatevolume.domain.model.Enterprise;
 import com.qilinxx.innovatevolume.service.EnterpriseService;
+import com.qilinxx.innovatevolume.util.DateKit;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,5 +20,41 @@ public class EnterpriseServiceImpl implements EnterpriseService {
     @Override
     public Enterprise selectById(String id) {
         return enterpriseMapper.selectByPrimaryKey(id);
+    }
+
+    @Override
+    public String examineEnterprise(String id) {
+        Enterprise enterprise = enterpriseMapper.selectByPrimaryKey(id);
+        enterprise.setIsUse("0");
+        enterpriseMapper.updateByPrimaryKeySelective(enterprise);
+        return null;
+    }
+
+    @Override
+    public String startEnterprise(String id) {
+        Enterprise enterprise = enterpriseMapper.selectByPrimaryKey(id);
+        enterprise.setIsUse("1");
+        enterpriseMapper.updateByPrimaryKeySelective(enterprise);
+        return null;
+    }
+
+    @Override
+    public String noExamineEnterprise(String id) {
+        Enterprise enterprise = enterpriseMapper.selectByPrimaryKey(id);
+        enterprise.setIsUse("2");
+        enterpriseMapper.updateByPrimaryKeySelective(enterprise);
+        return null;
+    }
+
+    @Override
+    public String ifCodeUse(String code) {
+        return null;
+    }
+
+    @Override
+    public void updateEnterprise(Enterprise enterprise) {
+      //enterprise.setUpdater();//相对应的设置修改者
+        enterprise.setUpdateTime((long) DateKit.getCurrentUnixTime());
+        enterpriseMapper.updateByPrimaryKeySelective(enterprise);
     }
 }
