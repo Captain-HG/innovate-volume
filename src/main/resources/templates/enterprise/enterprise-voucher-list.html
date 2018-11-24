@@ -27,19 +27,17 @@
         <table class="table table-border table-bordered table-hover table-bg table-sort">
             <thead>
             <tr class="text-c">
-                <th width="25"><input type="checkbox" name="" value=""></th>
-                <th width="80">名称</th>
+                <th width="100">创新券名称</th>
                 <th width="100">类别</th>
                 <th width="150">服务商</th>
-                <th width="150">发布时间</th>
+                <th width="150">申请时间</th>
                 <th width="">备注</th>
-                <th width="">状态</th>
+                <th width="100">状态</th>
                 <th width="100">操作</th>
             </tr>
             </thead>
             <tbody>
             <tr class="text-c" th:if="${vouchers.size()!=0}" th:each="voucher:${vouchers}">
-                <td><input type="checkbox" value="1" name=""></td>
                 <td th:text="${voucher.name}">1</td>
                 <td th:text="${voucher.type}"></td>
                 <td><u style="cursor:pointer" class="text-primary" onclick="provider_info(this.innerHTML,'enterprise-info.html','10001','1100','600')" th:text="${providerMap.get(voucher.providerId).name}">张三</u></td>
@@ -68,7 +66,7 @@
             "bStateSave": true,//状态保存
             "aoColumnDefs": [
                 //{"bVisible": false, "aTargets": [ 3 ]} //控制列的隐藏显示
-                {"orderable":false,"aTargets":[0,7]}// 制定列不参与排序
+                {"orderable":false,"aTargets":[4,5,6]}// 制定列不参与排序
             ]
         });
 
@@ -80,10 +78,7 @@
 
     /*用户-编辑*/
     function voucher_apply(title,url,id,w,h){
-        layer.confirm('确认使用此券吗？',function(){
             layer_show(title,url+"?id="+id,w,h);
-      });
-
     }
 </script>
 </body>

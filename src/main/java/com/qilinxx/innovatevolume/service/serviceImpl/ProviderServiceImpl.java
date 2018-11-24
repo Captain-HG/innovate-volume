@@ -4,6 +4,7 @@ import com.qilinxx.innovatevolume.domain.mapper.ProviderMapper;
 import com.qilinxx.innovatevolume.domain.model.Provider;
 import com.qilinxx.innovatevolume.domain.model.ProviderExample;
 import com.qilinxx.innovatevolume.domain.model.Voucher;
+import com.qilinxx.innovatevolume.domain.model.VoucherApply;
 import com.qilinxx.innovatevolume.service.ProviderService;
 import com.qilinxx.innovatevolume.util.DateKit;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -69,13 +70,30 @@ public class ProviderServiceImpl implements ProviderService {
     }
 
     @Override
+    public Provider selectProviderBycode(String code) {
+        ProviderExample providerExample=new ProviderExample();
+        providerExample.createCriteria().andCodeEqualTo(code);
+        providerMapper.selectByExample(providerExample);
+        return providerMapper.selectByExample(providerExample).get(0);
+    }
+
+    @Override
     public Map<String, Provider> voucherListToProviderMap(List<Voucher> vouchers) {
         Map<String ,Provider> providerMap =new HashMap<>();
         for (Voucher v:vouchers) {
-            ProviderExample providerExample=new ProviderExample();
-            providerExample.createCriteria().andIdEqualTo(v.getProviderId());
             if(!providerMap.containsKey(v.getProviderId())){
-                providerMap.put(v.getProviderId(), providerMapper.selectByExample(providerExample).get(0));
+                providerMap.put(v.getProviderId(),providerMapper.selectByPrimaryKey(v.getProviderId()));
+            }
+        }
+        return providerMap;
+    }
+
+    @Override
+    public Map<String, Provider> voucherApplyListToProviderMap(List<VoucherApply> voucherApplyList) {
+        Map<String ,Provider> providerMap =new HashMap<>();
+        for (VoucherApply v:voucherApplyList) {
+            if(!providerMap.containsKey(v.getProviderId())){
+                providerMap.put(v.getProviderId(),providerMapper.selectByPrimaryKey(v.getProviderId()));
             }
         }
         return providerMap;

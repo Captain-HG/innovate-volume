@@ -1,11 +1,10 @@
 package com.qilinxx.innovatevolume.controller.enterpriseController;
 
-import com.qilinxx.innovatevolume.domain.model.Enterprise;
-import com.qilinxx.innovatevolume.domain.model.Provider;
-import com.qilinxx.innovatevolume.domain.model.UserInfo;
-import com.qilinxx.innovatevolume.domain.model.Voucher;
+import com.qilinxx.innovatevolume.domain.model.*;
 import com.qilinxx.innovatevolume.service.*;
+import com.qilinxx.innovatevolume.service.ProviderService;
 import com.qilinxx.innovatevolume.util.DateKit;
+import com.qilinxx.innovatevolume.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -38,11 +37,13 @@ public class EnterpriseController {
     private ProviderService providerService;
     @Autowired
     private ProviderServiceService providerServiceService;
+    @Autowired
+    private VoucherApplyService voucherApplyService;
     /**
      * 来到创新券科技企业的页面
      * @return 跳转企业主页面
      */
-    @GetMapping({"/","enterprise-home"})
+    @GetMapping({"/1","enterprise-home"})
     public String enterpriseHome(Model model, HttpSession session){
         //以下是测试代码（回来删除）
         String code="654321";
@@ -50,11 +51,10 @@ public class EnterpriseController {
         session.setAttribute("user",userInfo);
         //以上是测试代码
 
-        UserInfo user = (UserInfo) session.getAttribute("user");
-        this.userInfo=user;
+        this.userInfo= (UserInfo) session.getAttribute("user");
         this.enterprise= enterpriseService.selectEnterpriseByCode(this.userInfo.getOrgcode());
         model.addAttribute("user",this.userInfo);
-        model.addAttribute("enterprise",enterprise);
+        model.addAttribute("enterprise",this.enterprise);
         return "enterprise/enterprise-home";
     }
     //后台的迎接页面
@@ -168,5 +168,63 @@ public class EnterpriseController {
         model.addAttribute("provider",provider);
         model.addAttribute("providerServices",providerServiceService.selectAllByProviderId(provider.getId()));
         return "enterprise/enterprise-voucher-apply";
+    }
+    /**
+     * 企业填好了创新券申请信息
+     * @return 来到创新券申请记录列表
+     */
+    //@PostMapping("enterprise-voucher-apply-list.html")
+    //public String enterpriseVoucherApplyList(VoucherApply voucherApply){
+    //    System.out.println(voucherApply);
+    //    return "enterprise/enterprise-voucher-apply-list";
+    //}
+    /**
+     * 企业填好了创新券申请信息
+     * ajax方式
+     * @return
+     */
+    @PostMapping("ajax-enterprise-voucher-apply-list.html")
+    @ResponseBody
+    public Map<String ,String > enterpriseVoucherApplyList(VoucherApply voucherApply){
+        Map<String ,String > map=new HashMap<>();
+        voucherApply.setId(UUID.UU32());
+        voucherApply.setEnterpriseId(this.enterprise.getId());
+        voucherApply.setIsUse("0");
+        voucherApply.setCreater(this.userInfo.getName());
+        voucherApply.setCreateTime(Long.parseLong(String.valueOf(DateKit.getUnixTimeByDate(DateKit.getNowTime()))));
+        voucherApplyService.insertVoucherApply(voucherApply);
+        map.put("msg","提交成功(待审核)");
+        return map;
+    }
+    /**
+     * 企业查看申请记录
+     * @return 来到企业申请记录页面
+     */
+    @GetMapping("enterprise-voucher-apply-list.html")
+    public String enterpriseVoucherApplyList(Model model){
+        List<VoucherApply> voucherApplyList = voucherApplyService.selectVoucherApplyByEnterpriseId(this.enterprise.getId());
+        if(voucherApplyList.size()!=0){
+            Map<String, Provider> providerMap = providerService.voucherApplyListToProviderMap(voucherApplyList);
+            Map<String, String> providerServiceMap = providerServiceService.voucherApplyListToProviderServiceMap(voucherApplyList);
+            model.addAttribute("providerMap",providerMap);
+            model.addAttribute("providerServiceMap",providerServiceMap);
+        }
+        model.addAttribute("voucherApplyList",voucherApplyList);
+        model.addAttribute("enterprise",this.enterprise);
+        model.addAttribute("dateKit",new DateKit());
+        return "enterprise/enterprise-voucher-apply-list";
+    }
+    /**
+     * 企业删除创新券申请记录
+     * ajax方式
+     * @return
+     */
+    @PostMapping("ajax-enterprise-delete-apply")
+    @ResponseBody
+    public Map<String ,String > ajaxEnterpriseDeleteApply(String id){
+        voucherApplyService.deleteVoucherApply(id);
+        Map<String,String> map=new HashMap<>();
+        map.put("msg","删除成功!");
+        return map;
     }
 }

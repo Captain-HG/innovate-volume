@@ -28,8 +28,8 @@
 <body>
 <header class="navbar-wrapper">
     <div class="navbar navbar-fixed-top">
-        <div class="container-fluid cl"> <a class="logo navbar-logo f-l mr-10 hidden-xs" href="/aboutHui.shtml">创新券科技企业</a> <a class="logo navbar-logo-m f-l mr-10 visible-xs" href="/aboutHui.shtml">H-ui</a>
-            <span class="logo navbar-slogan f-l mr-10 hidden-xs" th:text="${enterprise.name}">麒麟信息</span>
+        <div class="container-fluid cl"> <a class="logo navbar-logo f-l mr-10 hidden-xs" href="/aboutHui.shtml">服务提供商</a> <a class="logo navbar-logo-m f-l mr-10 visible-xs" href="/aboutHui.shtml">H-ui</a>
+            <span class="logo navbar-slogan f-l mr-10 hidden-xs" th:text="${provider.name}">麒麟信息</span>
             <a aria-hidden="false" class="nav-toggle Hui-iconfont visible-xs" href="javascript:;">&#xe667;</a>
             <nav class="nav navbar-nav">
                 <ul class="cl">
@@ -45,7 +45,7 @@
             </nav>
             <nav id="Hui-userbar" class="nav navbar-nav navbar-userbar hidden-xs">
                 <ul class="cl">
-                    <li>创新券企业管理员</li>
+                    <li>服务商管理员</li>
                     <li class="dropDown dropDown_hover">
                         <a href="#" class="dropDown_A" th:text="${user.name}">王五<i class="Hui-iconfont">&#xe6d5;</i></a>
                         <ul class="dropDown-menu menu radius box-shadow">
@@ -76,9 +76,9 @@
             <dt><i class="Hui-iconfont">&#xe62d;</i> 个人主页<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
             <dd>
                 <ul>
-                    <li><a data-href="enterprise-info.html" data-title="个人资料" href="javascript:void(0)">个人资料</a></li>
-                    <li><a data-href="enterprise-change-info.html"  data-title="修改资料" href="javascript:void(0)">修改资料</a></li>
-                    <li><a data-href="enterprise-change-password.html" data-title="更改密码" href="javascript:void(0)">更改密码</a></li>
+                    <li><a data-href="provider-info.html" data-title="个人资料" href="javascript:void(0)">个人资料</a></li>
+                    <li><a data-href="provider-change-info.html"  data-title="修改资料" href="javascript:void(0)">修改资料</a></li>
+                    <li><a data-href="provider-change-password.html" data-title="更改密码" href="javascript:void(0)">更改密码</a></li>
                 </ul>
             </dd>
         </dl>
@@ -101,11 +101,12 @@
             </dd>
         </dl>
         <dl id="menu-system">
-            <dt><i class="Hui-iconfont">&#xe61a;</i> 创新券申领<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+            <dt><i class="Hui-iconfont">&#xe61a;</i> 创新券<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
             <dd>
                 <ul>
-                    <li><a data-href="enterprise-voucher-list.html" data-title="查询创新券" href="javascript:void(0)">查询创新券</a></li>
-                    <li><a data-href="enterprise-voucher-apply-list.html" data-title="创新券申请记录" href="javascript:void(0)">查看申请记录</a></li>
+                    <li><a data-href="provider-voucher-list.html" data-title="查询创新券" href="javascript:void(0)">发布创新券</a></li>
+                    <li><a data-href="provider-voucher-list.html" data-title="查询创新券" href="javascript:void(0)">查看已发布创新券</a></li>
+                    <li><a data-href="provider-voucher-apply-list.html" data-title="创新券申请记录" href="javascript:void(0)">查看申请记录</a></li>
                 </ul>
             </dd>
         </dl>
@@ -135,7 +136,7 @@
     <div id="iframe_box" class="Hui-article">
         <div class="show_iframe">
             <div style="display:none" class="loading"></div>
-            <iframe scrolling="yes" frameborder="0" th:src="@{/enterprise-welcome}"></iframe>
+            <iframe scrolling="yes" frameborder="0" th:src="@{/provider-welcome}"></iframe>
         </div>
     </div>
 </section>
