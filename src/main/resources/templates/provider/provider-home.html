@@ -82,7 +82,7 @@
                 </ul>
             </dd>
         </dl>
-        <dl id="menu-system">
+        <dl >
             <dt><i class="Hui-iconfont">&#xe620;</i> 附件信息<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
             <dd>
                 <ul>
@@ -91,7 +91,7 @@
                 </ul>
             </dd>
         </dl>
-        <dl id="menu-system">
+        <dl >
             <dt><i class="Hui-iconfont">&#xe60d;</i> 人员信息<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
             <dd>
                 <ul>
@@ -100,7 +100,7 @@
                 </ul>
             </dd>
         </dl>
-        <dl id="menu-system">
+        <dl th:if="${provider.isUse=='1'}">
             <dt><i class="Hui-iconfont">&#xe61a;</i> 创新券<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
             <dd>
                 <ul>
@@ -110,12 +110,31 @@
                 </ul>
             </dd>
         </dl>
-        <dl id="menu-system">
+        <dl th:if="${provider.isUse=='0'}">
+            <dt><i class="Hui-iconfont">&#xe61a;</i> 创新券<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+            <dd>
+                <ul>
+                    <li><a data-href="provider-welcome" onclick="no_authority()" data-title="我的主页" href="javascript:void(0)">发布创新券</a></li>
+                    <li><a data-href="#" onclick="no_authority()" data-title="查询创新券" href="javascript:void(0)">查看已发布创新券</a></li>
+                    <li><a data-href="#" onclick="no_authority()" data-title="创新券申请记录" href="javascript:void(0)">查看申请记录</a></li>
+                </ul>
+            </dd>
+        </dl>
+        <dl th:if="${provider.isUse=='1'}">
             <dt><i class="Hui-iconfont">&#xe616;</i> 创新券合同<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
             <dd>
                 <ul>
                     <li><a data-href="article-list.html" data-title="资料" href="javascript:void(0)">填写合同信息</a></li>
                     <li><a data-href="article-list.html" data-title="资料" href="javascript:void(0)">查看合同</a></li>
+                </ul>
+            </dd>
+        </dl>
+        <dl th:if="${provider.isUse=='0'}">
+            <dt><i class="Hui-iconfont">&#xe616;</i> 创新券合同<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+            <dd>
+                <ul>
+                    <li><a data-href="#" onclick="no_authority()" data-title="资料" href="javascript:void(0)">填写合同信息</a></li>
+                    <li><a data-href="#" onclick="no_authority()" data-title="资料" href="javascript:void(0)">查看合同</a></li>
                 </ul>
             </dd>
         </dl>
@@ -171,6 +190,13 @@
             }
         });*/
     });
+    function no_authority(){
+        layer.alert('权限不够！请完善信息', {
+            skin: 'layui-layer-molv' //样式类名
+            ,closeBtn: 0
+        });
+    }
+
     /*个人信息*/
     function myselfinfo(){
         layer.open({
