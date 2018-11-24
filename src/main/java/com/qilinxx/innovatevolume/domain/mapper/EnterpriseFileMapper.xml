@@ -77,4 +77,7 @@
     id, enterprise_id, type, path, name, term, remark, is_use, creater, create_time, 
     updater, update_time
   </sql>
+  <select id="selectAllByEnterpriseId" resultMap="BaseResultMap">
+  SELECT * FROM enterprise_file WHERE enterprise_id=#{id}
+</select>
 </mapper>

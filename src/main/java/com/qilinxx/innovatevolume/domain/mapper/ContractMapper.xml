@@ -82,4 +82,10 @@
     id, enterprise_id, provider_id, apply_id, money, name, path, voumoney, type, start_date, 
     sign_date, remark, is_use, creater, create_time, updater, update_time
   </sql>
+  <select id="selectAllByProviderId" resultMap="BaseResultMap">
+  SELECT * FROM contract WHERE provider_id=#{id}
+</select>
+  <select id="selectAllByEnterpriseId" resultMap="BaseResultMap">
+  SELECT * FROM contract WHERE enterprise_id=#{id}
+</select>
 </mapper>

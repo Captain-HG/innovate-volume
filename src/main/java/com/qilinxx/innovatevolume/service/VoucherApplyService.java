@@ -1,14 +1,17 @@
 package com.qilinxx.innovatevolume.service;
 
 import com.qilinxx.innovatevolume.domain.model.VoucherApply;
+import com.qilinxx.innovatevolume.vo.VoucherApplyVo;
 
 import java.util.List;
 
 public interface VoucherApplyService {
-    /**插入一条申请记录*/
-    void insertVoucherApply(VoucherApply voucherApply);
-    /**根据id，删除指定记录*/
-    void deleteVoucherApply(String id);
-    /**根据企业enterpriseId，查询出该企业的所有申请记录*/
-    List<VoucherApply> selectVoucherApplyByEnterpriseId(String enterpriseId);
+    /** 根据主键id去查询，券的名字*/
+    String selectVoucherNameById(String applyId);
+    /** 根据主键id查询所有的申请记录，封装成Vo，包括双方企业名字,券名，继承VoucherApply*/
+    List<VoucherApplyVo> selectAllByEnterpriseId(String id);
+    /** 申请记录不通过*/
+    void noExamineApply(String id);
+    /** 申请记录通过*/
+    void startApply(String id);
 }

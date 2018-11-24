@@ -77,4 +77,7 @@
     id, enterprise_id, name, age, title, degree, remark, is_use, creater, create_time, 
     updater, update_time
   </sql>
+  <select id="selectAllByEnterpriseId" resultMap="BaseResultMap">
+  SELECT * FROM enterprise_staff WHERE enterprise_id=#{id}
+</select>
 </mapper>

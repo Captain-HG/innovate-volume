@@ -78,4 +78,7 @@
     id, enterprise_id, provider_id, service_id, app_money, app_usage, usage_desc, remark, 
     is_use, creater, create_time, updater, update_time
   </sql>
+  <select id="selectAllByEnterpriseId" resultMap="BaseResultMap">
+  SELECT * FROM voucher_apply WHERE enterprise_id=#{id}
+</select>
 </mapper>
