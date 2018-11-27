@@ -39,6 +39,8 @@ public class EnterpriseController {
     private ProviderServiceService providerServiceService;
     @Autowired
     private VoucherApplyService voucherApplyService;
+    @Autowired
+    private ContractService contractService;
     /**
      * 来到创新券科技企业的页面
      * @return 跳转企业主页面
@@ -226,5 +228,19 @@ public class EnterpriseController {
         Map<String,String> map=new HashMap<>();
         map.put("msg","删除成功!");
         return map;
+    }
+    @GetMapping("enterprise-contract.html")
+    public String enterpriseContract(Model model){
+        List<Contract> contractList = contractService.selectContractByEnterpriseId(this.enterprise.getId());
+        if(contractList.size()!=0){
+            Map<String,Provider> providerMap=providerService.contractListToProviderMap(contractList);
+            Map<String,VoucherApply> voucherApplyMap=voucherApplyService.contractListToVoucherApplyMap(contractList);
+            model.addAttribute("providerMap",providerMap);
+            model.addAttribute("voucherApplyMap",voucherApplyMap);
+        }
+        model.addAttribute("contractList",contractList);
+        model.addAttribute("enterprise",this.enterprise);
+        model.addAttribute("dateKit",new DateKit());
+        return "enterprise/enterprise-contract";
     }
 }

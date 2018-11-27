@@ -1,6 +1,7 @@
 package com.qilinxx.innovatevolume.service.serviceImpl;
 
 import com.qilinxx.innovatevolume.domain.mapper.EnterpriseMapper;
+import com.qilinxx.innovatevolume.domain.model.Contract;
 import com.qilinxx.innovatevolume.domain.model.Enterprise;
 import com.qilinxx.innovatevolume.domain.model.EnterpriseExample;
 import com.qilinxx.innovatevolume.service.EnterpriseService;
@@ -64,5 +65,16 @@ public class EnterpriseServiceImpl implements EnterpriseService {
       //enterprise.setUpdater();//相对应的设置修改者
         enterprise.setUpdateTime((long) DateKit.getCurrentUnixTime());
         enterpriseMapper.updateByPrimaryKeySelective(enterprise);
+    }
+
+    @Override
+    public Map<String, Enterprise> contractListToEnterpriseMap(List<Contract> contractList) {
+        Map<String,Enterprise> enterpriseMap=new HashMap<>();
+        for(Contract c:contractList){
+            if(!enterpriseMap.containsKey(c.getEnterpriseId())){
+                enterpriseMap.put(c.getEnterpriseId(),enterpriseMapper.selectByPrimaryKey(c.getEnterpriseId()));
+            }
+        }
+        return enterpriseMap;
     }
 }

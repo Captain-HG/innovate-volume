@@ -1,10 +1,7 @@
 package com.qilinxx.innovatevolume.service.serviceImpl;
 
 import com.qilinxx.innovatevolume.domain.mapper.ProviderMapper;
-import com.qilinxx.innovatevolume.domain.model.Provider;
-import com.qilinxx.innovatevolume.domain.model.ProviderExample;
-import com.qilinxx.innovatevolume.domain.model.Voucher;
-import com.qilinxx.innovatevolume.domain.model.VoucherApply;
+import com.qilinxx.innovatevolume.domain.model.*;
 import com.qilinxx.innovatevolume.service.ProviderService;
 import com.qilinxx.innovatevolume.util.DateKit;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -94,6 +91,17 @@ public class ProviderServiceImpl implements ProviderService {
         for (VoucherApply v:voucherApplyList) {
             if(!providerMap.containsKey(v.getProviderId())){
                 providerMap.put(v.getProviderId(),providerMapper.selectByPrimaryKey(v.getProviderId()));
+            }
+        }
+        return providerMap;
+    }
+
+    @Override
+    public Map<String, Provider> contractListToProviderMap(List<Contract> contractList) {
+        Map<String,Provider> providerMap=new HashMap<>();
+        for (Contract c:contractList){
+            if(!providerMap.containsKey(c.getProviderId())){
+                providerMap.put(c.getProviderId(),providerMapper.selectByPrimaryKey(c.getProviderId()));
             }
         }
         return providerMap;

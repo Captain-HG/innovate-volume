@@ -1,5 +1,6 @@
 package com.qilinxx.innovatevolume.service;
 
+import com.qilinxx.innovatevolume.domain.model.Contract;
 import com.qilinxx.innovatevolume.domain.model.Provider;
 import com.qilinxx.innovatevolume.domain.model.Voucher;
 import com.qilinxx.innovatevolume.domain.model.VoucherApply;
@@ -28,4 +29,6 @@ public interface ProviderService {
     Map<String,Provider> voucherListToProviderMap(List<Voucher> vouchers);
     /** 由创新券申请表list的中提供商的id找到提供商，转换为Map，其中存储提供商所有信息*/
     Map<String,Provider> voucherApplyListToProviderMap(List<VoucherApply> voucherApplyList);
+    /** 由合同表list的中提供商的id找到提供商，转换为Map，其中存储提供商所有信息*/
+    Map<String,Provider> contractListToProviderMap(List<Contract> contractList);
 }
