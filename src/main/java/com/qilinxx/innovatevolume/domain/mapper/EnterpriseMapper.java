@@ -6,5 +6,4 @@ import tk.mybatis.mapper.common.Mapper;
 
 @Repository
 public interface EnterpriseMapper extends Mapper<Enterprise>{
-
 }
