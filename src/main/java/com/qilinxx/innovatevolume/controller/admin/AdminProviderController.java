@@ -4,6 +4,7 @@ import com.qilinxx.innovatevolume.domain.model.*;
 import com.qilinxx.innovatevolume.service.*;
 import com.qilinxx.innovatevolume.service.ProviderService;
 import com.qilinxx.innovatevolume.util.Commons;
+import com.qilinxx.innovatevolume.vo.ContractVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,19 +19,17 @@ public class AdminProviderController {
     @Autowired
     ProviderService providerService;
     @Autowired
-    EnterpriseService enterpriseService;
-    @Autowired
-    VoucherCashService voucherCashService;
-    @Autowired
-    ContractService contractService;
-    @Autowired
     UserInfoService userInfoService;
+    @Autowired
+    VoucherService voucherService;
     @Autowired
     ProviderFileService providerFileService;
     @Autowired
     ProviderStaffService providerStaffService;
     @Autowired
     ProviderServiceService providerServiceService;
+    @Autowired
+    ContractService contractService;
     /**
      *跳转到管理员的
      * 提供者页面的list
@@ -42,42 +41,8 @@ public class AdminProviderController {
         model.addAttribute("commons",new Commons());
         return "admin/provider/list";
     }
-    /**
-     * 跳转到管理者的
-     * 科技企业/创新团队的list页面
-     */
-    @RequestMapping("admin-enterprise-list")
-    public String  adminEnterpriseList(Model model){
-        List<Enterprise> enterPriseList=enterpriseService.selectAll();
-        model.addAttribute("enterPriseList",enterPriseList);
-        model.addAttribute("commons",new Commons());
-        return "admin/admin-enterprise-list";
-    }
 
-    /**
-     * 兑付的申请list页面
-     * @return 页面跳转
-     */
-    @RequestMapping("admin-voucherCash-list")
-    public String  adminVoucherCashList(Model model){
-        List<VoucherCash> voucherCashList = voucherCashService.selectAll();
-        model.addAttribute("voucherCashList",voucherCashList);
-        model.addAttribute("commons",new Commons());
-        return "admin/admin-voucherCash-list";
-    }
 
-    /**
-     * 管理员的合同list
-     * @param model 传递
-     * @return 页面
-     */
-    @RequestMapping("admin-contract-list")
-    public  String adminContractList(Model model){
-       List<Contract>  contractList = contractService.selectAll();
-        model.addAttribute("contractList",contractList);
-        model.addAttribute("commons",new Commons());
-       return "admin/admin-contract-list";
-    }
 
     /**
      * 根据code公司编号查询，显示用户创建者的信息
@@ -376,7 +341,7 @@ public class AdminProviderController {
     }
 
     /**
-     * 人员更新
+     * 服务更新
      * @param  providerService 服务
      * @return 成功
      */
@@ -386,6 +351,88 @@ public class AdminProviderController {
         System.out.println(providerService);
         providerServiceService.updateProviderService(providerService);
         return "success";
+    }
+    /**
+     * 查看商家的券内容
+     * @param id 商家id
+     * @param model 传递
+     * @return 页面跳转
+     */
+    @RequestMapping("admin-provider-voucher.html")
+    public String providereVoucher(String id,Model model){
+        System.out.println(id);
+        List<Voucher> voucherList = voucherService.selectAllByProviderId(id);
+        Provider provider = providerService.selectById(id);
+        model.addAttribute("voucherList",voucherList);
+        model.addAttribute("provider",provider);
+        model.addAttribute("commons",new Commons());
+        return "admin/provider/voucher-list";
+    }
+    /**
+     * 使某个券失效
+     * @param id 券id
+     * @return
+     */
+    @RequestMapping("admin-noExamine-providerVoucher")
+    @ResponseBody
+    public String noExamineVoucher(String  id){
+        System.out.println(id);
+        voucherService.noExamineVoucher(id);
+        return "success";
+    }
+    /**
+     * 启用某个券
+     * @param id 券id
+     * @return 返回成功
+     */
+    @RequestMapping("admin-start-providerVoucher")
+    @ResponseBody
+    public String startVoucher(String id){
+        System.out.println(id);
+        voucherService.startVoucher(id);
+        return "success";
+    }
+
+    /**
+     * 券更新页面跳转
+     * @param id 券id
+     * @param model 传递
+     * @return 跳转
+     */
+    @RequestMapping("admin-provider-voucher-update.html")
+    public String  voucherUpdateUI(String  id,Model model){
+        Voucher voucher = voucherService.selectById(id);
+        model.addAttribute("voucher",voucher);
+        model.addAttribute("commons",new Commons());
+        return "admin/provider/voucher-update";
+    }
+
+    /**
+     * 券更新
+     * @param  voucher 券
+     * @return 成功
+     */
+    @RequestMapping("admin-provider-voucher-update")
+    @ResponseBody
+    public String  voucherUpdate(Voucher voucher){
+        System.out.println(voucher);
+        voucherService.updateVoucher(voucher);
+        return "success";
+    }
+
+    /**
+     * 跳转到合同list界面
+     * @param model 传递
+     * @param id 提供商id
+     * @return 跳转合同list
+     */
+    @RequestMapping("admin-provider-contract.html")
+    public String providerContract(Model model,String id){
+        System.out.println(id);
+        List<ContractVo> contractVoList = contractService.selectAllByProviderId(id);
+         model.addAttribute("contractVoList",contractVoList);
+         model.addAttribute("commons",new Commons());
+        return "admin/contract/list";
     }
 
 }

@@ -31,6 +31,7 @@ public class EnterpriseServiceImpl implements EnterpriseService {
         return enterpriseMapper.selectByPrimaryKey(enterprise.getId());
     }
 
+
     @Override
     public String examineEnterprise(String id) {
         Enterprise enterprise = enterpriseMapper.selectByPrimaryKey(id);
@@ -64,6 +65,7 @@ public class EnterpriseServiceImpl implements EnterpriseService {
     public void updateEnterprise(Enterprise enterprise) {
       //enterprise.setUpdater();//相对应的设置修改者
         enterprise.setUpdateTime((long) DateKit.getCurrentUnixTime());
+        enterprise.setIsUse("0");
         enterpriseMapper.updateByPrimaryKeySelective(enterprise);
     }
 

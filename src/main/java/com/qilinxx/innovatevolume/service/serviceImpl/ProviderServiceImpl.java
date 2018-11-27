@@ -1,15 +1,13 @@
 package com.qilinxx.innovatevolume.service.serviceImpl;
 
 import com.qilinxx.innovatevolume.domain.mapper.ProviderMapper;
-import com.qilinxx.innovatevolume.domain.model.*;
+import com.qilinxx.innovatevolume.domain.model.Provider;
 import com.qilinxx.innovatevolume.service.ProviderService;
 import com.qilinxx.innovatevolume.util.DateKit;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @Service
 public class ProviderServiceImpl implements ProviderService {
@@ -22,7 +20,9 @@ public class ProviderServiceImpl implements ProviderService {
 
     @Override
     public Provider selectById(String  id) {
+
        return providerMapper.selectByPrimaryKey(id);
+
     }
 
     @Override
@@ -63,47 +63,7 @@ public class ProviderServiceImpl implements ProviderService {
     public void updateProvider(Provider provider) {
         provider.setUpdateTime((long) DateKit.getCurrentUnixTime());
         //provider.setUpdater();//这里相应的进行修改，如果管理员修改添加管理员的信息
+        provider.setIsUse("0");
         providerMapper.updateByPrimaryKeySelective(provider);
-    }
-
-    @Override
-    public Provider selectProviderBycode(String code) {
-        ProviderExample providerExample=new ProviderExample();
-        providerExample.createCriteria().andCodeEqualTo(code);
-        providerMapper.selectByExample(providerExample);
-        return providerMapper.selectByExample(providerExample).get(0);
-    }
-
-    @Override
-    public Map<String, Provider> voucherListToProviderMap(List<Voucher> vouchers) {
-        Map<String ,Provider> providerMap =new HashMap<>();
-        for (Voucher v:vouchers) {
-            if(!providerMap.containsKey(v.getProviderId())){
-                providerMap.put(v.getProviderId(),providerMapper.selectByPrimaryKey(v.getProviderId()));
-            }
-        }
-        return providerMap;
-    }
-
-    @Override
-    public Map<String, Provider> voucherApplyListToProviderMap(List<VoucherApply> voucherApplyList) {
-        Map<String ,Provider> providerMap =new HashMap<>();
-        for (VoucherApply v:voucherApplyList) {
-            if(!providerMap.containsKey(v.getProviderId())){
-                providerMap.put(v.getProviderId(),providerMapper.selectByPrimaryKey(v.getProviderId()));
-            }
-        }
-        return providerMap;
-    }
-
-    @Override
-    public Map<String, Provider> contractListToProviderMap(List<Contract> contractList) {
-        Map<String,Provider> providerMap=new HashMap<>();
-        for (Contract c:contractList){
-            if(!providerMap.containsKey(c.getProviderId())){
-                providerMap.put(c.getProviderId(),providerMapper.selectByPrimaryKey(c.getProviderId()));
-            }
-        }
-        return providerMap;
     }
 }

@@ -10,4 +10,6 @@ import java.util.List;
 public interface VoucherApplyMapper extends Mapper<VoucherApply> {
     /** 根据科技企业的id，查询所有记录*/
     List<VoucherApply> selectAllByEnterpriseId(String id);
+    /** 查询所有未审核的请求，isUse=0*/
+    List<VoucherApply> selectAllByIsUseNo();
 }

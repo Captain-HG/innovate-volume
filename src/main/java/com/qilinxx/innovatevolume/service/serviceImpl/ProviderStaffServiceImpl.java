@@ -48,6 +48,7 @@ public class ProviderStaffServiceImpl implements ProviderStaffService {
     public void updateProviderStaff(ProviderStaff providerStaff) {
         //providerStaff.setUpdater();//相对应
         providerStaff.setUpdateTime((long) DateKit.getCurrentUnixTime());
+        providerStaff.setIsUse("0");
         providerStaffMapper.updateByPrimaryKeySelective(providerStaff);
     }
 }

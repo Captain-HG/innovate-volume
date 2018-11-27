@@ -7,7 +7,7 @@ import javax.persistence.Table;
 @Table(name = "provider")
 public class Provider {
     @Id
-    private String id;
+    private String  id;
 
     @Column(name = "name")
     private String name;
@@ -102,11 +102,11 @@ public class Provider {
     @Column(name = "remark")
     private String remark;
 
-    public String getId() {
+    public String  getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(String  id) {
         this.id = id;
     }
 

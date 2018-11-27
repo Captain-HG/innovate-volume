@@ -24,10 +24,13 @@ public class VoucherApplyServiceImpl implements VoucherApplyService {
     ProviderService providerService;
     @Autowired
     VoucherService voucherService;
+
+
+
     @Override
     public String selectVoucherNameById(String applyId) {
         VoucherApply voucherApply = voucherApplyMapper.selectByPrimaryKey(applyId);
-        return  voucherService.selectById(voucherApply.getProviderId()).getName();
+        return  voucherService.selectById(voucherApply.getServiceId()).getName();
     }
 
     @Override
@@ -55,6 +58,7 @@ public class VoucherApplyServiceImpl implements VoucherApplyService {
         voucherApplyVo.setCreater(voucherApply.getCreater());
         voucherApplyVo.setCreateTime(voucherApply.getCreateTime());
         voucherApplyVo.setUpdater(voucherApply.getUpdater());
+
         voucherApplyVo.setUpdateTime(voucherApply.getUpdateTime());
         voucherApplyVo.setRemark(voucherApply.getRemark());
         return  voucherApplyVo;
@@ -64,7 +68,7 @@ public class VoucherApplyServiceImpl implements VoucherApplyService {
     public void noExamineApply(String id) {
         VoucherApply voucherApply = voucherApplyMapper.selectByPrimaryKey(id);
         voucherApply.setUpdateTime((long) DateKit.getCurrentUnixTime());
-        voucherApply.setIsUse("0");
+        voucherApply.setIsUse("2");
         //providerFile.setUpdater();相应取修改者
         voucherApplyMapper.updateByPrimaryKeySelective(voucherApply);
     }
@@ -77,4 +81,36 @@ public class VoucherApplyServiceImpl implements VoucherApplyService {
         //providerFile.setUpdater();相应取修改者
         voucherApplyMapper.updateByPrimaryKeySelective(voucherApply);
     }
+
+    @Override
+    public List<VoucherApplyVo> selectAllVoByIsUseNo() {
+        List<VoucherApply> voucherApplyList = voucherApplyMapper.selectAllByIsUseNo();
+        List<VoucherApplyVo> voucherApplyVoList = new ArrayList<>();
+        for (VoucherApply voucherApply:voucherApplyList){
+            voucherApplyVoList.add(copy(voucherApply));
+        }
+        return voucherApplyVoList;
+    }
+
+    @Override
+    public VoucherApplyVo selectVobyId(String id) {
+        VoucherApply voucherApply = voucherApplyMapper.selectByPrimaryKey(id);
+        return copy(voucherApply);
+    }
+
+    @Override
+    public VoucherApply selectById(String applyId) {
+        return voucherApplyMapper.selectByPrimaryKey(applyId);
+    }
+
+    @Override
+    public void examineApply(String id) {
+        VoucherApply voucherApply = voucherApplyMapper.selectByPrimaryKey(id);
+        voucherApply.setUpdateTime((long) DateKit.getCurrentUnixTime());
+        voucherApply.setIsUse("0");
+        //providerFile.setUpdater();相应取修改者
+        voucherApplyMapper.updateByPrimaryKeySelective(voucherApply);
+    }
+
+
 }

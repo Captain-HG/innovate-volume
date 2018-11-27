@@ -31,7 +31,7 @@
 <body>
 <article class="page-container">
 	<div class="Huiform">
-		<form class="form form-horizontal" id="form-article-add" action="admin-provider-service-update" th:method="post">
+		<form class="form form-horizontal" id="form-article-add" action="admin-contract-update" th:method="post">
 
 			<!--<div class="row cl">-->
 			<!--<label class="form-label col-xs-4 col-sm-2">举办的商家名：</label>-->
@@ -40,56 +40,101 @@
 			<!--</div>-->
 			<!--</div>-->
 			<div class="row cl">
-				<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>服务内容名称：</label>
+				<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>券名：</label>
 				<div class="formControls col-xs-4 col-sm-1" style="padding-right: 0px">
 				</div>
 				<div class="formControls col-xs-4 col-sm-8" style="padding-left: 0px">
-					<input type="text" class="input-text" placeholder="张三" name="name" id="nameId" th:value="${providerService.name}" />
+					<input type="text" class="input-text" placeholder="张三"  id="voucherNameId" th:value="${contractVo.voucherName}" readonly/>
 				</div>
 			</div>
 
 			<div class="row cl">
-				<label class="form-label col-xs-4 col-sm-2">规格：</label>
+				<label class="form-label col-xs-4 col-sm-2">提供商名：</label>
 				<div class="formControls col-xs-4 col-sm-1" style="padding-right: 0px">
 				</div>
 				<div class="formControls col-xs-4 col-sm-8" style="padding-left: 0px">
-					<input type="text" class="input-text" placeholder="" name="spec" id="spec" th:value="${providerService.spec}" />
+					<input type="text" class="input-text" placeholder=""  id="providerNameId" th:value="${contractVo.providerName}" readonly/>
 				</div>
 			</div>
 
 			<div class="row cl">
-				<label class="form-label col-xs-4 col-sm-2">单价：</label>
+				<label class="form-label col-xs-4 col-sm-2">科技企业名：</label>
 				<div class="formControls col-xs-4 col-sm-1" style="padding-right: 0px">
 				</div>
 				<div class="formControls col-xs-4 col-sm-8" style="padding-left: 0px">
-					<input type="text" class="input-text" placeholder="199" name="price" id="priceId" th:value="${providerService.price}" />
+					<input type="text" class="input-text" placeholder="199"  id="enterpriseNameId" th:value="${contractVo.enterpriseName}" readonly/>
 				</div>
 			</div>
+			<div class="row cl">
+				<label class="form-label col-xs-4 col-sm-2">合同名：</label>
+				<div class="formControls col-xs-4 col-sm-1" style="padding-right: 0px">
+				</div>
+				<div class="formControls col-xs-4 col-sm-8" style="padding-left: 0px">
+					<input type="text" class="input-text" placeholder="199" name="name" id="nameId" th:value="${contractVo.name}" />
+				</div>
+			</div>
+
+			<div class="row cl">
+				<label class="form-label col-xs-4 col-sm-2">合同金额：</label>
+				<div class="formControls col-xs-4 col-sm-1" style="padding-right: 0px">
+				</div>
+				<div class="formControls col-xs-4 col-sm-8" style="padding-left: 0px">
+					<input type="text" class="input-text" placeholder="优秀" name="money" id="moneyId" th:value="${contractVo.money}" />
+				</div>
+			</div>
+
+			<div class="row cl">
+				<label class="form-label col-xs-4 col-sm-2">创新券使用金额：</label>
+				<div class="formControls col-xs-4 col-sm-1" style="padding-right: 0px">
+				</div>
+				<div class="formControls col-xs-4 col-sm-8" style="padding-left: 0px">
+					<input type="text" class="input-text" placeholder="100" name="voumoney" id="voumoney" th:value="${contractVo.voumoney}" />
+				</div>
+			</div>
+			<div class="row cl">
+				<label class="form-label col-xs-4 col-sm-2">合同类型：</label>
+				<div class="formControls col-xs-4 col-sm-1" style="padding-right: 0px">
+				</div>
+				<div class="formControls col-xs-4 col-sm-8" style="padding-left: 0px">
+					<input type="text" class="input-text" placeholder="100" name="type" id="typeId" th:value="${contractVo.type}" />
+				</div>
+			</div>
+			<div class="row cl">
+				<label class="form-label col-xs-4 col-sm-2">合同起始日期：</label>
+				<div class="formControls col-xs-4 col-sm-1" style="padding-right: 0px">
+				</div>
+				<div class="formControls col-xs-4 col-sm-8" style="padding-left: 0px">
+					<input type="text" class="input-text" placeholder="优秀"  id="startDateId" th:value="${commons.fmtdate(contractVo.startDate)}" readonly/>
+				</div>
+			</div>
+			<div class="row cl">
+				<label class="form-label col-xs-4 col-sm-2">合同签订日期：</label>
+				<div class="formControls col-xs-4 col-sm-1" style="padding-right: 0px">
+				</div>
+				<div class="formControls col-xs-4 col-sm-8" style="padding-left: 0px">
+					<input type="text" class="input-text" placeholder="优秀"  id="signDateId" th:value="${commons.fmtdate(contractVo.signDate)}" readonly/>
+				</div>
+			</div>
+
 			<div class="row cl">
 				<label class="form-label col-xs-4 col-sm-2">创建人：</label>
 				<div class="formControls col-xs-4 col-sm-1" style="padding-right: 0px">
 				</div>
 				<div class="formControls col-xs-4 col-sm-8" style="padding-left: 0px">
-					<input type="text" class="input-text" placeholder="优秀"  id="createrId" th:value="${providerService.creater}" readonly/>
+					<input type="text" class="input-text" placeholder="优秀"  id="createrId" th:value="${contractVo.creater}" readonly/>
 				</div>
 			</div>
-
 			<div class="row cl">
 				<label class="form-label col-xs-4 col-sm-2">创建时间：</label>
 				<div class="formControls col-xs-4 col-sm-1" style="padding-right: 0px">
 				</div>
 				<div class="formControls col-xs-4 col-sm-8" style="padding-left: 0px">
-					<input type="text" class="input-text" placeholder="优秀"  id="createTimeId" th:value="${commons.fmtdate(providerService.createTime)}" readonly/>
+					<input type="text" class="input-text" placeholder="优秀"  id="createTimeId" th:value="${commons.fmtdate(contractVo.createTime)}" readonly/>
 				</div>
 			</div>
-			<div class="row cl">
-				<label class="form-label col-xs-4 col-sm-2">服务简介：</label>
-				<div class="formControls col-xs-8 col-sm-9">
-					<textarea name="detail" id="detailId" th:value="${providerService.detail}" cols="" rows="" class="textarea"  placeholder="说点什么...最少输入5个字符" datatype="*10-100" dragonfly="true" nullmsg="备注不能为空！" onKeyUp="$.Huitextarealength(this,100)" ></textarea>
-					<!--<p class="textarea-numberbar"><em class="textarea-length">0</em>/200</p>-->
-				</div>
-			</div>
-			<div><input type="text" th:value="${providerService.id}" name="id" id="idId" hidden="true"></div>
+
+			<div><input type="text" th:value="${contractVo.id}" name="id" id="idId" hidden="true"></div>
+
 			<div class="row cl">
 				<div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-2">
 					<button  class="btn btn-primary radius" type="submit" id="btn-edit"><i class="Hui-iconfont">&#xe632;</i> 提交待审核</button>
