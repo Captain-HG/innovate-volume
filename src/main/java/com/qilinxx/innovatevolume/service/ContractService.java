@@ -16,4 +16,14 @@ public interface ContractService {
     void noExamineContract(String id);
     /** 根据科技企业id，查询所有合同*/
     List<ContractVo> selectAllByEnterpriseId(String id);
+    /** 查询所有合同，生成VoList*/
+    List<ContractVo> selectAllVo();
+    /** 根据主键id查询对象*/
+    Contract selectById(String id);
+    /** 更新*/
+    void updateContract(Contract contract);
+    /** 根据主键id查询，封装好的vo*/
+    ContractVo selectVoById(String id);
+    /** 增加合同*/
+    void insert(Contract contract);
 }

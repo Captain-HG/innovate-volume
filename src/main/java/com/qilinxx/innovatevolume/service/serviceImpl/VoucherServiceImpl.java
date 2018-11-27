@@ -45,6 +45,7 @@ public class VoucherServiceImpl implements VoucherService {
     public void updateVoucher(Voucher voucher) {
         //providerStaff.setUpdater();//相对应
         voucher.setUpdateTime((long) DateKit.getCurrentUnixTime());
+        voucher.setIsUse("0");
         voucherMapper.updateByPrimaryKeySelective(voucher);
     }
 }

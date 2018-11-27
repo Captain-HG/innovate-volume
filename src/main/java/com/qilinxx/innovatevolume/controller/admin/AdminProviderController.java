@@ -432,30 +432,7 @@ public class AdminProviderController {
         List<ContractVo> contractVoList = contractService.selectAllByProviderId(id);
          model.addAttribute("contractVoList",contractVoList);
          model.addAttribute("commons",new Commons());
-        return "admin/provider/contract-list";
+        return "admin/contract/list";
     }
-    /**
-     * 使某个合同失效
-     * @param id 合同id
-     * @return
-     */
-    @RequestMapping("admin-noExamine-providerContract")
-    @ResponseBody
-    public String noExamineContract(String  id){
-        System.out.println(id);
-        contractService.noExamineContract(id);
-        return "success";
-    }
-    /**
-     * 启用某个合同
-     * @param id 合同id
-     * @return 返回成功
-     */
-    @RequestMapping("admin-start-providerContract")
-    @ResponseBody
-    public String startContract(String id){
-        System.out.println(id);
-        contractService.startContract(id);
-        return "success";
-    }
+
 }

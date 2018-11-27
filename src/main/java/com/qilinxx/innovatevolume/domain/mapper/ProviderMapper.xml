@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.qilinxx.innovatevolume.domain.mapper.ProviderMapper">
   <resultMap id="BaseResultMap" type="com.qilinxx.innovatevolume.domain.model.Provider">
-    <id column="id" jdbcType="INTEGER" property="id" />
+    <id column="id" jdbcType="VARCHAR" property="id" />
     <result column="name" jdbcType="VARCHAR" property="name" />
     <result column="code" jdbcType="VARCHAR" property="code" />
     <result column="type" jdbcType="VARCHAR" property="type" />

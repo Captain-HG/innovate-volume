@@ -81,4 +81,7 @@
   <select id="selectAllByEnterpriseId" resultMap="BaseResultMap">
   SELECT * FROM voucher_apply WHERE enterprise_id=#{id}
 </select>
+  <select id="selectAllByIsUseNo" resultMap="BaseResultMap">
+  SELECT * FROM voucher_apply WHERE is_use="0"
+</select>
 </mapper>

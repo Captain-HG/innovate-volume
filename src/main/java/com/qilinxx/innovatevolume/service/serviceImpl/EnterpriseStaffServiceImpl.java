@@ -42,6 +42,7 @@ public class EnterpriseStaffServiceImpl implements EnterpriseStaffService {
     public void updateEnterpriseStaff(EnterpriseStaff enterpriseStaff) {
       //enterpriseStaff.setUpdater();//相对应设置
       enterpriseStaff.setUpdateTime((long) DateKit.getCurrentUnixTime());
+      enterpriseStaff.setIsUse("0");
       enterpriseStaffMapper.updateByPrimaryKeySelective(enterpriseStaff);
     }
 }

@@ -47,6 +47,7 @@ public class ProviderServiceServiceImpl implements ProviderServiceService {
     public void updateProviderService(ProviderService providerService) {
         //providerStaff.setUpdater();//相对应
         providerService.setUpdateTime((long) DateKit.getCurrentUnixTime());
+        providerService.setIsUse("0");
         providerServiceMapper.updateByPrimaryKeySelective(providerService);
     }
 }

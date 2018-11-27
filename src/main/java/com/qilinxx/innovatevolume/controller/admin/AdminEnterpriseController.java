@@ -288,32 +288,9 @@ public class AdminEnterpriseController {
         List<ContractVo> contractVoList = contractService.selectAllByEnterpriseId(id);
          model.addAttribute("contractVoList",contractVoList);
          model.addAttribute("commons",new Commons());
-        return "admin/contract-list";
+        return "admin/contract/list";
     }
-    /**
-     * 使某个合同失效
-     * @param id 合同id
-     * @return
-     */
-    @RequestMapping("admin-noExamine-enterpriseContract")
-    @ResponseBody
-    public String noExamineContract(String  id){
-        System.out.println(id);
-        contractService.noExamineContract(id);
-        return "success";
-    }
-    /**
-     * 启用某个合同
-     * @param id 合同id
-     * @return 返回成功
-     */
-    @RequestMapping("admin-start-enterpriseContract")
-    @ResponseBody
-    public String startContract(String id){
-        System.out.println(id);
-        contractService.startContract(id);
-        return "success";
-    }
+
     /**
      * 跳转到申请记录list界面
      * @param model 传递
@@ -326,7 +303,7 @@ public class AdminEnterpriseController {
         List<VoucherApplyVo> voucherApplyVoList = voucherApplyService.selectAllByEnterpriseId(id);
         model.addAttribute("voucherApplyVoList",voucherApplyVoList);
         model.addAttribute("commons",new Commons());
-        return "admin/voucherApply-list";
+        return "admin/contract/voucherApply-list";
     }
     /**
      * 使某个申请失效
@@ -350,6 +327,18 @@ public class AdminEnterpriseController {
     public String startApply(String id){
         System.out.println(id);
         voucherApplyService.startApply(id);
+        return "success";
+    }
+    /**
+     * 启用某个申请
+     * @param id 申请id
+     * @return 返回成功
+     */
+    @RequestMapping("admin-examine-enterpriseVoucherApply")
+    @ResponseBody
+    public String examineApply(String id){
+        System.out.println(id);
+        voucherApplyService.examineApply(id);
         return "success";
     }
 }

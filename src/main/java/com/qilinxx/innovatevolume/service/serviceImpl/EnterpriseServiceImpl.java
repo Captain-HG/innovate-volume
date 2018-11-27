@@ -2,6 +2,7 @@ package com.qilinxx.innovatevolume.service.serviceImpl;
 
 import com.qilinxx.innovatevolume.domain.mapper.EnterpriseMapper;
 import com.qilinxx.innovatevolume.domain.model.Enterprise;
+import com.qilinxx.innovatevolume.domain.model.EnterpriseExample;
 import com.qilinxx.innovatevolume.service.EnterpriseService;
 import com.qilinxx.innovatevolume.util.DateKit;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,7 @@ public class EnterpriseServiceImpl implements EnterpriseService {
     public Enterprise selectById(String id) {
         return enterpriseMapper.selectByPrimaryKey(id);
     }
+
 
     @Override
     public String examineEnterprise(String id) {
@@ -55,6 +57,7 @@ public class EnterpriseServiceImpl implements EnterpriseService {
     public void updateEnterprise(Enterprise enterprise) {
       //enterprise.setUpdater();//相对应的设置修改者
         enterprise.setUpdateTime((long) DateKit.getCurrentUnixTime());
+        enterprise.setIsUse("0");
         enterpriseMapper.updateByPrimaryKeySelective(enterprise);
     }
 }

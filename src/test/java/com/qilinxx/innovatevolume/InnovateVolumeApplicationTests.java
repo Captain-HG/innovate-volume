@@ -1,8 +1,10 @@
 package com.qilinxx.innovatevolume;
 
+import com.qilinxx.innovatevolume.domain.mapper.ProviderFileMapper;
 import com.qilinxx.innovatevolume.domain.mapper.ProviderMapper;
 import com.qilinxx.innovatevolume.domain.mapper.UserInfoMapper;
 import com.qilinxx.innovatevolume.domain.model.Provider;
+import com.qilinxx.innovatevolume.domain.model.ProviderFile;
 import com.qilinxx.innovatevolume.domain.model.UserInfo;
 import com.qilinxx.innovatevolume.vo.ContractVo;
 import org.junit.Test;
@@ -20,6 +22,8 @@ public class InnovateVolumeApplicationTests {
     ProviderMapper providerMapper;
 @Autowired
     UserInfoMapper userInfoMapper;
+@Autowired
+    ProviderFileMapper providerFileMapper;
     @Test
     public void contextLoads() {
 //        List<UserInfo> userInfos = userInfoMapper.selectAll();
@@ -29,7 +33,8 @@ public class InnovateVolumeApplicationTests {
     }
       @Test
     public void test01(){
-          ContractVo contractVo = new ContractVo();
-
-    }
+        Integer id=1;
+          ProviderFile providerFile = providerFileMapper.selectByPrimaryKey(id);
+          System.out.println(providerFile);
+      }
 }
