@@ -1,13 +1,16 @@
 package com.qilinxx.innovatevolume.service.serviceImpl;
 
 import com.qilinxx.innovatevolume.domain.mapper.VoucherApplyMapper;
+import com.qilinxx.innovatevolume.domain.model.Contract;
 import com.qilinxx.innovatevolume.domain.model.VoucherApply;
 import com.qilinxx.innovatevolume.domain.model.VoucherApplyExample;
 import com.qilinxx.innovatevolume.service.VoucherApplyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class VoucherApplyServiceImpl implements VoucherApplyService {
@@ -45,6 +48,17 @@ public class VoucherApplyServiceImpl implements VoucherApplyService {
         voucherApplyExample.createCriteria().andProviderIdEqualTo(providerId);
         voucherApplyExample.setOrderByClause("create_time desc");
         return voucherApplyMapper.selectByExample(voucherApplyExample);
+    }
+
+    @Override
+    public Map<String, VoucherApply> contractListToVoucherApplyMap(List<Contract> contractList) {
+        Map<String,VoucherApply> voucherApplyMap=new HashMap<>();
+        for (Contract c:contractList) {
+            if(!voucherApplyMap.containsKey(c.getApplyId())){
+                voucherApplyMap.put(c.getApplyId(),voucherApplyMapper.selectByPrimaryKey(c.getApplyId()));
+            }
+        }
+        return voucherApplyMap;
     }
 
 }

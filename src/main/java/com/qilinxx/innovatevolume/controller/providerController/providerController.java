@@ -1,11 +1,11 @@
 package com.qilinxx.innovatevolume.controller.providerController;
 
-import com.qilinxx.innovatevolume.domain.model.Enterprise;
-import com.qilinxx.innovatevolume.domain.model.Provider;
-import com.qilinxx.innovatevolume.domain.model.UserInfo;
-import com.qilinxx.innovatevolume.domain.model.VoucherApply;
+import com.qilinxx.innovatevolume.configure.WebConst;
+import com.qilinxx.innovatevolume.domain.model.*;
 import com.qilinxx.innovatevolume.service.*;
+import com.qilinxx.innovatevolume.service.ProviderService;
 import com.qilinxx.innovatevolume.util.DateKit;
+import com.qilinxx.innovatevolume.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -34,9 +34,11 @@ public class providerController {
     @Autowired
     private EnterpriseService enterpriseService;
     @Autowired
-    private VoucherService voucherService;
+    private ContractService contractService;
     @Autowired
     private ProviderServiceService providerServiceService;
+    @Autowired
+    private VoucherService voucherService;
     @Autowired
     private VoucherApplyService voucherApplyService;
     /**
@@ -85,7 +87,7 @@ public class providerController {
         return "provider/provider-voucher-apply-list";
     }
     /**
-     * ajax服务商对创新券的
+     * ajax服务商对创新券的申请同意的处理
      * id 为voucherApply的id
      */
     @PostMapping("ajax-provider-agree-apply")
@@ -94,6 +96,55 @@ public class providerController {
         Map<String ,String> map =new HashMap<>();
         voucherApplyService.updateIsUseById(id,"1");
         map.put("msg","通过审核!");
+        return map;
+    }
+    /**
+     * 查看合同详情
+     * @return 来到合同列表页面
+     */
+    @GetMapping("provider-contract.html")
+    public String providerContract(Model model){
+        List<Contract> contractList = contractService.selectContractByProviderId(this.provider.getId());
+        if(contractList.size()!=0){
+            Map<String,Enterprise> enterpriseMap=enterpriseService.contractListToEnterpriseMap(contractList);
+            Map<String,VoucherApply> voucherApplyMap=voucherApplyService.contractListToVoucherApplyMap(contractList);
+            model.addAttribute("enterpriseMap",enterpriseMap);
+            model.addAttribute("voucherApplyMap",voucherApplyMap);
+        }
+        model.addAttribute("contractList",contractList);
+        model.addAttribute("provider",this.provider);
+        model.addAttribute("dateKit",new DateKit());
+        return "provider/provider-contract";
+    }
+    /**
+     * 填写创新券信息，发布新创新券
+     * @return 来到发布创新券页面
+     */
+    @GetMapping("provider-release-voucher.html")
+    public String providerReleaseVoucher(Model model){
+        model.addAttribute("VOUCHER_CATEGORY", WebConst.VOUCHER_CATEGORY);
+        model.addAttribute("provider",this.provider);
+        return "provider/provider-release-voucher";
+    }
+    @PostMapping("ajax-provider-release-voucher")
+    @ResponseBody
+    public Map<String,String> ajaxProviderReleaseVoucher(Voucher voucher){
+        Map<String,String> map =new HashMap<>();
+        List<Voucher> voucherList = voucherService.selectVoucherByProviderId(this.provider.getId());
+        if(voucherList.size()!=0){
+            for (Voucher v:voucherList) {
+                if(v.getType().equals(voucher.getType())&&v.getName().equals(voucher.getName())){
+                    map.put("msg","该创新券已被使用！");
+                    return map;
+                }
+            }
+        }
+        voucher.setId(UUID.UU32());
+        voucher.setIsUse("0");
+        voucher.setCreater(this.userInfo.getName());
+        voucher.setCreateTime(Long.parseLong(String.valueOf(DateKit.getUnixTimeByDate(DateKit.getNowTime()))));
+        voucherService.insertVoucher(voucher);
+        map.put("msg","提交成功(待审核)！");
         return map;
     }
 

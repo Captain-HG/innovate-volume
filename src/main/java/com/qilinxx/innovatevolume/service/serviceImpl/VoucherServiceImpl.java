@@ -24,11 +24,21 @@ public class VoucherServiceImpl implements VoucherService {
     }
 
     @Override
+    public void insertVoucher(Voucher voucher) {
+        voucherMapper.insert(voucher);
+    }
+
+    @Override
     public Voucher selectVoucherById(String id) {
         return  voucherMapper.selectByPrimaryKey(id);
     }
 
-
+    @Override
+    public List<Voucher> selectVoucherByProviderId(String providerId) {
+        VoucherExample voucherExample=new VoucherExample();
+        voucherExample.createCriteria().andProviderIdEqualTo(providerId);
+        return  voucherMapper.selectByExample(voucherExample);
+    }
 
 
 }

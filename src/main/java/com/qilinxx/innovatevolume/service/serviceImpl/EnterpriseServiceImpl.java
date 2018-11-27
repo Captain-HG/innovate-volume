@@ -1,6 +1,7 @@
 package com.qilinxx.innovatevolume.service.serviceImpl;
 
 import com.qilinxx.innovatevolume.domain.mapper.EnterpriseMapper;
+import com.qilinxx.innovatevolume.domain.model.Contract;
 import com.qilinxx.innovatevolume.domain.model.Enterprise;
 import com.qilinxx.innovatevolume.domain.model.EnterpriseExample;
 import com.qilinxx.innovatevolume.domain.model.VoucherApply;
@@ -39,6 +40,17 @@ public class EnterpriseServiceImpl implements EnterpriseService {
         for (VoucherApply v:voucherApplyList) {
             if(!enterpriseMap.containsKey(v.getEnterpriseId())){
                 enterpriseMap.put(v.getEnterpriseId(),enterpriseMapper.selectByPrimaryKey(v.getEnterpriseId()));
+            }
+        }
+        return enterpriseMap;
+    }
+
+    @Override
+    public Map<String, Enterprise> contractListToEnterpriseMap(List<Contract> contractList) {
+        Map<String,Enterprise> enterpriseMap=new HashMap<>();
+        for(Contract c:contractList){
+            if(!enterpriseMap.containsKey(c.getEnterpriseId())){
+                enterpriseMap.put(c.getEnterpriseId(),enterpriseMapper.selectByPrimaryKey(c.getEnterpriseId()));
             }
         }
         return enterpriseMap;

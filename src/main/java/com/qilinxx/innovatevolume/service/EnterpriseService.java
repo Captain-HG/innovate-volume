@@ -1,5 +1,6 @@
 package com.qilinxx.innovatevolume.service;
 
+import com.qilinxx.innovatevolume.domain.model.Contract;
 import com.qilinxx.innovatevolume.domain.model.Enterprise;
 import com.qilinxx.innovatevolume.domain.model.VoucherApply;
 
@@ -15,4 +16,6 @@ public interface EnterpriseService {
     Enterprise updateEnterpriseInfo(Enterprise enterprise);
     /**根据voucherApplyList中的enterpriseId,找到指定的所有企业信息，存入Map中*/
     Map<String,Enterprise> voucherApplyListToEnterpriseMap(List<VoucherApply> voucherApplyList);
+    /**根据contractList中的enterpriseId,找到指定的所有企业信息，存入Map中*/
+    Map<String,Enterprise> contractListToEnterpriseMap(List<Contract> contractList);
 }
