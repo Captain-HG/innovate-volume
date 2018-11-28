@@ -4,7 +4,7 @@ import javax.persistence.Column;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-@Table(name = "provider_id")
+@Table(name = "provider_file")
 public class ProviderFile {
     @Id
     private Integer id;

@@ -52,7 +52,7 @@
 				<div class="formControls col-xs-4 col-sm-1" style="padding-right: 0px">
 				</div>
 				<div class="formControls col-xs-4 col-sm-8" style="padding-left: 0px">
-					<input type="text" class="input-text" placeholder="" name="code" id="codeId" th:value="${provider.code}" />
+					<input type="text" class="input-text" placeholder="" name="code" id="codeId" th:value="${provider.code}" onchange="ajaxRegister()" />
 				</div>
 			</div>
 			<div class="row cl">
@@ -66,7 +66,8 @@
 			<div class="row cl">
 				<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>商家成立时间：</label>
 				<div class="formControls col-xs-8 col-sm-9">
-					<input type="text" name="establishDate"
+					<input type="text" name="establishTime"
+						   th:value="${commons.fmtdate(provider.establishDate)}"
 						   onfocus="WdatePicker({ dateFmt:'yyyy-MM-dd HH:mm' })"
 						   id="establishDateId" class="input-text Wdate">
 				</div>
@@ -254,21 +255,19 @@
         var code = $("#codeId").val();
         var id = $("#idId").val();
         $.ajax({
-            url : "admin-ajaxRegister",
+            url : "admin-provider-codeAjaxRegister",
             data :{"code" : code,"id":id},
             success: function(str) {
-                if ("true" != str) {
-                    //帐号已经被注册
-                    //  $("#accountId").append("<span> 帐号已经存在。请使用其它帐号！ </span>");
-                    alert(str);
-                    //定焦
-                    fys="error";
+                if ("true" == str) {
+                    fys="true";
+                    //账号未存在
+
                 }
                 else {
 
-                    fys="true";
-                    //账号未存在
-                    // $("#accountId span").remove();
+                    //帐号已经被注册
+                    alert(str);
+                    fys="error";
                 }
             }
         });
@@ -281,18 +280,30 @@
 
     $("#form-article-add").validate({
         rules:{
-
             name :{
                 required:true,
                 minlength:5,
                 maxlength:20
             },
             code :{
-                required:true
+                required:true,
+				number:true
             },
-            // aEndTime :{
-            //     required:true
-            // },
+            adminEmail :{
+				email:true
+            },
+			adminPhone:{
+                isMobile:true
+			},
+            cardNo:{
+              number:true
+			},
+            contactEmail:{
+                email:true
+			},
+            contactPhone:{
+                isMobile:true
+			},
             // aStartTime:{
             //     required:true
             // },
@@ -311,21 +322,20 @@
         focusCleanup:true,
         success:"valid",
         submitHandler:function(form){
+            ajaxRegister();
             alert("更新完成");
-            $("form").ajaxSubmit(function (data) {
-                if (fys=="true") {
-                    $("form").ajaxSubmit(function (data) {
-                        var index = parent.layer.getFrameIndex(window.name);
-                        parent.$('#btn-refresh').click();
-                        parent.layer.close(index);
-                    });
-                }
-                else {
-                    alert("完善信息");
-                    return false;
-                }
-            });
-
+            if (fys=="true") {
+                $("form").ajaxSubmit(function (data) {
+                    var index = parent.layer.getFrameIndex(window.name);
+                   // parent.$('#btn-refresh').click();
+					parent.location.reload();
+                    parent.layer.close(index);
+                });
+            }
+            else {
+                alert("确认信息");
+                return false;
+            }
         }
     });
 

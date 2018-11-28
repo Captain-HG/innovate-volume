@@ -2,6 +2,7 @@ package com.qilinxx.innovatevolume.service.serviceImpl;
 
 import com.qilinxx.innovatevolume.domain.mapper.ProviderMapper;
 import com.qilinxx.innovatevolume.domain.model.Provider;
+import com.qilinxx.innovatevolume.domain.model.ProviderExample;
 import com.qilinxx.innovatevolume.service.ProviderService;
 import com.qilinxx.innovatevolume.util.DateKit;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,7 +37,7 @@ public class ProviderServiceImpl implements ProviderService {
     @Override
     public String startProvider(String id) {
         Provider provider = providerMapper.selectByPrimaryKey(id);
-        provider.setState("1");
+        provider.setIsUse("1");
         providerMapper.updateByPrimaryKeySelective(provider);
         return null;
     }
@@ -44,7 +45,7 @@ public class ProviderServiceImpl implements ProviderService {
     @Override
     public String noExamineProvider(String id) {
         Provider provider = providerMapper.selectByPrimaryKey(id);
-        provider.setState("2");
+        provider.setIsUse("0");
         providerMapper.updateByPrimaryKeySelective(provider);
         return null;
     }
@@ -65,5 +66,13 @@ public class ProviderServiceImpl implements ProviderService {
         //provider.setUpdater();//这里相应的进行修改，如果管理员修改添加管理员的信息
         provider.setIsUse("0");
         providerMapper.updateByPrimaryKeySelective(provider);
+    }
+
+    @Override
+    public List<Provider> selectByCode(String code) {
+//        ProviderExample providerExample=new ProviderExample();
+//        providerExample.createCriteria().andCodeEqualTo(code);
+//        providerMapper.selectByExample(providerExample);
+        return   providerMapper.selectByCode(code);
     }
 }

@@ -4,6 +4,7 @@ import com.qilinxx.innovatevolume.domain.model.*;
 import com.qilinxx.innovatevolume.service.*;
 import com.qilinxx.innovatevolume.service.ProviderService;
 import com.qilinxx.innovatevolume.util.Commons;
+import com.qilinxx.innovatevolume.util.DateKit;
 import com.qilinxx.innovatevolume.vo.ContractVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -143,13 +144,16 @@ public class AdminProviderController {
      * @param code
      * @return
      */
-    @RequestMapping("admin-ajaxRegister")
+    @RequestMapping("admin-provider-codeAjaxRegister")
     @ResponseBody
     public String userAjaxRegister(String code,String id) {
+        System.out.println("id和编码："+code+id);
         Provider provider = providerService.selectById(id);
         if (code.equals(provider.getCode())) {
+
             return "true";
         } else {
+
             return providerService.ifCodeUse(code);
         }
     }
@@ -162,6 +166,7 @@ public class AdminProviderController {
     public String providerAddUI(String id,Model model){
         Provider provider = providerService.selectById(id);
         model.addAttribute("provider",provider);
+        model.addAttribute("commons",new Commons());
         return "admin/provider/update";
     }
 
@@ -171,9 +176,11 @@ public class AdminProviderController {
      */
     @RequestMapping("admin-provider-update")
     @ResponseBody
-    public String providerAdd(Provider provider){
+    public String providerAdd(Provider provider,String establishTime){
    System.out.println(provider.toString());
-       providerService.updateProvider(provider);
+   System.out.println("开启时间："+establishTime);
+      provider.setEstablishDate((long)DateKit.getUnixTimeByDate(DateKit.dateFormat(establishTime,"yyyy-MM-dd HH:mm")));
+        providerService.updateProvider(provider);
         return "success";
     }
 

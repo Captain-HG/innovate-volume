@@ -31,64 +31,65 @@
 <body>
 <article class="page-container">
 	<div class="Huiform">
-		<form class="form form-horizontal" id="form-article-add" action="admin-enterprise-staff-update" th:method="post">
+		<form class="form form-horizontal" id="form-article-add" action="admin-userInfo-update" th:method="post">
 
-
+			<!--<div class="row cl">-->
+			<!--<label class="form-label col-xs-4 col-sm-2">举办的商家名：</label>-->
+			<!--<div class="formControls col-xs-5 col-sm-5">-->
+			<!--<input type="text" class="input-text" th:value="${activityVO.provide.pName}" placeholder="" id="pName" name="pName" >-->
+			<!--</div>-->
+			<!--</div>-->
 			<div class="row cl">
 				<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>姓名：</label>
 				<div class="formControls col-xs-4 col-sm-1" style="padding-right: 0px">
 				</div>
 				<div class="formControls col-xs-4 col-sm-8" style="padding-left: 0px">
-					<input type="text" class="input-text" placeholder="张三" name="name" id="nameId" th:value="${enterpriseStaff.name}" />
+					<input type="text" class="input-text" placeholder="喜羊羊" name="name" id="nameId" th:value="${userInfo.name}" />
+				</div>
+			</div>
+			<div class="row cl">
+				<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>商家18位社会统一信用代码或9位组织机构代码：</label>
+				<div class="formControls col-xs-4 col-sm-1" style="padding-right: 0px">
+				</div>
+				<div class="formControls col-xs-4 col-sm-8" style="padding-left: 0px">
+					<input type="text" class="input-text" placeholder="" name="orgcode" id="orgcodeId" th:value="${userInfo.orgcode}" readonly />
+				</div>
+			</div>
+			<div class="row cl">
+				<label class="form-label col-xs-4 col-sm-2">账号类别：</label>
+				<div class="formControls col-xs-4 col-sm-1" style="padding-right: 0px">
+				</div>
+				<div class="formControls col-xs-4 col-sm-8" style="padding-left: 0px">
+					<input type="text" class="input-text" placeholder="" name="userType" id="userTypeId" th:value="${userInfo.userType}" />
 				</div>
 			</div>
 
 			<div class="row cl">
-				<label class="form-label col-xs-4 col-sm-2">年龄：</label>
+				<label class="form-label col-xs-4 col-sm-2">联系手机：</label>
 				<div class="formControls col-xs-4 col-sm-1" style="padding-right: 0px">
 				</div>
 				<div class="formControls col-xs-4 col-sm-8" style="padding-left: 0px">
-					<input type="text" class="input-text" placeholder="" name="age" id="ageId" th:value="${enterpriseStaff.age}" />
-				</div>
-			</div>
-
-			<div class="row cl">
-				<label class="form-label col-xs-4 col-sm-2">职称：</label>
-				<div class="formControls col-xs-4 col-sm-1" style="padding-right: 0px">
-				</div>
-				<div class="formControls col-xs-4 col-sm-8" style="padding-left: 0px">
-					<input type="text" class="input-text" placeholder="199" name="title" id="titleId" th:value="${enterpriseStaff.title}" />
+					<input type="text" class="input-text" placeholder="199" name="phone" id="phoneId" th:value="${userInfo.phone}" />
 				</div>
 			</div>
 			<div class="row cl">
-				<label class="form-label col-xs-4 col-sm-2">学位：</label>
+				<label class="form-label col-xs-4 col-sm-2">固定电话：</label>
 				<div class="formControls col-xs-4 col-sm-1" style="padding-right: 0px">
 				</div>
 				<div class="formControls col-xs-4 col-sm-8" style="padding-left: 0px">
-					<input type="text" class="input-text" placeholder="199" name="degree" id="degreeId" th:value="${enterpriseStaff.degree}" />
-				</div>
-			</div>
-
-			<div class="row cl">
-				<label class="form-label col-xs-4 col-sm-2">创建人：</label>
-				<div class="formControls col-xs-4 col-sm-1" style="padding-right: 0px">
-				</div>
-				<div class="formControls col-xs-4 col-sm-8" style="padding-left: 0px">
-					<input type="text" class="input-text" placeholder="优秀" name="creater" id="createrId" th:value="${enterpriseStaff.creater}" readonly/>
+					<input type="text" class="input-text" placeholder="199" name="tel" id="telId" th:value="${userInfo.tel}" />
 				</div>
 			</div>
 			<div class="row cl">
-				<label class="form-label col-xs-4 col-sm-2">创建时间：</label>
+				<label class="form-label col-xs-4 col-sm-2">联系邮箱：</label>
 				<div class="formControls col-xs-4 col-sm-1" style="padding-right: 0px">
 				</div>
 				<div class="formControls col-xs-4 col-sm-8" style="padding-left: 0px">
-					<input type="text" class="input-text" placeholder="优秀"  id="createTimeId" th:value="${commons.fmtdate(enterpriseStaff.createTime)}" readonly/>
+					<input type="text" class="input-text" placeholder="14@qq.com" name="email" id="emailId" th:value="${userInfo.email}" />
 				</div>
 			</div>
 
-			<div><input type="text" th:value="${enterpriseStaff.id}" name="id" id="idId" hidden="true"></div>
-			<div><input type="text" th:value="${enterpriseStaff.enterpriseId}" name="enterpriseId" id="enterpriseId" hidden="true"></div>
-
+			<div><input type="text" th:value="${userInfo.id}" name="id" id="idId" hidden="true"></div>
 			<div class="row cl">
 				<div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-2">
 					<button  class="btn btn-primary radius" type="submit" id="btn-edit"><i class="Hui-iconfont">&#xe632;</i> 提交待审核</button>
@@ -125,53 +126,33 @@
 
     $("#form-article-add").validate({
         rules:{
-
             name :{
                 required:true,
-                minlength:5,
-                maxlength:20
+                minlength:2,
+                maxlength:7
             },
-            age :{
+            orgCode :{
                 required:true,
-                number:true
+				number:true
             },
-            title :{
-                required:true
-            },
-            degree:{
-                required:true
-            },
-            // aEndTime :{
-            //     required:true
-            // },
-            // aStartTime:{
-            //     required:true
-            // },
-            // aDetail:{
-            //     required:true,
-            //     minlength:5,
-            //     maxlength:16
-            // },
-			// aUrl:{
-            //     required:true,
-			// 	url:true
-			// },
-
+			phone:{
+                required:true,
+                isPhone:true
+			},
+			email:{
+                email:true
+			},
         },
         onkeyup:false,
         focusCleanup:true,
         success:"valid",
         submitHandler:function(form){
-
-            $("form").ajaxSubmit(function (data) {
-
-                    $("form").ajaxSubmit(function (data) {
-                        var index = parent.layer.getFrameIndex(window.name);
-                        parent.location.reload();
-                        parent.layer.close(index);
-                    });
-
-            });
+                $("form").ajaxSubmit(function (data) {
+                    var index = parent.layer.getFrameIndex(window.name);
+                   // parent.$('#btn-refresh').click();
+                    parent.location.reload();
+                    parent.layer.close(index);
+                });
 
         }
     });

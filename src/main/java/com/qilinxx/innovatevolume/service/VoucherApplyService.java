@@ -24,4 +24,6 @@ public interface VoucherApplyService {
     VoucherApply selectById(String applyId);
     /** 重审此申请，设为0*/
     void examineApply(String id);
+    /** 更新*/
+    void update(VoucherApply voucherApply);
 }

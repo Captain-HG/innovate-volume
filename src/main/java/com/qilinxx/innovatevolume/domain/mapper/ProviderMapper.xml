@@ -99,4 +99,7 @@
     contact_email, contact_phone, detail, research_content, result, main_service, support_unit, 
     support_admin, state, is_use, creater, create_time, updater, update_time, remark
   </sql>
+  <select id="selectByCode" resultMap="BaseResultMap">
+  SELECT * FROM provider WHERE code=#{code}
+</select>
 </mapper>

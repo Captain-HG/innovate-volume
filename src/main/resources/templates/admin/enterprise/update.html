@@ -67,6 +67,7 @@
 				<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>商家成立时间：</label>
 				<div class="formControls col-xs-8 col-sm-9">
 					<input type="text" name="establishDate"
+						   th:value="${commons.fmtdate(enterprise.foundDate)}"
 						   onfocus="WdatePicker({ dateFmt:'yyyy-MM-dd HH:mm' })"
 						   id="establishDateId" class="input-text Wdate">
 				</div>
@@ -188,7 +189,7 @@
         var code = $("#codeId").val();
         var id = $("#idId").val();
         $.ajax({
-            url : "admin-ajaxRegister",
+            url : "admin-enterprise-codeAjaxRegister",
             data :{"code" : code,"id":id},
             success: function(str) {
                 if ("true" != str) {
@@ -224,6 +225,12 @@
             code :{
                 required:true
             },
+            contactEmail:{
+                email:true
+            },
+            contactPhone:{
+                isMobile:true
+            },
             // aEndTime :{
             //     required:true
             // },
@@ -250,7 +257,7 @@
                 if (fys=="true") {
                     $("form").ajaxSubmit(function (data) {
                         var index = parent.layer.getFrameIndex(window.name);
-                        parent.$('#btn-refresh').click();
+                        parent.location.reload();
                         parent.layer.close(index);
                     });
                 }

@@ -19,10 +19,10 @@
 <script type="text/javascript" src="lib/DD_belatedPNG_0.0.8a-min.js" ></script>
 <script>DD_belatedPNG.fix('*');</script>
 <![endif]-->
-<title>提供商管理</title>
+<title>科技企业管理</title>
 </head>
 <body>
-<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 用户中心 <span class="c-gray en">&gt;</span> 用户管理 <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
+<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 用户中心 <span class="c-gray en">&gt;</span> 科技企业管理 <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
 <div class="page-container">
 	<div class="text-c">
 		<input type="text" class="input-text" style="width:250px" placeholder="输入商家名称、电话、邮箱" name="">
@@ -30,23 +30,23 @@
 	</div>
 	<div class="cl pd-5 bg-1 bk-gray mt-20"> <span class="l"><a href="javascript:;" th:onclick="'javascript:datadel()'" class="btn btn-danger radius"><i class="Hui-iconfont">&#xe6e2;</i> 批量删除</a> <a class="btn btn-primary radius" data-title="添加商家" data-href="#" onclick="Hui_admin_tab(this)" href="javascript:;"><i class="Hui-iconfont">&#xe600;</i> 添加课程</a></span> <span class="r">共有数据：<strong th:text="${enterpriseList.size()}"></strong> 条</span> </div>
 	<div class="mt-20">
-	<table class="table table-border table-bordered table-hover table-bg ">
+	<table class="table table-border table-bordered table-hover table-bg table-sort">
 		<thead>
 			<tr class="text-c">
 				<th width="25"><input type="checkbox" name="" value=""></th>
-				<th width="80">ID</th>
+				<th width="70">ID</th>
 				<th width="100">科技企业名</th>
 				<th width="90">组织机构代码</th>
-				<th width="">注册时间</th>
-				<th width="">注册资本</th>
-				<th width="">法人代表</th>
-				<th width="">创建人及信息</th>
-				<th width="">联系地址</th>
-				<th width="130">联系人</th>
-				<th width="">材料文件信息</th>
-				<th width="">领军人员</th>
-				<th width="">签署合同</th>
-				<th width="">申请记录</th>
+				<th width="100">注册时间</th>
+				<th width="70">注册资本</th>
+				<th width="50">法人代表</th>
+				<th width="50">创建人及信息</th>
+				<th width="100">联系地址</th>
+				<th width="50">联系人</th>
+				<th width="50">材料文件信息</th>
+				<th width="50">领军人员</th>
+				<th width="50">签署合同</th>
+				<th width="50">申请记录</th>
 				<th width="70">状态</th>
 				<th width="100">操作</th>
 			</tr>

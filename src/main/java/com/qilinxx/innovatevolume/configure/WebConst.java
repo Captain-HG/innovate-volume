@@ -1,5 +1,7 @@
 package com.qilinxx.innovatevolume.configure;
 
+import java.util.List;
+
 /**
  * @Auther: dqsdc
  * @Date: 2018-11-14 16:48
@@ -14,4 +16,5 @@ public class WebConst {
     public static  final String  ALL_STUDENT="all_student";
     public static  final String  ALL_TACHER="all_teacher";
     public static final String[] VOUCHER_CATEGORY={"一般创新券","合作协议创新券","公共技术创新券","扩展型创新券","专项券"};
+    public static  final String [] USER_TYPE={"提供商","科技企业","管理员"};
 }

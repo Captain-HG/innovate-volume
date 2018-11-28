@@ -1,6 +1,7 @@
 package com.qilinxx.innovatevolume.service;
 
 import com.qilinxx.innovatevolume.domain.model.Enterprise;
+import com.qilinxx.innovatevolume.domain.model.Provider;
 
 import java.util.List;
 
@@ -20,4 +21,6 @@ public interface EnterpriseService {
     String ifCodeUse(String code);
     /** 更新科技企业*/
     void updateEnterprise(Enterprise enterprise);
+    /** 根据code查询对象*/
+    List<Enterprise> selectByCode(String code);
 }

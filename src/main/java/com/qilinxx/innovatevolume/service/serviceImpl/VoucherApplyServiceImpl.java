@@ -1,6 +1,7 @@
 package com.qilinxx.innovatevolume.service.serviceImpl;
 
 import com.qilinxx.innovatevolume.domain.mapper.VoucherApplyMapper;
+import com.qilinxx.innovatevolume.domain.model.Voucher;
 import com.qilinxx.innovatevolume.domain.model.VoucherApply;
 import com.qilinxx.innovatevolume.service.EnterpriseService;
 import com.qilinxx.innovatevolume.service.ProviderService;
@@ -53,6 +54,7 @@ public class VoucherApplyServiceImpl implements VoucherApplyService {
         voucherApplyVo.setProviderName(providerService.selectById(voucherApply.getProviderId()).getName());
         voucherApplyVo.setVoucherName(voucherService.selectById(voucherApply.getServiceId()).getName());
         voucherApplyVo.setAppMoney(voucherApply.getAppMoney());
+        voucherApplyVo.setUsageDesc(voucherApply.getUsageDesc());
         voucherApplyVo.setAppUsage(voucherApply.getAppUsage());
         voucherApplyVo.setIsUse(voucherApply.getIsUse());
         voucherApplyVo.setCreater(voucherApply.getCreater());
@@ -109,6 +111,14 @@ public class VoucherApplyServiceImpl implements VoucherApplyService {
         voucherApply.setUpdateTime((long) DateKit.getCurrentUnixTime());
         voucherApply.setIsUse("0");
         //providerFile.setUpdater();相应取修改者
+        voucherApplyMapper.updateByPrimaryKeySelective(voucherApply);
+    }
+
+    @Override
+    public void update(VoucherApply voucherApply) {
+        voucherApply.setIsUse("0");
+        //voucherApply.setUpdater();//相对应
+        voucherApply.setUpdateTime((long) DateKit.getCurrentUnixTime());
         voucherApplyMapper.updateByPrimaryKeySelective(voucherApply);
     }
 

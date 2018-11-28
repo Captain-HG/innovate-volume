@@ -151,6 +151,7 @@ public class AdminEnterpriseController {
     public String enterpriseAddUI(String id,Model model){
         Enterprise enterprise = enterpriseService.selectById(id);
         model.addAttribute("enterprise",enterprise);
+        model.addAttribute("commons",new Commons());
         return "admin/enterprise/update";
     }
 
@@ -303,7 +304,7 @@ public class AdminEnterpriseController {
         List<VoucherApplyVo> voucherApplyVoList = voucherApplyService.selectAllByEnterpriseId(id);
         model.addAttribute("voucherApplyVoList",voucherApplyVoList);
         model.addAttribute("commons",new Commons());
-        return "admin/contract/voucherApply-list";
+        return "admin/enterprise/voucherApply-list";
     }
     /**
      * 使某个申请失效
@@ -330,7 +331,7 @@ public class AdminEnterpriseController {
         return "success";
     }
     /**
-     * 启用某个申请
+     * 重审某个申请
      * @param id 申请id
      * @return 返回成功
      */
@@ -339,6 +340,51 @@ public class AdminEnterpriseController {
     public String examineApply(String id){
         System.out.println(id);
         voucherApplyService.examineApply(id);
+        return "success";
+    }
+    /**
+     * 验证商家码是否已经被注册
+     * @param code
+     * @return
+     */
+    @RequestMapping("admin-enterprise-codeAjaxRegister")
+    @ResponseBody
+    public String userAjaxRegister(String code,String id) {
+        System.out.println("id和编码："+code+id);
+        Enterprise enterprise = enterpriseService.selectById(id);
+        if (code.equals(enterprise.getCode())) {
+            System.out.println("方雨生正确");
+            return "true";
+        }
+        else{
+            return enterpriseService.ifCodeUse(code);
+        }
+    }
+
+    /**
+     * 人员更新页面跳转
+     * @param id 人员id
+     * @param model 传递
+     * @return 跳转
+     */
+    @RequestMapping("admin-enterprise-voucherApply-update.html")
+    public String  voucherApplyUpdateUI( String id,Model model){
+        VoucherApplyVo voucherApplyVo = voucherApplyService.selectVobyId(id);
+        model.addAttribute("voucherApplyVo",voucherApplyVo);
+        model.addAttribute("commons",new Commons());
+        return "admin/enterprise/voucherApply-update";
+    }
+
+    /**
+     * 申请更新
+     * @param voucherApply 申请
+     * @return
+     */
+    @RequestMapping("admin-enterprise-voucherApply-update")
+    @ResponseBody
+    public String  voucherApplyUpdate(VoucherApply voucherApply){
+        System.out.println(voucherApply);
+       voucherApplyService.update(voucherApply);
         return "success";
     }
 }

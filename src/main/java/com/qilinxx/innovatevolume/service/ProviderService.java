@@ -19,4 +19,6 @@ public interface ProviderService {
     String ifCodeUse(String code);
     /** 更新商家*/
     void updateProvider(Provider provider);
+    /** 根据商家码查询*/
+    List<Provider> selectByCode(String code);
 }
