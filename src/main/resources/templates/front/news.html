@@ -10,8 +10,8 @@
                 <li><a th:href="@{/policy}">政策介绍</a></li>
                 <li  class="layui-this"><a th:href="@{news}">最新动态</a></li>
                 <li><a th:href="@{organization}">审核发放机构</a></li>
-                <li><a th:href="@{science}">河北省服务提供机构</a></li>
-                <li><a th:href="@{openinglabs}">京津冀开放实验室</a></li>
+                <li><a th:href="@{science}">服务提供机构</a></li>
+                <!--<li><a th:href="@{openinglabs}">京津冀开放实验室</a></li>-->
                 <li><a th:href="@{answer}">创新券政策解答</a></li>
                 <li><a th:href="@{help}">创新券操作帮助</a></li>
             </ul>
@@ -105,14 +105,16 @@
         $("#tr_file").hide();
         $("#div_html").html("");
         $.post("/json", {id: id}, function (data) {
-            if (data.Title != "") {
-                var html = HtmlUtil.htmlDecode(data.Detail);
-                $("#div_html").html(html);
-
-                if ((data.File != null & data.File != "") == 1) {
-                    $("#tr_file").show();
-                    $("#tr_file").html("<a type=\"text\" title='下载' href=\"" + data.File + "\"  target='_blank'><img src='images/download.png' class=\"ic_PNG\"  style='width:3%;'></img><span  style='font-size:8pt'>下载附件</span></a>");
-                }
+            var html=HtmlUtil.htmlDecode(data);
+            $("#div_html").html(html);
+            // if (data.Title != "") {
+            //     var html = HtmlUtil.htmlDecode(data.Detail);
+            //     $("#div_html").html(html);
+            //
+            //     if ((data.File != null & data.File != "") == 1) {
+            //         $("#tr_file").show();
+            //         $("#tr_file").html("<a type=\"text\" title='下载' href=\"" + data.File + "\"  target='_blank'><img src='images/download.png' class=\"ic_PNG\"  style='width:3%;'></img><span  style='font-size:8pt'>下载附件</span></a>");
+            //     }
                 layer.open({
                     title: data.Title,
                     type: 1,
@@ -123,7 +125,7 @@
                         $('.modal').hide();
                     }
                 });
-            }
+            // }
         });
     }
 

@@ -16,9 +16,10 @@
                     </div>
                     <div class="layui-col-lg7 layui-col-md7 layui-col-xs7 ">
                         <p>
-                            为贯彻落实省委省政府<span><a style="color: #0072c6;" title="点击下载《关于深化科技体制改革加快推进创新发展的实施意见》"
-                                               href="/Document/关于深化科技体制改革加快推进创新发展的实施意见.doc">《关于深化科技体制改革加快推进创新发展的实施意见》</a></span>（冀发〔2015〕14号）科技型中小企业的文件精神，充分调动科技型中小企业和创新创业团队的创新积极性，激励高校、科研院所等科技服务提供机构（以下简称“服务提供机构”）提供创新服务的主动性和积极性，省科技厅和省财政厅决定实施河北省科技创新券（以下简称“创新券”）制度，特制定<span><a
-                                style="color: #0072c6;" title="点击下载《河北省科技创新券实施细则》" href="/Document/河北省科技创新券实施细则.doc">河北省科技创新券实施细则</a></span>。<br/>
+                            <!--为贯彻落实省委省政府<span><a style="color: #0072c6;" title="点击下载《关于深化科技体制改革加快推进创新发展的实施意见》"-->
+                                               <!--href="/Document/关于深化科技体制改革加快推进创新发展的实施意见.doc">《关于深化科技体制改革加快推进创新发展的实施意见》</a></span>（冀发〔2015〕14号）科技型中小企业的文件精神，充分调动科技型中小企业和创新创业团队的创新积极性，激励高校、科研院所等科技服务提供机构（以下简称“服务提供机构”）提供创新服务的主动性和积极性，省科技厅和省财政厅决定实施河北省科技创新券（以下简称“创新券”）制度，特制定<span><a-->
+                                <!--style="color: #0072c6;" title="点击下载《河北省科技创新券实施细则》" href="/Document/河北省科技创新券实施细则.doc">河北省科技创新券实施细则</a></span>。<br/>-->
+                            科技创新动力不足、研发投入不足、创新能力欠缺……当前很多中小微企业普遍存在这些“病症”。日前，为帮助企业打通创新“经脉”，为企业成长“输血助氧”，该市开始实施科技创新券制度。符合条件的中小微科技型企业及创客可申请，享受政府掏钱购买科技服务的政策。<br>
                             创新券是由政府向科技型中小企业和创新创业团队免费发放的权益凭证，主要用于鼓励科技型中小企业和创新创业团队充分利用高等院校、科研院所等创新服务提供机构的资源开展研发活动和科技创新。收取创新券的单位持创新券到指定单位兑换。
                         </p>
                     </div>
@@ -27,15 +28,27 @@
         </div>
         <div class="layui-col-lg4 layui-col-md4 layui-col-xs4 titletwo">
             <h5>
-                <img src="front/images/title.png" style="width: 140px !important;"/>
-                <a href="/Home/VouchersNews" style="display:inline-block;float: right;height: 34px;"><img
-                        src="front/images/more.png" class="imgtwo" style="width: 40px !important;"/></a>
+                <img th:src="@{front/images/title.png}" style="width: 140px !important;"/>
+                <a th:href="@{/news}" style="display:inline-block;float: right;height: 34px;">
+                    <img th:src="@{front/images/more.png}" class="imgtwo" style="width: 40px !important;"/></a>
             </h5>
             <div class="titleonecontentwo">
                 <div class="row">
                     <div class="layui-col-lg12 layui-col-md12 layui-col-xs12 contentwo">
                         <div>
-                            <ul id="ul_news"></ul>
+                            <ul id="ul_news">
+                                <li><span class="dote"></span><a
+                                        href="javascript:Look(75);">关于提供与京津企业开展科技创新券合作项目信息的通知 </a><span>2018-10-10 16:23:20 省科技厅</span>
+                                </li>
+                                <li><span class="dote"></span><a href="javascript:Look(73);">2017年第二批科技创新券拟兑付资金公示 </a><span>2018-05-25 10:33:11 省科技厅</span>
+                                </li>
+                                <li><span class="dote"></span><a href="javascript:Look(71);">关于将河北省科技创新券创新服务提供机构纳入京津冀三地创新券共享机构目录库的通知 </a><span>2017-09-28 18:07:32 省科技厅</span>
+                                </li>
+                                <li><span class="dote"></span><a href="javascript:Look(70);">关于开展2017年度科技创新券
+                                    首批兑付工作的通知 </a><span>2017-08-06 21:12:07 省科技厅</span></li>
+                                <li><span class="dote"></span><a href="javascript:Look(69);">关于确定河北省首批科技创新券审核发放机构的通知 </a><span>2017-07-24 09:36:13 省科技厅</span>
+                                </li>
+                            </ul>
                         </div>
                     </div>
                 </div>
@@ -46,7 +59,7 @@
         <div class="clearfix"></div>
         <div class="titletwocontent">
             <ul>
-                <li onclick="javascript: window.location.href = '/Home/OpeningLabs'">
+                <li onclick="javascript: window.location.href = '/openinglabs'">
                     <h4>服务提供机构数量</h4>
                     <p><span style="color: #f59c00;">135</span>个</p>
                 </li>
@@ -87,9 +100,9 @@
         </div>
         <div class="layui-col-lg4 layui-col-md4 layui-col-xs4 titletwo">
             <h5>
-                <img src="front/images/title2.png" style="width: 140px !important;"/>
+                <img th:src="@{front/images/title2.png}" style="width: 140px !important;"/>
                 <a th:href="@{/answer}" style="display:inline-block;float: right;height: 34px;"><img
-                        src="front/images/more.png" class="imgtwo" style="width: 40px !important;"/></a>
+                        th:src="@{front/images/more.png}" class="imgtwo" style="width: 40px !important;"/></a>
             </h5>
             <div class="titleonecontentwo" style="height: 360px;">
                 <div class="row">
@@ -115,13 +128,13 @@
     <div class="row" style="margin-top: 45px;">
         <div class="layui-col-lg6 layui-col-md6 layui-col-xs6 titleone">
             <h5>
-                <img src="front/images/title5.png" style="width: 180px !important;"/>
+                <img th:src="@{front/images/title5.png}" style="width: 180px !important;"/>
             </h5>
             <div class="titleonecontent" style="height:415px;">
                 <div class="row">
                     <div class="layui-col-lg12 layui-col-md12 layui-col-xs12 contentwo">
                         <div style="height: 394px;">
-                            <a href="/Home/OpeningLabs">
+                            <a href="/openinglabs">
                                 <p class="layui-col-lg12 layui-col-md12 layui-col-xs12"><img
                                         th:src="@{front/images/service.png}" width="100%"/></p>
                                 <p class="layui-col-lg6 layui-col-md6 layui-col-xs6">
@@ -177,19 +190,6 @@
         return source.join(".");//再将小数部分合并进来
     }
 
-    //网站维护
-    //$(document).ready(function () {
-    //    alert("    创新券平台内部测试中，正式发布前将会把内部测试数据全部清空，具体开放时间请查看科技厅网站，创新劵平台和微信公众号。");
-    //});
-
-    // var _hmt = _hmt || [];
-    // (function () {
-    //     var hm = document.createElement("script");
-    //     hm.src = "//hm.baidu.com/hm.js?e3dde0791e1ea1c055b4b0b47418cd6c";
-    //     var s = document.getElementsByTagName("script")[0];
-    //     s.parentNode.insertBefore(hm, s);
-    // })();
-
     $(function () {
         var navigatorName = "Microsoft Internet Explorer";
         var isIE = false;
@@ -209,32 +209,58 @@
             $("#ul_news").append("<li><a href='javascript:Look(" + data[o].TableID + ");'>" + data[o].Title + "</a></li>");
         }
     });
-
     function Look(id) {
         $("#tr_file").hide();
         $("#div_html").html("");
-        $.post("/Home/GetNewsNotice", {id: id}, function (data) {
-            if (data.Title != "") {
-                var html = HtmlUtil.htmlDecode(data.Detail);
-                $("#div_html").html(html);
-
-                if ((data.File != null & data.File != "") == 1) {
-                    $("#tr_file").show();
-                    $("#div_file").html("<a type=\"text\" title='下载' href=\"" + data.File + "\"  target='_blank'><img src='images/download.png' class=\"ic_PNG\"></img><span  style='font-size:8pt'>下载附件</span></a>");
+        $.post("/json", {id: id}, function (data) {
+            var html=HtmlUtil.htmlDecode(data);
+            $("#div_html").html(html);
+            // if (data.Title != "") {
+            //     var html = HtmlUtil.htmlDecode(data.Detail);
+            //     $("#div_html").html(html);
+            //
+            //     if ((data.File != null & data.File != "") == 1) {
+            //         $("#tr_file").show();
+            //         $("#tr_file").html("<a type=\"text\" title='下载' href=\"" + data.File + "\"  target='_blank'><img src='images/download.png' class=\"ic_PNG\"  style='width:3%;'></img><span  style='font-size:8pt'>下载附件</span></a>");
+            //     }
+            layer.open({
+                title: data.Title,
+                type: 1,
+                skin: 'layui-layer-rim', //加上边框
+                area: ['1204px', 'auto'], //宽高
+                content: $("#Mymodel"),
+                end: function () { //关闭后回调函数
+                    $('.modal').hide();
                 }
-                layer.open({
-                    title: data.Title,
-                    type: 1,
-                    skin: 'layui-layer-rim', //加上边框
-                    area: ['1204px', 'auto'], //宽高
-                    content: $("#Mymodel"),
-                    end: function () { //关闭后回调函数
-                        $('.modal').hide();
-                    }
-                });
-            }
+            });
+            // }
         });
     }
+    // function Look(id) {
+    //     $("#tr_file").hide();
+    //     $("#div_html").html("");
+    //     $.post("/json", {id: id}, function (data) {
+    //         if (data.Title != "") {
+    //             var html = HtmlUtil.htmlDecode(data.Detail);
+    //             $("#div_html").html(html);
+    //
+    //             if ((data.File != null & data.File != "") == 1) {
+    //                 $("#tr_file").show();
+    //                 $("#div_file").html("<a type=\"text\" title='下载' href=\"" + data.File + "\"  target='_blank'><img src='images/download.png' class=\"ic_PNG\"></img><span  style='font-size:8pt'>下载附件</span></a>");
+    //             }
+    //             layer.open({
+    //                 title: data.Title,
+    //                 type: 1,
+    //                 skin: 'layui-layer-rim', //加上边框
+    //                 area: ['1204px', 'auto'], //宽高
+    //                 content: $("#Mymodel"),
+    //                 end: function () { //关闭后回调函数
+    //                     $('.modal').hide();
+    //                 }
+    //             });
+    //         }
+    //     });
+    // }
 
     var HtmlUtil = {
         /*1.用浏览器内部转换器实现html转码*/
