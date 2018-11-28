@@ -7,34 +7,32 @@ import com.qilinxx.innovatevolume.service.EnterpriseService;
 import com.qilinxx.innovatevolume.service.ProviderService;
 import com.qilinxx.innovatevolume.service.UserInfoService;
 import com.qilinxx.innovatevolume.util.DateKit;
-import com.qilinxx.innovatevolume.vo.UserInfoVo;
-import com.qilinxx.innovatevolume.vo.VoucherApplyVo;
-import com.qilinxx.innovatevolume.util.DateKit;
 import com.qilinxx.innovatevolume.util.UUID;
+import com.qilinxx.innovatevolume.vo.UserInfoVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class UserInfoServiceImpl implements UserInfoService {
     @Autowired
     private UserInfoMapper userInfoMapper;
+
     @Autowired
-    private ProviderService providerService;
+    ProviderService providerService;
+
     @Autowired
-    private EnterpriseService enterpriseService;
+    EnterpriseService enterpriseService;
 
     @Override
     public UserInfo selectByCode(String code) {
-        UserInfoExample userInfoExample=new UserInfoExample();
+        UserInfoExample userInfoExample = new UserInfoExample();
         userInfoExample.createCriteria().andOrgcodeEqualTo(code);
-        return  userInfoMapper.selectByExample(userInfoExample).get(0);
+        return userInfoMapper.selectByExample(userInfoExample).get(0);
     }
 
-    @Override
-    public UserInfo updateUserInfoPassword(UserInfo userInfo) {
-        userInfoMapper.updateByPrimaryKeySelective(userInfo);
-        return userInfoMapper.selectByPrimaryKey(userInfo.getId());
-    }
 
     @Override
     public List<UserInfoVo> selectVoAll() {
@@ -69,13 +67,13 @@ public class UserInfoServiceImpl implements UserInfoService {
             List<Provider> providerList = providerService.selectByCode(userInfo.getOrgcode());
             if (providerList.size()==1){
                 //设置名字
-              userInfoVo.setCompanyName(providerList.get(0).getName());
+                userInfoVo.setCompanyName(providerList.get(0).getName());
             }
             else{
                 userInfoVo.setCompanyName("null");
             }
         }
-         else if (userInfo.getUserType().equals(WebConst.USER_TYPE[1])){//科技企业
+        else if (userInfo.getUserType().equals(WebConst.USER_TYPE[1])){//科技企业
             List<Enterprise> enterpriseList = enterpriseService.selectByCode(userInfo.getOrgcode());
             if(enterpriseList.size()==1){
                 userInfoVo.setCompanyName(enterpriseList.get(0).getName());
@@ -97,9 +95,9 @@ public class UserInfoServiceImpl implements UserInfoService {
 
     @Override
     public void updateUserInfo(UserInfo userInfo) {
-       // userInfo.setUpdater();
-         userInfo.setUpdateTime((long) DateKit.getCurrentUnixTime());
-         userInfo.setIsUse("0");
+        // userInfo.setUpdater();
+        userInfo.setUpdateTime((long) DateKit.getCurrentUnixTime());
+        userInfo.setIsUse("0");
         userInfoMapper.updateByPrimaryKeySelective(userInfo);
     }
 
@@ -119,6 +117,13 @@ public class UserInfoServiceImpl implements UserInfoService {
         //userInfo.setUpdater();
         userInfo.setIsUse("1");
         userInfoMapper.updateByPrimaryKeySelective(userInfo);
+    }
+
+
+    @Override
+    public UserInfo updateUserInfoPassword(UserInfo userInfo) {
+        userInfoMapper.updateByPrimaryKeySelective(userInfo);
+        return userInfoMapper.selectByPrimaryKey(userInfo.getId());
     }
 
     @Override

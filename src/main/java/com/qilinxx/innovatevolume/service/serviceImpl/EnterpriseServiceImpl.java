@@ -2,13 +2,13 @@ package com.qilinxx.innovatevolume.service.serviceImpl;
 
 import com.qilinxx.innovatevolume.configure.WebConst;
 import com.qilinxx.innovatevolume.domain.mapper.EnterpriseMapper;
+import com.qilinxx.innovatevolume.domain.model.Contract;
 import com.qilinxx.innovatevolume.domain.model.Enterprise;
 import com.qilinxx.innovatevolume.domain.model.EnterpriseExample;
-import com.qilinxx.innovatevolume.domain.model.Provider;
+import com.qilinxx.innovatevolume.domain.model.VoucherApply;
 import com.qilinxx.innovatevolume.service.EnterpriseService;
 import com.qilinxx.innovatevolume.util.DateKit;
 import com.qilinxx.innovatevolume.util.UUID;
-import com.qilinxx.innovatevolume.util.DateKit;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,6 +23,84 @@ public class EnterpriseServiceImpl implements EnterpriseService {
     EnterpriseMapper enterpriseMapper;
 
     @Override
+    public Enterprise selectById(String id) {
+        return enterpriseMapper.selectByPrimaryKey(id);
+    }
+
+
+    @Override
+    public String examineEnterprise(String id) {
+        Enterprise enterprise = enterpriseMapper.selectByPrimaryKey(id);
+        enterprise.setIsUse("0");
+        enterpriseMapper.updateByPrimaryKeySelective(enterprise);
+        return null;
+    }
+
+    @Override
+    public String startEnterprise(String id) {
+        Enterprise enterprise = enterpriseMapper.selectByPrimaryKey(id);
+        enterprise.setIsUse("1");
+        enterpriseMapper.updateByPrimaryKeySelective(enterprise);
+        return null;
+    }
+
+    @Override
+    public String noExamineEnterprise(String id) {
+        Enterprise enterprise = enterpriseMapper.selectByPrimaryKey(id);
+        enterprise.setIsUse("2");
+        enterpriseMapper.updateByPrimaryKeySelective(enterprise);
+        return null;
+    }
+
+    @Override
+    public String ifCodeUse(String code) {
+        List<Enterprise> enterpriseList = enterpriseMapper.selectByCode(code);
+        if (enterpriseList!=null||enterpriseList.size()>0)
+        {
+            return "已被注册的商家码";
+        }
+        return "true";
+    }
+
+    @Override
+    public void updateEnterprise(Enterprise enterprise) {
+        //enterprise.setUpdater();//相对应的设置修改者
+        enterprise.setUpdateTime((long) DateKit.getCurrentUnixTime());
+        enterprise.setIsUse("0");
+        enterpriseMapper.updateByPrimaryKeySelective(enterprise);
+    }
+
+    @Override
+    public List<Enterprise> selectByCode(String code) {
+        return enterpriseMapper.selectByCode(code);
+    }
+    @Override
+    public Map<String, Enterprise> contractListToEnterpriseMap(List<Contract> contractList) {
+        Map<String, Enterprise> enterpriseMap=new HashMap<>();
+        for(Contract c:contractList){
+            if(!enterpriseMap.containsKey(c.getEnterpriseId())){
+                enterpriseMap.put(c.getEnterpriseId(),enterpriseMapper.selectByPrimaryKey(c.getEnterpriseId()));
+            }
+        }
+        return enterpriseMap;
+    }
+    @Override
+    public Enterprise selectEnterpriseById(String id) {
+        return enterpriseMapper.selectByPrimaryKey(id);
+    }
+
+    @Override
+    public Map<String, Enterprise> voucherApplyListToEnterpriseMap(List<VoucherApply> voucherApplyList) {
+        Map<String, Enterprise> enterpriseMap=new HashMap<>();
+        for(VoucherApply v:voucherApplyList){
+            if(!enterpriseMap.containsKey(v.getEnterpriseId())){
+                enterpriseMap.put(v.getEnterpriseId(),enterpriseMapper.selectByPrimaryKey(v.getEnterpriseId()));
+            }
+        }
+        return enterpriseMap;
+    }
+
+    @Override
     public List<Enterprise> selectAll() {
         return enterpriseMapper.selectAll();
     }
@@ -35,9 +113,7 @@ public class EnterpriseServiceImpl implements EnterpriseService {
     }
 
     @Override
-    public String noExamineEnterprise(String id) {
-        Enterprise enterprise = enterpriseMapper.selectByPrimaryKey(id);
-        enterprise.setIsUse("2");
+    public Enterprise updateEnterpriseInfo(Enterprise enterprise) {
         enterpriseMapper.updateByPrimaryKeySelective(enterprise);
         return enterpriseMapper.selectByPrimaryKey(enterprise.getId());
     }
@@ -67,7 +143,7 @@ public class EnterpriseServiceImpl implements EnterpriseService {
      * @param txtIntroduce         企业简介
      * @param txtTechCertificate   科技型中小企业认证编号
      */
-
+    @Override
     public String addEnterpriseUser(String txtCompanyName, String txtOrganizationCode, String txtRegDate, String txtCreateTime, BigDecimal txtRegisteredCapital, BigDecimal txtLastYearIncome, int txtEmployeesNum, String txtLegalPerson, String txtContactName, String txtContactPhone, String txtContactMail, String field, String txtAccountName, String txtBankName, String txtBankID, String txtBankAccount, String txtRegAddress, String txtCompanyAddress, String Area2, String txtIntroduce, String txtTechCertificate) {
         Enterprise enterprise = new Enterprise();
         String uuid=UUID.UU32();
@@ -100,25 +176,5 @@ public class EnterpriseServiceImpl implements EnterpriseService {
         enterpriseMapper.insert(enterprise);
         return uuid;
     }
-    @Override
-    public String ifCodeUse(String code) {
-        List<Enterprise> enterpriseList = enterpriseMapper.selectByCode(code);
-        if (enterpriseList!=null||enterpriseList.size()>0)
-        {
-            return "已被注册的商家码";
-        }
-        return "true";
-    }
-    @Override
-    public void updateEnterprise(Enterprise enterprise) {
-      //enterprise.setUpdater();//相对应的设置修改者
-        enterprise.setUpdateTime((long) DateKit.getCurrentUnixTime());
-        enterprise.setIsUse("0");
-        enterpriseMapper.updateByPrimaryKeySelective(enterprise);
-    }
 
-    @Override
-    public List<Enterprise> selectByCode(String code) {
-        return enterpriseMapper.selectByCode(code);
-    }
 }
