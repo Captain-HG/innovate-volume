@@ -1,7 +1,6 @@
 package com.qilinxx.innovatevolume.service.serviceImpl;
 
 import com.qilinxx.innovatevolume.domain.mapper.ProviderStaffMapper;
-import com.qilinxx.innovatevolume.domain.model.ProviderFile;
 import com.qilinxx.innovatevolume.domain.model.ProviderStaff;
 import com.qilinxx.innovatevolume.service.ProviderStaffService;
 import com.qilinxx.innovatevolume.util.DateKit;
@@ -14,6 +13,16 @@ import java.util.List;
 public class ProviderStaffServiceImpl implements ProviderStaffService {
   @Autowired
     ProviderStaffMapper providerStaffMapper;
+
+    @Override
+    public void insertProviderStaff(ProviderStaff providerStaff) {
+        providerStaffMapper.insert(providerStaff);
+    }
+
+    @Override
+    public void deleteProviderStaff(String id) {
+        providerStaffMapper.deleteByPrimaryKey(Integer.parseInt(id));
+    }
 
     @Override
     public List<ProviderStaff> selectAllByProviderId(String id) {

@@ -118,7 +118,7 @@ public class EnterpriseController {
         enterprise.setId(this.enterprise.getId());
         this.enterprise=enterpriseService.updateEnterpriseInfo(enterprise);
         Map<String ,String > map=new HashMap<>();
-        map.put("msg","修改成功");
+        map.put("msg","修改成功!");
         return map;
     }
     /**

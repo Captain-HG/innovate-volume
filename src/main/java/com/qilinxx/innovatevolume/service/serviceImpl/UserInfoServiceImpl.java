@@ -2,7 +2,10 @@ package com.qilinxx.innovatevolume.service.serviceImpl;
 
 import com.qilinxx.innovatevolume.configure.WebConst;
 import com.qilinxx.innovatevolume.domain.mapper.UserInfoMapper;
-import com.qilinxx.innovatevolume.domain.model.*;
+import com.qilinxx.innovatevolume.domain.model.Enterprise;
+import com.qilinxx.innovatevolume.domain.model.Provider;
+import com.qilinxx.innovatevolume.domain.model.UserInfo;
+import com.qilinxx.innovatevolume.domain.model.UserInfoExample;
 import com.qilinxx.innovatevolume.service.EnterpriseService;
 import com.qilinxx.innovatevolume.service.ProviderService;
 import com.qilinxx.innovatevolume.service.UserInfoService;

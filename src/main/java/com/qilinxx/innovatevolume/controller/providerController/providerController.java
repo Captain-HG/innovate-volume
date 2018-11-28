@@ -100,7 +100,11 @@ public class providerController {
         provider.setId(this.provider.getId());
         this.provider=providerService.updateProviderInfo(provider);
         Map<String,String> map=new HashMap<>();
-        map.put("msg","修改成功！");
+        if(this.provider.getIsUse().equals("0")){
+            map.put("msg","修改成功(待审核)！");
+        }else {
+            map.put("msg","修改成功！");
+        }
         return map;
     }
     /**
@@ -316,8 +320,36 @@ public class providerController {
         model.addAttribute("dateKit",new DateKit());
         return "provider/provider-staff-list";
     }
+    @PostMapping("ajax-provider-delete-staff")
+    @ResponseBody
+    public Map<String,String> ajaxProviderDeleteStaff(String id){
+        Map<String,String> map=new HashMap<>();
+        providerStaffService.deleteProviderStaff(id);
+        map.put("msg","删除成功！");
+        return map;
+    }
+    /**
+     * 该提供商添加人员
+     * @return 提供商添加人员列表
+     */
     @GetMapping("provider-add-staff.html")
     public String providerAddStaff(){
         return "provider/provider-add-staff";
     }
+    /**
+     * ajax提供商添加人员
+     */
+    @PostMapping("ajax-provider-add-staff")
+    @ResponseBody
+    public Map<String,String> ajaxProviderAddStaff(ProviderStaff providerStaff){
+        Map<String,String> map=new HashMap<>();
+        providerStaff.setProviderId(this.provider.getId());
+        providerStaff.setIsUse("0");
+        providerStaff.setCreater(this.userInfo.getName());
+        providerStaff.setCreateTime(Long.parseLong(String.valueOf(DateKit.getUnixTimeByDate(DateKit.getNowTime()))));
+        providerStaffService.insertProviderStaff(providerStaff);
+        map.put("msg","添加成功(待审核)!");
+        return map;
+    }
+
 }

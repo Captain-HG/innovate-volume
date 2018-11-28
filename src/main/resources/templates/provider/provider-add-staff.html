@@ -57,6 +57,12 @@
             </div>
         </div>
         <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-3">【人才类别】</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="text" name="category" class="input-text radius" />
+            </div>
+        </div>
+        <div class="row cl">
             <label class="form-label col-xs-4 col-sm-3">【备注】</label>
             <div class="formControls col-xs-8 col-sm-9">
                 <textarea name="remark" cols="" rows="" class="textarea radius"  placeholder="说点什么...100字以内" onKeyUp="$.Huitextarealength(this,100)"></textarea>
@@ -100,8 +106,7 @@
                     number:true
                 },
                 title:{
-                    required:true,
-                    isIdCardNo:true
+                    required:true
                 },
                 degree:{
                     required:true
@@ -113,10 +118,10 @@
             submitHandler:function(form){
                 $(form).ajaxSubmit({
                     type: 'post',
-                    url: "/ajax-enterprise-add-staff" ,
+                    url: "/ajax-provider-add-staff" ,
                     dataType:"json",
                     success: function(data){
-                        if(data.msg=='人员添加成功(待审核)'){
+                        if(data.msg=='添加成功(待审核)!'){
                             layer.msg(data.msg,{icon:1,time:1500});
                         }else {
                             layer.msg(data.msg,{icon:2,time:1500});
