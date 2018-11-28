@@ -24,32 +24,48 @@
     <![endif]-->
     <!--/meta 作为公共模版分离出去-->
 
-    <title>修改密码 - 会员管理 - H-ui.admin v3.1</title>
+    <title>添加用户 - H-ui.admin v3.1</title>
     <meta name="keywords" content="H-ui.admin v3.1,H-ui网站后台模版,后台模版下载,后台管理系统模版,HTML后台模版下载">
     <meta name="description" content="H-ui.admin v3.1，是一款由国人开发的轻量级扁平化网站后台模板，完全免费开源的网站后台管理系统模版，适合中小型CMS后台系统。">
 </head>
 <body>
+<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 创新券企业 <span class="c-gray en">&gt;</span> 人员信息 <span class="c-gray en">&gt;</span> 添加人员 <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
 <article class="page-container">
-    <form action="/" method="post" class="form form-horizontal" id="form-change-password">
+    <form  method="post" class="form form-horizontal" id="form-member-add">
         <div class="row cl">
-            <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>账户：</label>
-            <div class="formControls col-xs-8 col-sm-9" th:text="${userName}"> 张三 </div>
-        </div>
-        <div class="row cl">
-            <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>新密码：</label>
+            <label class="form-label col-xs-4 col-sm-3">【姓名】<span class="c-red">*</span></label>
             <div class="formControls col-xs-8 col-sm-9">
-                <input type="password" class="input-text" autocomplete="off" placeholder="输入密码" name="password" id="password">
+                <input type="text" name="name" class="input-text radius" />
             </div>
         </div>
         <div class="row cl">
-            <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>确认密码：</label>
+            <label class="form-label col-xs-4 col-sm-3">【年龄】<span class="c-red">*</span></label>
             <div class="formControls col-xs-8 col-sm-9">
-                <input type="password" class="input-text" autocomplete="off" placeholder="两次输入密码需一致" name="password2" id="password2">
+                <input type="text" name="age" class="input-text radius" />
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-3">【身份证号码】<span class="c-red">*</span></label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="text" name="title" class="input-text radius" />
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-3">【学位】<span class="c-red">*</span></label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="text" name="degree" class="input-text radius" />
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-3">【备注】</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <textarea name="remark" cols="" rows="" class="textarea radius"  placeholder="说点什么...100字以内" onKeyUp="$.Huitextarealength(this,100)"></textarea>
+                <p class="textarea-numberbar"><em class="textarea-length">0</em>/100</p>
             </div>
         </div>
         <div class="row cl">
             <div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-3">
-                <input class="btn btn-primary radius" type="submit" value="&nbsp;&nbsp;保存&nbsp;&nbsp;">
+                <input class="btn btn-primary radius" type="submit" value="&nbsp;&nbsp;提交(待审核)&nbsp;&nbsp;">
             </div>
         </div>
     </form>
@@ -59,26 +75,36 @@
 <script type="text/javascript" src="lib/jquery/1.9.1/jquery.min.js"></script>
 <script type="text/javascript" src="lib/layer/2.4/layer.js"></script>
 <script type="text/javascript" src="static/h-ui/js/H-ui.min.js"></script>
-<script type="text/javascript" src="static/h-ui.admin/js/H-ui.admin.js"></script> <!--/_footer /作为公共模版分离出去-->
+<script type="text/javascript" src="static/h-ui.admin/js/H-ui.admin.js"></script> <!--/_footer 作为公共模版分离出去-->
 
 <!--请在下方写此页面业务相关的脚本-->
+<script type="text/javascript" src="lib/My97DatePicker/4.8/WdatePicker.js"></script>
 <script type="text/javascript" src="lib/jquery.validation/1.14.0/jquery.validate.js"></script>
 <script type="text/javascript" src="lib/jquery.validation/1.14.0/validate-methods.js"></script>
 <script type="text/javascript" src="lib/jquery.validation/1.14.0/messages_zh.js"></script>
 <script type="text/javascript">
     $(function(){
-        $("#form-change-password").validate({
+        $('.skin-minimal input').iCheck({
+            checkboxClass: 'icheckbox-blue',
+            radioClass: 'iradio-blue',
+            increaseArea: '20%'
+        });
+
+        $("#form-member-add").validate({
             rules:{
-                password:{
-                    required:true,
-                    minlength:6,
-                    maxlength:16
+                name:{
+                    required:true
                 },
-                password2:{
+                age:{
                     required:true,
-                    minlength:6,
-                    maxlength:16,
-                    equalTo: "#password"
+                    number:true
+                },
+                title:{
+                    required:true,
+                    isIdCardNo:true
+                },
+                degree:{
+                    required:true
                 }
             },
             onkeyup:false,
@@ -87,18 +113,20 @@
             submitHandler:function(form){
                 $(form).ajaxSubmit({
                     type: 'post',
-                    url: "/ajax-enterprise-change-password" ,
+                    url: "/ajax-enterprise-add-staff" ,
                     dataType:"json",
                     success: function(data){
-                        layer.msg(data.msg,{icon:1,time:1500});
+                        if(data.msg=='人员添加成功(待审核)'){
+                            layer.msg(data.msg,{icon:1,time:1500});
+                        }else {
+                            layer.msg(data.msg,{icon:2,time:1500});
+                        }
                     },
                     error: function(XmlHttpRequest, textStatus, errorThrown){
-                        layer.msg('error!',{icon:1,time:1500});
+                        layer.msg('error!',{icon:2,time:1500});
                     }
                 });
-                var index = parent.layer.getFrameIndex(window.name);
-                parent.$('.btn-refresh').click();
-                parent.layer.close(index);
+
             }
         });
     });

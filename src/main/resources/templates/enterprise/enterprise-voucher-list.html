@@ -42,7 +42,7 @@
                 <td th:text="${vouchers.indexOf(voucher)+1}"></td>
                 <td th:text="${voucher.name}">1</td>
                 <td th:text="${voucher.type}"></td>
-                <td><u style="cursor:pointer" class="text-primary" onclick="provider_info(this.innerHTML,'enterprise-info.html','10001','1100','600')" th:text="${providerMap.get(voucher.providerId).name}">张三</u></td>
+                <td><u style="cursor:pointer" class="text-primary" th:onclick="'provider_info(\'企业详情\',\'enterprise-provider-info.html\',\''+${providerMap.get(voucher.providerId).id}+'\',\'400\',\'600\')'" th:text="${providerMap.get(voucher.providerId).name}">张三</u></td>
                 <td th:text="${dateKit.formatDateByUnixTime(voucher.createTime)}">2014-6-11 11:11:42</td>
                 <td class="text-l" th:text="${voucher.remark}">北京市 海淀区</td>
                 <td class="td-status"><span class="label label-success radius">已启用</span></td>
@@ -73,12 +73,12 @@
         });
 
     });
-    /*用户-查看*/
+    /*提供商-查看*/
     function provider_info(title,url,id,w,h){
-        layer_show(title,url,w,h);
+        layer_show(title,url+'?id='+id,w,h);
     }
 
-    /*用户-编辑*/
+    /*创新券-申请*/
     function voucher_apply(title,url,id,w,h){
             layer_show(title,url+"?id="+id,w,h);
     }

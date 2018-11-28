@@ -95,8 +95,26 @@
             <dt><i class="Hui-iconfont">&#xe60d;</i> 人员信息<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
             <dd>
                 <ul>
-                    <li><a data-href="article-list.html" data-title="资料" href="javascript:void(0)">查看信息</a></li>
-                    <li><a data-href="article-list.html" data-title="修改资料" href="javascript:void(0)">修改信息</a></li>
+                    <li><a data-href="provider-add-staff.html" data-title="添加人员" href="javascript:void(0)">添加人员</a></li>
+                    <li><a data-href="provider-staff-list.html" data-title="查看人员信息" href="javascript:void(0)">查看人员信息</a></li>
+                </ul>
+            </dd>
+        </dl>
+        <dl th:if="${provider.isUse=='1'}">
+            <dt><i class="Hui-iconfont">&#xe61a;</i> 创新券服务<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+            <dd>
+                <ul>
+                    <li><a data-href="provider-release-service.html" data-title="发布服务内容" href="javascript:void(0)">发布服务内容</a></li>
+                    <li><a data-href="provider-service-list.html" data-title="查看已发布服务" href="javascript:void(0)">查看已发布服务</a></li>
+                </ul>
+            </dd>
+        </dl>
+        <dl th:if="${provider.isUse=='0'}">
+            <dt><i class="Hui-iconfont">&#xe61a;</i> 创新券服务<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+            <dd>
+                <ul>
+                    <li><a data-href="provider-welcome" data-title="发布服务内容" href="javascript:void(0)">发布服务内容</a></li>
+                    <li><a data-href="provider-welcome" data-title="查看已发布服务" href="javascript:void(0)">查看已发布服务</a></li>
                 </ul>
             </dd>
         </dl>
@@ -106,7 +124,7 @@
                 <ul>
                     <li><a data-href="provider-release-voucher.html" data-title="发布创新券" href="javascript:void(0)">发布创新券</a></li>
                     <li><a data-href="provider-voucher-list.html" data-title="查看已发布创新券" href="javascript:void(0)">查看已发布创新券</a></li>
-                    <li><a data-href="provider-voucher-apply-list.html" data-title="创新券申请记录" href="javascript:void(0)">查看申请记录</a></li>
+                    <li><a data-href="provider-voucher-apply-list.html" data-title="查看企业申请记录" href="javascript:void(0)">查看企业申请记录</a></li>
                 </ul>
             </dd>
         </dl>
@@ -116,7 +134,7 @@
                 <ul>
                     <li><a data-href="provider-welcome" onclick="no_authority()" data-title="发布创新券" href="javascript:void(0)">发布创新券</a></li>
                     <li><a data-href="provider-welcome" onclick="no_authority()" data-title="查询创新券" href="javascript:void(0)">查看已发布创新券</a></li>
-                    <li><a data-href="provider-welcome" onclick="no_authority()" data-title="创新券申请记录" href="javascript:void(0)">查看申请记录</a></li>
+                    <li><a data-href="provider-welcome" onclick="no_authority()" data-title="查看企业申请记录" href="javascript:void(0)">查看企业申请记录</a></li>
                 </ul>
             </dd>
         </dl>

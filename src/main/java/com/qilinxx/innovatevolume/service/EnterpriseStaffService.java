@@ -15,4 +15,9 @@ public interface EnterpriseStaffService {
     EnterpriseStaff selectById(Integer id);
     /** 更新人员*/
     void updateEnterpriseStaff(EnterpriseStaff enterpriseStaff);
+    /**添加一条记录*/
+    void insertEnterpriseStaff(EnterpriseStaff enterpriseStaff);
+    /**根据id删除一条记录*/
+    void deleteEnterpriseStaff(String id);
+
 }

@@ -11,5 +11,6 @@ public interface EnterpriseFileService {
     void noExamineFile(Integer id);
     /** 启用文件*/
     void startFile(Integer id);
+
     String addFile(String enterpriseId,String path,String filename,String create);
 }

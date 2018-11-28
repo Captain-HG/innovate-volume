@@ -2,10 +2,7 @@ package com.qilinxx.innovatevolume.service.serviceImpl;
 
 import com.qilinxx.innovatevolume.domain.mapper.ContractMapper;
 import com.qilinxx.innovatevolume.domain.mapper.EnterpriseMapper;
-import com.qilinxx.innovatevolume.domain.model.Contract;
-import com.qilinxx.innovatevolume.domain.model.Enterprise;
-import com.qilinxx.innovatevolume.domain.model.Voucher;
-import com.qilinxx.innovatevolume.domain.model.VoucherApply;
+import com.qilinxx.innovatevolume.domain.model.*;
 import com.qilinxx.innovatevolume.service.ContractService;
 import com.qilinxx.innovatevolume.service.EnterpriseService;
 import com.qilinxx.innovatevolume.service.ProviderService;
@@ -143,6 +140,21 @@ public class ContractServiceImpl implements ContractService {
         contractVo.setUpdateTime(contract.getUpdateTime());
         contractVo.setRemark(contract.getRemark());
         return contractVo;
+    }
+
+    @Override
+    public List<Contract> selectContractByProviderId(String providerId) {
+        ContractExample contractExample=new ContractExample();
+        contractExample.createCriteria().andProviderIdEqualTo(providerId);
+        return contractMapper.selectByExample(contractExample);
+    }
+
+    @Override
+    public List<Contract> selectContractByEnterpriseId(String enterpriseId) {
+        ContractExample contractExample=new ContractExample();
+        contractExample.createCriteria().andEnterpriseIdEqualTo(enterpriseId);
+        contractExample.setOrderByClause("create_time desc");
+        return contractMapper.selectByExample(contractExample);
     }
 
 }

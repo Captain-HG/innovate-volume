@@ -45,4 +45,14 @@ public class EnterpriseStaffServiceImpl implements EnterpriseStaffService {
       enterpriseStaff.setIsUse("0");
       enterpriseStaffMapper.updateByPrimaryKeySelective(enterpriseStaff);
     }
+
+    @Override
+    public void insertEnterpriseStaff(EnterpriseStaff enterpriseStaff) {
+        enterpriseStaffMapper.insert(enterpriseStaff);
+    }
+
+    @Override
+    public void deleteEnterpriseStaff(String id) {
+        enterpriseStaffMapper.deleteByPrimaryKey(Integer.parseInt(id));
+    }
 }

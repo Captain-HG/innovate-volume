@@ -26,4 +26,9 @@ public interface ContractService {
     ContractVo selectVoById(String id);
     /** 增加合同*/
     void insert(Contract contract);
+    /**查询该提供商id的合同*/
+    List<Contract> selectContractByProviderId(String providerId);
+    /**查询该企业id的合同*/
+    List<Contract> selectContractByEnterpriseId(String enterpriseId);
+
 }

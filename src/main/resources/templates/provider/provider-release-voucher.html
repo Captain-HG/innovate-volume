@@ -39,12 +39,23 @@
             </div>
         </div>
         <div class="row cl">
-            <label class="form-label col-xs-4 col-sm-3">【尝新券类别】<span class="c-red">*</span></label>
+            <label class="form-label col-xs-4 col-sm-3">【创新券类别】<span class="c-red">*</span></label>
             <div class="formControls col-xs-8 col-sm-9">
                 <span class="select-box">
                     <select class="select radius"  size="1" name="type" >
                         <option value="" selected>请选择内容</option>
                          <option   th:each="category:${VOUCHER_CATEGORY}" th:value="${category}" th:text="${category}"></option>
+                    </select>
+				</span>
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-3">【服务内容】<span class="c-red">*</span></label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <span class="select-box">
+                    <select class="select radius"  size="1" name="" >
+                        <option value="" selected>请选择内容</option>
+                         <option   th:each="providerService:${providerServiceList}" th:value="${providerService.name}" th:text="${providerService.name}"></option>
                     </select>
 				</span>
             </div>

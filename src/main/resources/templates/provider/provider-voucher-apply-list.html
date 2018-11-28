@@ -22,7 +22,7 @@
     <title>用户管理</title>
 </head>
 <body>
-<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 服务提供商 <span class="c-gray en">&gt;</span> 创新券 <span class="c-gray en">&gt;</span> 查看申请记录 <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
+<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 服务提供商 <span class="c-gray en">&gt;</span> 创新券 <span class="c-gray en">&gt;</span> 查看企业申请记录 <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
 <div class="page-container">
     <table class="table table-border table-bordered table-hover table-bg table-sort">
         <thead>
@@ -43,7 +43,7 @@
             <td th:text="${voucherApplyList.indexOf(voucherApply)+1}"></td>
             <td th:text="${provider.name}">1</td>
             <td th:text="${providerServiceMap.get(voucherApply.getServiceId())}"></td>
-            <td><u style="cursor:pointer" class="text-primary" onclick="provider_info(this.innerHTML,'provider-info.html','10001','1100','600')" th:text="${enterpriseMap.get(voucherApply.enterpriseId).getName()}">张三</u></td>
+            <td><u style="cursor:pointer" class="text-primary" th:onclick="'enterprise_info(\'企业详情\',\'provider-enterprise-info.html\',\''+${enterpriseMap.get(voucherApply.enterpriseId).id}+'\',\'400\',\'600\')'"  th:text="${enterpriseMap.get(voucherApply.enterpriseId).getName()}">张三</u></td>
             <td th:text="${dateKit.formatDateByUnixTime(voucherApply.createTime)}">2014-6-11 11:11:42</td>
             <td th:text="${voucherApply.appMoney}+'元'"></td>
             <td class="text-l" th:text="${voucherApply.appUsage}">北京市 海淀区</td>
@@ -76,9 +76,9 @@
         });
 
     });
-    /*用户-查看*/
-    function provider_info(title,url,id,w,h){
-        layer_show(title,url,w,h);
+    /*企业-查看*/
+    function enterprise_info(title,url,id,w,h){
+        layer_show(title,url+'?id='+id,w,h);
     }
     /*用户-启用*/
     function apply_agree(obj,id){
