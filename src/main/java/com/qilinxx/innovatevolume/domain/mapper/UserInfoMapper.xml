@@ -82,7 +82,7 @@
     creater, create_time, updater, update_time, remark
   </sql>
   <select id="selectByAccount" resultMap="BaseResultMap">
-    SELECT * FROM userifno WHERE  account=#{accuont}
+    SELECT * FROM userinfo WHERE  account=#{accuont}
   </select>
   <select id="selectByCode" resultMap="BaseResultMap">
     SELECT * FROM userinfo WHERE  orgcode=#{code}

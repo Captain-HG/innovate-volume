@@ -12,4 +12,5 @@ public interface ProviderFileService {
     void noExamineFile(Integer id);
     /** 启用某个文件*/
     void startFile(Integer id);
+
 }

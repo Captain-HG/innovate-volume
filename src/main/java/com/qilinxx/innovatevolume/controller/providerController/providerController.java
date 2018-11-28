@@ -76,9 +76,9 @@ public class providerController {
     public String providerVoucherApplyList(Model model){
         List<VoucherApply> voucherApplyList = voucherApplyService.selectVoucherApplyByProviderId(this.provider.getId());
         if(voucherApplyList.size()!=0){
-            Map<String, Enterprise> enterpriseMap = enterpriseService.voucherApplyListToEnterpriseMap(voucherApplyList);
+            Map<String, Enterprise> enterpriseMap ;//= enterpriseService.voucherApplyListToEnterpriseMap(voucherApplyList);
             Map<String,String> providerServiceMap=providerServiceService.voucherApplyListToProviderServiceMap(voucherApplyList);
-            model.addAttribute("enterpriseMap",enterpriseMap);
+          //  model.addAttribute("enterpriseMap",enterpriseMap);
             model.addAttribute("providerServiceMap",providerServiceMap);
         }
         model.addAttribute("voucherApplyList",voucherApplyList);
