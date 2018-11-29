@@ -1,10 +1,10 @@
 package com.qilinxx.innovatevolume.controller.admin;
 
 import com.qilinxx.innovatevolume.domain.model.Contract;
-import com.qilinxx.innovatevolume.domain.model.VoucherApply;
 import com.qilinxx.innovatevolume.service.ContractService;
 import com.qilinxx.innovatevolume.service.VoucherApplyService;
 import com.qilinxx.innovatevolume.util.Commons;
+import com.qilinxx.innovatevolume.util.DateKit;
 import com.qilinxx.innovatevolume.vo.ContractVo;
 import com.qilinxx.innovatevolume.vo.VoucherApplyVo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +13,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -120,11 +119,14 @@ public class AdminContractController {
      * @return
      */
     @RequestMapping("admin-contract-add")
+    @ResponseBody
     public String contractAdd(Contract contract, String  startTime,String  signTime){
         System.out.println("合同对象："+contract.toString());
         System.out.println("时间："+signTime);
+        contract.setSignDate(DateKit.getUnixTimeLong(DateKit.dateFormat(signTime,"yyyy-MM-dd HH:mm")));
+        contract.setStartDate(DateKit.getUnixTimeLong(DateKit.dateFormat(startTime,"yyyy-MM-dd HH:mm")));
         contractService.insert(contract);
-        return "redirect:admin-contract-list";
+        return "success";
     }
 
 }

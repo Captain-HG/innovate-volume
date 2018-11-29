@@ -1,8 +1,9 @@
 package com.qilinxx.innovatevolume.service.serviceImpl;
 
 import com.qilinxx.innovatevolume.domain.mapper.ContractMapper;
-import com.qilinxx.innovatevolume.domain.mapper.EnterpriseMapper;
-import com.qilinxx.innovatevolume.domain.model.*;
+import com.qilinxx.innovatevolume.domain.model.Contract;
+import com.qilinxx.innovatevolume.domain.model.ContractExample;
+import com.qilinxx.innovatevolume.domain.model.Enterprise;
 import com.qilinxx.innovatevolume.service.ContractService;
 import com.qilinxx.innovatevolume.service.EnterpriseService;
 import com.qilinxx.innovatevolume.service.ProviderService;
@@ -109,7 +110,7 @@ public class ContractServiceImpl implements ContractService {
         contract.setIsUse("0");
         contract.setCreateTime((long) DateKit.getCurrentUnixTime());
         //测试
-        contract.setCreater("lzc");//相对应设置
+        contract.setCreater("admin");//相对应设置
         contractMapper.insert(contract);
         //合同增加过后要设置申请记录的isUse为1
          applyService.startApply(contract.getApplyId());

@@ -175,6 +175,7 @@ public class UserInfoServiceImpl implements UserInfoService {
         userInfo.setAccount(account);
         userInfo.setPassword(password);
         userInfo.setIsUse("0");
+        userInfo.setUserType(WebConst.USER_TYPE_PROVIDER);
         userInfo.setName(name);
         userInfo.setCreater(account);
         userInfo.setCreateTime(DateKit.getUnixTimeLong());
