@@ -138,6 +138,7 @@ public class FrontIndexController {
             }
             json.put("message", "1");
             json.put("content", dispatcher);
+            httpSession.setAttribute(WebConst.SESSION_USER_NAME,Name);
         } else {
             json.put("message", "0");
             json.put("content", msg);
