@@ -60,9 +60,9 @@
                     name.focus();
                     return false;
                 } else if (!$.trim(name.value).match(usern)) {
-                    //alert("用户名只能由字母数字下划线组成");
-                    //name.focus();
-                    //return false;
+                    alert("用户名只能由字母数字下划线组成");
+                    name.focus();
+                    return false;
                 }
             }
             //检查password
@@ -80,6 +80,7 @@
                 vcode.focus();
                 return false;
             }
+            return true;
         }
 
     </script>
@@ -104,8 +105,7 @@
 <div class="loginbody">
     <span class="systemlogo"></span>
 
-    <form id="formSignIn" name="frm" method="post" action="../Login/Logins" autocomplete="off"
-          onsubmit="return check()">
+    <form id="formSignIn" name="frm" method="post" autocomplete="off">
         <div class="loginbox" style="position: absolute; left: 614px;">
             <ul>
                 <li>
@@ -122,15 +122,19 @@
                 <li>
                     <div class="key2">
                         <select class="loginType" id="UserType" name="UserType" placeholder="选择用户类型" tabindex="4">
-                            <option value="3">科技型中小企业</option>
-                            <option value="7">创新创业团队</option>
-                            <option value="4">服务提供机构</option>
-                            <option value="2">审核发放机构</option>
-                            <option value="1">省科技厅</option>
-                            <option value="9">审核兑付机构</option>
-                            <option value="10">监督机构</option>
-                        </select><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input name="" type="submit" class="loginbtn"
-                                                                                  value="登录" tabindex="5"/></span>
+                            <option value="1">科技型企业</option>
+                            <!--<option value="2">创新创业团队</option>-->
+                            <option value="2">服务提供机构</option>
+                            <!--<option value="3">审核发放机构</option>-->
+                            <option value="3">管理员</option>
+                            <!--<option value="1">省科技厅</option>-->
+                            <!--<option value="9">审核兑付机构</option>-->
+                            <!--<option value="10">监督机构</option>-->
+                        </select>
+                        <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <!--<input name="" type="submit" class="loginbtn" value="登录" tabindex="5"/>-->
+                         <button class="loginbtn" type="button" id="btn"><i class="icon-ok"></i> 登录</button>
+                        </span>
                         <div style="width:100px"></div>
                     </div>
                     <label id="lbErrorMsg" style="color: red;"></label>
@@ -142,6 +146,38 @@
 <div class="loginbm"><p>版权所有：淮北市科学技术局&nbsp;&nbsp;&nbsp;&nbsp;运维单位：淮北市麒麟信息科技有限公司&nbsp;&nbsp;&nbsp;&nbsp;咨询电话:0311-83110111 </p>
 </div>
 </body>
+<script>
+    /*<![CDATA[*/
+
+    $("#btn").click(function () {
+        var data = $("#formSignIn").serialize();
+        if (check())
+             submit(data);
+    });
+
+    function submit(data) {
+        $.ajax({
+            url: '/loginSubmit', // ajax 请求地址
+            type: 'post',//请求方式 ’GET‘或’POST‘，默认为’GET‘。
+            data: data,
+            dataType: "json",//根据返回数据类型，可以有如下数据可选：xml html script json jsonp text
+            //请求成功后的回调函数
+            success: function (msg) {
+               if(msg.message=="0"){
+                   alert(msg.content);
+               }else if(msg.message=="1"){
+                   window.location.href=msg.content;
+               }
+            },
+            //请求失败时调用此函数。有以下三个参数：XMLHttpRequest 对象、错误信息、（可选）捕获的异常对象。
+            error: function (data) {
+                console.log(data);// 打印错误信息
+            }
+        });
+
+    }
+    /*]]>*/
+</script>
 </html>
 
 

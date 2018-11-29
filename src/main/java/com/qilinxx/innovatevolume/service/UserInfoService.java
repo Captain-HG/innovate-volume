@@ -61,4 +61,13 @@ public interface UserInfoService {
      * 启用用户
      */
     void startUserInfo(String id);
+
+    /**
+     * 验证用户登录信息
+     * @param name 用户名
+     * @param pwd 密码
+     * @param type 用户类型
+     * @return 验证状态，success未成功，其他为错误信息
+     */
+    String loginUser(String name,String pwd,String type);
 }

@@ -37,6 +37,7 @@ public class EnterpriseFileServiceImpl implements EnterpriseFileService {
         EnterpriseFile file=new EnterpriseFile();
         file.setEnterpriseId(enterpriseId);
         file.setType(path.substring(path.lastIndexOf(".") + 1));
+        file.setPath(path);
         file.setName(filename);
         file.setCreater(create);
         file.setCreateTime(DateKit.getUnixTimeLong());

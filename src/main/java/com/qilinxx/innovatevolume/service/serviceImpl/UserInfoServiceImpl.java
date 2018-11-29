@@ -122,6 +122,14 @@ public class UserInfoServiceImpl implements UserInfoService {
         userInfoMapper.updateByPrimaryKeySelective(userInfo);
     }
 
+    @Override
+    public String loginUser(String name, String pwd,String type) {
+        UserInfo userInfo=userInfoMapper.selectByAccount(name);
+        if (userInfo==null||!userInfo.getUserType().equals(type)) return "无此用户";
+        if (!pwd.equals(userInfo.getPassword())) return "密码错误";
+        return "success";
+    }
+
 
     @Override
     public UserInfo updateUserInfoPassword(UserInfo userInfo) {

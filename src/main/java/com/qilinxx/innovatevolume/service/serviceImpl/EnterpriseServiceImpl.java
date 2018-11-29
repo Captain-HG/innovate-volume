@@ -158,9 +158,9 @@ public class EnterpriseServiceImpl implements EnterpriseService {
         enterprise.setContactAddr(txtCompanyAddress);
         enterprise.setSales(txtLastYearIncome);
         enterprise.setAmount(txtEmployeesNum);
-        enterprise.setType(WebConst.USER_TYPE_ENTERPRISE);
+        enterprise.setType(WebConst.ENTERPRISE_UNIT_SCIENCE);
         enterprise.setDomain(field);
-        enterprise.setIdentify(WebConst.IDENTIFY_TYPE_ENTERPRISE);
+        enterprise.setIdentify(WebConst.ENTERPRISE_IDENTIFY_YES);
         enterprise.setIdentifyNo(txtTechCertificate);
         enterprise.setDetail(txtIntroduce);
         enterprise.setBank(txtBankName);

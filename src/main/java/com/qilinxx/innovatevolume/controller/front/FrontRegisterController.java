@@ -65,7 +65,7 @@ public class FrontRegisterController {
      * @param filename2            近两年的财务报表（包括资产负债表、损益表）
      * @param filename3            高新技术企业认证
      * @param filename12           其他材料
-     * @return
+     * @return Json状态返回 ：message 0为错误，1为正确
      */
     @Transactional(rollbackFor = Exception.class)
     @RequestMapping("/addEnterpriseUser")
@@ -101,9 +101,12 @@ public class FrontRegisterController {
         enterpriseFileService.addFile(uuid, filename1, "企业管理制度和财务管理制度", txtUserName);
         enterpriseFileService.addFile(uuid, filename2, "近两年的财务报表（包括资产负债表、损益表）", txtUserName);
 
-        if (filename10 != null) enterpriseFileService.addFile(uuid, filename10, "组织机构代码证副本", txtUserName);
-        if (filename3 != null) enterpriseFileService.addFile(uuid, filename3, "高新技术企业认证", txtUserName);
-        if (filename12 != null) enterpriseFileService.addFile(uuid, filename12, "其他材料", txtUserName);
+        if (filename10 != null && !"".equals(filename10))
+            enterpriseFileService.addFile(uuid, filename10, "组织机构代码证副本", txtUserName);
+        if (filename3 != null && !"".equals(filename10))
+            enterpriseFileService.addFile(uuid, filename3, "高新技术企业认证", txtUserName);
+        if (filename12 != null && !"".equals(filename10))
+            enterpriseFileService.addFile(uuid, filename12, "其他材料", txtUserName);
 
         json.put("message", 1);
         json.put("content", msg2);
