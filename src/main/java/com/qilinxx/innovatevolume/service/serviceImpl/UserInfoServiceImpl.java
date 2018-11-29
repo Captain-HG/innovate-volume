@@ -30,10 +30,30 @@ public class UserInfoServiceImpl implements UserInfoService {
     EnterpriseService enterpriseService;
 
     @Override
+    public UserInfo selectUseInfoByAccount(String account) {
+        return userInfoMapper.selectByAccount(account);
+    }
+
+    @Override
+    public UserInfo selectUserInfoByid(String id) {
+        return userInfoMapper.selectByPrimaryKey(id);
+    }
+
+    @Override
+    public void updateUser(UserInfo userInfo) {
+        userInfoMapper.updateByPrimaryKeySelective(userInfo);
+    }
+
+
+    @Override
     public UserInfo selectByCode(String code) {
         UserInfoExample userInfoExample = new UserInfoExample();
         userInfoExample.createCriteria().andOrgcodeEqualTo(code);
-        return userInfoMapper.selectByExample(userInfoExample).get(0);
+        List<UserInfo> userInfoList = userInfoMapper.selectByExample(userInfoExample);
+        if(userInfoList.size()==0){
+            return null;
+        }
+        return userInfoList.get(0);
     }
 
 

@@ -1,8 +1,10 @@
 package com.qilinxx.innovatevolume.service;
 
 import com.qilinxx.innovatevolume.domain.model.Voucher;
+import com.qilinxx.innovatevolume.domain.model.VoucherApply;
 
 import java.util.List;
+import java.util.Map;
 
 public interface VoucherService {
      /** 根据商家id查找他的所有券*/
@@ -25,4 +27,6 @@ public interface VoucherService {
     Voucher selectVoucherById(String id);
     /**由服务商的providerId，得到该服务商的所有已发布创新券*/
     List<Voucher> selectVoucherByProviderId(String providerId);
+    /**由创新券申请记录list中，找到创新券id，存为Map，其中存储创新券名称*/
+    Map<String ,Voucher> voucherApplyListToVoucherMap(List<VoucherApply> voucherApplyList);
 }

@@ -41,7 +41,7 @@
                     <div class="row cl">
                         <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>企业名称：</label>
                         <div class="formControls col-xs-8 col-sm-9">
-                            <input id="name" type="text" class="input-text" th:value="${provider.name}" name="name">
+                            <input id="name" type="text" class="input-text"  name="name">
                         </div>
                     </div>
                 </td>
@@ -49,7 +49,7 @@
                     <div class="row cl">
                         <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>社会信用代码:</label>
                         <div class="formControls col-xs-8 col-sm-9">
-                            <input id="code" type="text" class="input-text" th:value="${provider.code}" name="code">
+                            <input id="code" type="text" class="input-text"  name="code">
                         </div>
                     </div>
                 </td>
@@ -62,10 +62,10 @@
                 <span class="select-box" style="margin-left: 55px;">
                     <select class="select radius" id="type" size="1" name="type" >
                         <option value="" selected>请选择内容</option>
-                         <option  th:if="${PROVIDER_SECIENCE!=null}"  th:value="${PROVIDER_SECIENCE}" th:text="${PROVIDER_SECIENCE}" th:selected="${provider.type eq PROVIDER_SECIENCE}"></option>
-                        <option  th:if="${PROVIDER_FARMING!=null}"  th:value="${PROVIDER_FARMING}" th:text="${PROVIDER_FARMING}" th:selected="${provider.type eq PROVIDER_FARMING}"></option>
-                        <option  th:if="${PROVIDER_ELECTRONIC!=null}"  th:value="${PROVIDER_ELECTRONIC}" th:text="${PROVIDER_ELECTRONIC}" th:selected="${provider.type eq PROVIDER_ELECTRONIC}"></option>
-                         <option  th:if="${PROVIDER_OTHER!=null}"  th:value="${PROVIDER_OTHER}" th:text="${PROVIDER_OTHER}" th:selected="${provider.type eq PROVIDER_OTHER}"></option>
+                         <option  th:if="${PROVIDER_SECIENCE!=null}"  th:value="${PROVIDER_SECIENCE}" th:text="${PROVIDER_SECIENCE}" ></option>
+                        <option  th:if="${PROVIDER_FARMING!=null}"  th:value="${PROVIDER_FARMING}" th:text="${PROVIDER_FARMING}"></option>
+                        <option  th:if="${PROVIDER_ELECTRONIC!=null}"  th:value="${PROVIDER_ELECTRONIC}" th:text="${PROVIDER_ELECTRONIC}" ></option>
+                         <option  th:if="${PROVIDER_OTHER!=null}"  th:value="${PROVIDER_OTHER}" th:text="${PROVIDER_OTHER}" ></option>
                     </select>
 				</span>
                         </div>
@@ -77,7 +77,7 @@
                         <div class="formControls col-xs-8 col-sm-9">
                             <input id="formatEstablishDate" type="text" name="formatEstablishDate"
                                    onfocus="WdatePicker({ dateFmt:'yyyy-MM-dd HH:mm:ss' })"
-                                   class="input-text Wdate" th:value="${dateKit.formatDateByUnixTime(provider.establishDate)}">
+                                   class="input-text Wdate" >
                         </div>
                     </div>
                 </td>
@@ -87,7 +87,7 @@
                     <div class="row cl">
                         <label class="form-label col-xs-4 col-sm-2">人员规模：</label>
                         <div class="formControls col-xs-8 col-sm-9">
-                            <input id="staffCount" type="text" class="input-text" th:value="${provider.staffCount}" name="staffCount">
+                            <input id="staffCount" type="text" class="input-text"  name="staffCount">
                         </div>
                     </div>
                 </td>
@@ -95,7 +95,7 @@
                     <div class="row cl">
                         <label class="form-label col-xs-4 col-sm-2">研究人员数量：</label>
                         <div class="formControls col-xs-8 col-sm-9">
-                            <input id="researchCount" type="text" class="input-text" th:value="${provider.researchCount}" name="researchCount">
+                            <input id="researchCount" type="text" class="input-text" name="researchCount">
                         </div>
                     </div>
                 </td>
@@ -105,7 +105,7 @@
                     <div class="row cl">
                         <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>地址：</label>
                         <div class="formControls col-xs-8 col-sm-9">
-                            <input id="addr" type="text" class="input-text" th:value="${provider.addr}" name="addr">
+                            <input id="addr" type="text" class="input-text"  name="addr">
                         </div>
                     </div>
                 </td>
@@ -113,7 +113,7 @@
                     <div class="row cl">
                         <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>开户行：</label>
                         <div class="formControls col-xs-8 col-sm-9">
-                            <input id="bank" type="text" class="input-text" th:value="${provider.bank}" name="bank">
+                            <input id="bank" type="text" class="input-text"  name="bank">
                         </div>
                     </div>
                 </td>
@@ -124,7 +124,7 @@
                     <div class="row cl">
                         <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>账号：</label>
                         <div class="formControls col-xs-8 col-sm-9">
-                            <input id="cardNo" type="text" class="input-text" th:value="${provider.cardNo}" name="cardNo">
+                            <input id="cardNo" type="text" class="input-text"  name="cardNo">
                         </div>
                     </div>
                 </td>
@@ -132,7 +132,7 @@
                     <div class="row cl">
                         <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>户名：</label>
                         <div class="formControls col-xs-8 col-sm-9">
-                            <input id="cardOwner" type="text" class="input-text" th:value="${provider.cardOwner}" name="cardOwner">
+                            <input id="cardOwner" type="text" class="input-text"  name="cardOwner">
                         </div>
                     </div>
                 </td>
@@ -143,7 +143,7 @@
                     <div class="row cl">
                         <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>负责人：</label>
                         <div class="formControls col-xs-8 col-sm-9">
-                            <input id="admin" type="text" class="input-text" th:value="${provider.admin}" name="admin">
+                            <input id="admin" type="text" class="input-text"  name="admin">
                         </div>
                     </div>
                 </td>
@@ -151,7 +151,7 @@
                     <div class="row cl">
                         <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>负责人职位：</label>
                         <div class="formControls col-xs-8 col-sm-9">
-                            <input id="adminTitle" type="text" class="input-text" th:value="${provider.adminTitle}" name="adminTitle">
+                            <input id="adminTitle" type="text" class="input-text"  name="adminTitle">
                         </div>
                     </div>
                 </td>
@@ -162,7 +162,7 @@
                     <div class="row cl">
                         <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>负责人邮箱：</label>
                         <div class="formControls col-xs-8 col-sm-9">
-                            <input id="adminEmail" type="text" class="input-text" th:value="${provider.adminEmail}" name="adminEmail">
+                            <input id="adminEmail" type="text" class="input-text"  name="adminEmail">
                         </div>
                     </div>
                 </td>
@@ -170,7 +170,7 @@
                     <div class="row cl">
                         <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>负责人手机：</label>
                         <div class="formControls col-xs-8 col-sm-9">
-                            <input id="adminPhone" type="text" class="input-text" th:value="${provider.adminPhone}" name="adminPhone">
+                            <input id="adminPhone" type="text" class="input-text"  name="adminPhone">
                         </div>
                     </div>
                 </td>
@@ -181,7 +181,7 @@
                     <div class="row cl">
                         <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>联系人：</label>
                         <div class="formControls col-xs-8 col-sm-9">
-                            <input id="contacter" type="text" class="input-text" th:value="${provider.contacter}" name="contacter">
+                            <input id="contacter" type="text" class="input-text"  name="contacter">
                         </div>
                     </div>
                 </td>
@@ -189,7 +189,7 @@
                     <div class="row cl">
                         <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>联系人职位：</label>
                         <div class="formControls col-xs-8 col-sm-9">
-                            <input id="contactTitle" type="text" class="input-text" th:value="${provider.contactTitle}" name="contactTitle">
+                            <input id="contactTitle" type="text" class="input-text"  name="contactTitle">
                         </div>
                     </div>
                 </td>
@@ -200,7 +200,7 @@
                     <div class="row cl">
                         <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>联系人邮箱：</label>
                         <div class="formControls col-xs-8 col-sm-9">
-                            <input id="contactEmail" type="text" class="input-text" th:value="${provider.contactEmail}" name="contactEmail">
+                            <input id="contactEmail" type="text" class="input-text"  name="contactEmail">
                         </div>
                     </div>
                 </td>
@@ -208,7 +208,7 @@
                     <div class="row cl">
                         <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>联系人手机：</label>
                         <div class="formControls col-xs-8 col-sm-9">
-                            <input id="contactPhone" type="text" class="input-text" th:value="${provider.contactPhone}" name="contactPhone">
+                            <input id="contactPhone" type="text" class="input-text"  name="contactPhone">
                         </div>
                     </div>
                 </td>
@@ -219,7 +219,7 @@
                     <div class="row cl">
                         <label class="form-label col-xs-4 col-sm-2">机构简介：</label>
                         <div class="formControls col-xs-8 col-sm-9">
-                            <input id="detail" type="text" class="input-text" th:value="${provider.detail}" name="detail">
+                            <input id="detail" type="text" class="input-text"  name="detail">
                         </div>
                     </div>
                 </td>
@@ -227,7 +227,7 @@
                     <div class="row cl">
                         <label class="form-label col-xs-4 col-sm-2">研究方向：</label>
                         <div class="formControls col-xs-8 col-sm-9">
-                            <input id="researchContent" type="text" class="input-text" th:value="${provider.researchContent}" name="researchContent">
+                            <input id="researchContent" type="text" class="input-text"  name="researchContent">
                         </div>
                     </div>
                 </td>
@@ -238,7 +238,7 @@
                     <div class="row cl">
                         <label class="form-label col-xs-4 col-sm-2">代表性成果：</label>
                         <div class="formControls col-xs-8 col-sm-9">
-                            <input id="result" type="text" class="input-text" th:value="${provider.result}" name="result">
+                            <input id="result" type="text" class="input-text"  name="result">
                         </div>
                     </div>
                 </td>
@@ -246,7 +246,7 @@
                     <div class="row cl">
                         <label class="form-label col-xs-4 col-sm-2">特殊服务内容：</label>
                         <div class="formControls col-xs-8 col-sm-9">
-                            <input id="mainService" type="text" class="input-text" th:value="${provider.mainService}" name="mainService">
+                            <input id="mainService" type="text" class="input-text"  name="mainService">
                         </div>
                     </div>
                 </td>
@@ -257,25 +257,25 @@
                     <div class="row cl">
                         <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>依托单位名称：</label>
                         <div class="formControls col-xs-8 col-sm-9">
-                            <input id="supportUnit" type="text" class="input-text" th:value="${provider.supportUnit}" name="supportUnit">
+                            <input id="supportUnit" type="text" class="input-text"  name="supportUnit">
                         </div>
                     </div>
                 </td>
-               <td>
-                   <div class="row cl">
-                       <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>依托法定代表人：</label>
-                       <div class="formControls col-xs-8 col-sm-9">
-                           <input id="supportAdmin" type="text" class="input-text" th:value="${provider.supportAdmin}" name="supportAdmin">
-                       </div>
-                   </div>
-               </td>
+                <td>
+                    <div class="row cl">
+                        <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>依托法定代表人：</label>
+                        <div class="formControls col-xs-8 col-sm-9">
+                            <input id="supportAdmin" type="text" class="input-text"  name="supportAdmin">
+                        </div>
+                    </div>
+                </td>
             </tr>
             <tr>
                 <td colspan="2">
                     <div class="row cl" >
                         <label class="form-label col-xs-1 col-sm-1">备注：</label>
                         <div class="formControls col-xs-8 col-sm-9">
-                            <textarea name="remark" th:text="${provider.remark}" cols="" rows="" class="textarea"  placeholder="说点什么...100个字符以内" dragonfly="true" onKeyUp="$.Huitextarealength(this,100)"></textarea>
+                            <textarea name="remark"  cols="" rows="" class="textarea"  placeholder="说点什么...100个字符以内" dragonfly="true" onKeyUp="$.Huitextarealength(this,100)"></textarea>
                             <p class="textarea-numberbar"><em class="textarea-length">0</em>/100</p>
                         </div>
                     </div>
@@ -294,21 +294,21 @@
     </form>
 </div>
 
-                <!--_footer 作为公共模版分离出去-->
-                <script type="text/javascript" src="lib/jquery/1.9.1/jquery.min.js"></script>
-                <script type="text/javascript" src="lib/layer/2.4/layer.js"></script>
-                <script type="text/javascript" src="static/h-ui/js/H-ui.min.js"></script>
-                <script type="text/javascript" src="static/h-ui.admin/js/H-ui.admin.js"></script> <!--/_footer 作为公共模版分离出去-->
+<!--_footer 作为公共模版分离出去-->
+<script type="text/javascript" src="lib/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript" src="lib/layer/2.4/layer.js"></script>
+<script type="text/javascript" src="static/h-ui/js/H-ui.min.js"></script>
+<script type="text/javascript" src="static/h-ui.admin/js/H-ui.admin.js"></script> <!--/_footer 作为公共模版分离出去-->
 
-                <!--请在下方写此页面业务相关的脚本-->
-                <script type="text/javascript" src="lib/My97DatePicker/4.8/WdatePicker.js"></script>
-                <script type="text/javascript" src="lib/jquery.validation/1.14.0/jquery.validate.js"></script>
-                <script type="text/javascript" src="lib/jquery.validation/1.14.0/validate-methods.js"></script>
-                <script type="text/javascript" src="lib/jquery.validation/1.14.0/messages_zh.js"></script>
-                <script type="text/javascript" src="lib/webuploader/0.1.5/webuploader.min.js"></script>
-                <script type="text/javascript" src="lib/ueditor/1.4.3/ueditor.config.js"></script>
-                <script type="text/javascript" src="lib/ueditor/1.4.3/ueditor.all.min.js"> </script>
-                <script type="text/javascript" src="lib/ueditor/1.4.3/lang/zh-cn/zh-cn.js"></script>
+<!--请在下方写此页面业务相关的脚本-->
+<script type="text/javascript" src="lib/My97DatePicker/4.8/WdatePicker.js"></script>
+<script type="text/javascript" src="lib/jquery.validation/1.14.0/jquery.validate.js"></script>
+<script type="text/javascript" src="lib/jquery.validation/1.14.0/validate-methods.js"></script>
+<script type="text/javascript" src="lib/jquery.validation/1.14.0/messages_zh.js"></script>
+<script type="text/javascript" src="lib/webuploader/0.1.5/webuploader.min.js"></script>
+<script type="text/javascript" src="lib/ueditor/1.4.3/ueditor.config.js"></script>
+<script type="text/javascript" src="lib/ueditor/1.4.3/ueditor.all.min.js"> </script>
+<script type="text/javascript" src="lib/ueditor/1.4.3/lang/zh-cn/zh-cn.js"></script>
 <script type="text/javascript">
     $(function(){
         $("#close").click(function(){
@@ -393,10 +393,15 @@
             submitHandler:function(form){
                 $(form).ajaxSubmit({
                     type: 'post',
-                    url: "/ajax-provider-change-info" ,
+                    url: "/ajax-provider-first-info" ,
                     dataType:"json",
                     success: function(data){
-                        layer.msg(data.msg,{icon:1,time:1500});
+                        if(data.msg=='提交成功(待审核)！'){
+                            layer.msg(data.msg,{icon:1,time:1500});
+                            window.setTimeout("parent.layer.close(parent.layer.getFrameIndex(window.name))",2000)
+                        }else {
+                            layer.msg(data.msg,{icon:2,time:1500});
+                        }
                     },
                     error: function(XmlHttpRequest, textStatus, errorThrown){
                         layer.msg('error!',{icon:2,time:1500});

@@ -6,6 +6,12 @@ import com.qilinxx.innovatevolume.vo.UserInfoVo;
 import java.util.List;
 
 public interface UserInfoService {
+    /**通过账号查询此用户*/
+    UserInfo selectUseInfoByAccount(String account);
+    /**通过id查询此用户*/
+    UserInfo selectUserInfoByid(String id);
+    /***/
+    void updateUser(UserInfo userInfo);
     /**
      * 根据公司编号查询用户信息    这个功能没有实际用处，调试完可删除
      */

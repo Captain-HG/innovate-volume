@@ -9,6 +9,8 @@ import java.util.List;
 import java.util.Map;
 
 public interface ProviderService {
+    /***/
+    void insertProvider(Provider provider);
     /**查询所有的提供商 */
     List<Provider> selectAll();
     /** 根据主键id查询提供商的信息*/

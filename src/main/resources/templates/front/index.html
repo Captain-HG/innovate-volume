@@ -207,6 +207,7 @@
             if (num > 10)
                 break;
             $("#ul_news").append("<li><a href='javascript:Look(" + data[o].TableID + ");'>" + data[o].Title + "</a></li>");
+            num++;
         }
     });
     function Look(id) {

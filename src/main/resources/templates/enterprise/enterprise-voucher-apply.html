@@ -57,17 +57,17 @@
             </div>
         </div>
         <br/><hr style="border:1px dashed #F3F3F3;"/>
-        <div class="row cl">
-            <label class="form-label col-xs-4 col-sm-3">【服务内容】<span class="c-red">*</span></label>
-            <div class="formControls col-xs-8 col-sm-9">
-                <span class="select-box">
-                    <select class="select radius" id="select" size="1" name="serviceId" >
-                        <option value="" selected>请选择内容</option>
-                         <option  th:if="${providerServices.size()!=0}" th:each="service:${providerServices}" th:value="${service.id}" th:text="${service.name}"></option>
-                    </select>
-				</span>
-            </div>
-        </div>
+        <!--<div class="row cl">-->
+            <!--<label class="form-label col-xs-4 col-sm-3">【服务内容】<span class="c-red">*</span></label>-->
+            <!--<div class="formControls col-xs-8 col-sm-9">-->
+                <!--<span class="select-box">-->
+                    <!--<select class="select radius" id="select" size="1" name="serviceId" >-->
+                        <!--<option value="" selected>请选择内容</option>-->
+                         <!--<option  th:if="${providerServices.size()!=0}" th:each="service:${providerServices}" th:value="${service.id}" th:text="${service.name}"></option>-->
+                    <!--</select>-->
+				<!--</span>-->
+            <!--</div>-->
+        <!--</div>-->
         <div class="row cl">
             <label class="form-label col-xs-4 col-sm-3">【申请金额】<span class="c-red">*</span></label>
             <div class="formControls col-xs-8 col-sm-9">
@@ -141,7 +141,7 @@
                     type: 'post',
                     url: "/ajax-enterprise-voucher-apply-list.html" ,
                     dataType:"json",
-                    data:{"providerId":'[[${provider.id}]]'},
+                    data:{"providerId":'[[${provider.id}]]',"serviceId":'[[${voucher.id}]]'},
                     success: function(data){
                         layer.msg(data.msg,{icon:1,time:1500});
                         window.setTimeout("parent.layer.close(parent.layer.getFrameIndex(window.name))",2000)

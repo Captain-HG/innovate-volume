@@ -50,17 +50,51 @@ public class providerController {
      */
     @GetMapping({"/2","provider-home"})
     public String providerHome(Model model, HttpSession session){
-        //以下是测试代码（回来删除）
-        String code="123456789012345678";
-        UserInfo userInfo = userInfoService.selectByCode(code);
-        session.setAttribute("user",userInfo);
-        //以上是测试代码
-
-        this.userInfo= (UserInfo) session.getAttribute("user");
-        this.provider= providerService.selectProviderBycode(this.userInfo.getOrgcode());
+        String account= (String) session.getAttribute(WebConst.SESSION_USER_NAME);
+        this.userInfo=userInfoService.selectUseInfoByAccount(account);
+        if(userInfo.getOrgcode()!=null){
+            this.provider= providerService.selectProviderBycode(this.userInfo.getOrgcode());
+            model.addAttribute("provider",this.provider);
+        }
         model.addAttribute("user",this.userInfo);
-        model.addAttribute("provider",this.provider);
         return "provider/provider-home";
+
+    }
+    /**
+     * 首次填写提供商的信息
+     * @return 提供商填写信息表单
+     */
+    @GetMapping("provider-first-info.html")
+    public String enterpriseFirstInfo(Model model){
+        //服务提供商类型
+        model.addAttribute("PROVIDER_SECIENCE",WebConst.PROVIDER_SECIENCE);
+        model.addAttribute("PROVIDER_FARMING",WebConst.PROVIDER_FARMING);
+        model.addAttribute("PROVIDER_ELECTRONIC",WebConst.PROVIDER_ELECTRONIC);
+        model.addAttribute("PROVIDER_OTHER",WebConst.PROVIDER_OTHER);
+        return "provider/provider-first-info.html";
+    }
+    /**
+     * ajax提供商首次填写信息
+     */
+    @PostMapping("ajax-provider-first-info")
+    @ResponseBody
+    public Map<String,String> ajaxProviderFirstInfo(Provider provider,String formatEstablishDate){
+        Map<String,String> map=new HashMap<>();
+        UserInfo u = userInfoService.selectByCode(provider.getCode());
+        if(u!=null){
+            map.put("msg","社会信用代码已被使用！");
+            return map;
+        }
+        provider.setId(UUID.UU32());
+        provider.setEstablishDate(Long.parseLong(String.valueOf(DateKit.getUnixTimeByDate(DateKit.dateFormat(formatEstablishDate)))));
+        provider.setIsUse("1");
+        provider.setCreater(this.userInfo.getName());
+        provider.setCreateTime(Long.parseLong(String.valueOf(DateKit.getUnixTimeByDate(DateKit.getNowTime()))));
+        providerService.insertProvider(provider);
+        this.userInfo.setOrgcode(provider.getCode());
+        userInfoService.updateUser(this.userInfo);
+        map.put("msg","提交成功(待审核)！");
+        return map;
     }
     //后台的迎接页面
     /**
@@ -87,6 +121,12 @@ public class providerController {
      */
     @GetMapping("provider-change-info.html")
     public String providerChangeInfo(Model model){
+        //服务提供商类型
+        model.addAttribute("PROVIDER_SECIENCE",WebConst.PROVIDER_SECIENCE);
+        model.addAttribute("PROVIDER_FARMING",WebConst.PROVIDER_FARMING);
+        model.addAttribute("PROVIDER_ELECTRONIC",WebConst.PROVIDER_ELECTRONIC);
+        model.addAttribute("PROVIDER_OTHER",WebConst.PROVIDER_OTHER);
+
         model.addAttribute("provider",this.provider);
         model.addAttribute("dateKit",new DateKit());
         return "provider/provider-change-info";
@@ -121,12 +161,11 @@ public class providerController {
      */
     @PostMapping("ajax-provider-change-password")
     @ResponseBody
-    public Map<String,String> ajaxProviderChangePassword(UserInfo userInfo,HttpSession session){
+    public Map<String,String> ajaxProviderChangePassword(UserInfo userInfo){
         userInfo.setId(this.userInfo.getId());
         userInfo.setUpdater(this.userInfo.getName());
         userInfo.setUpdateTime(Long.parseLong(String.valueOf(DateKit.getUnixTimeByDate(DateKit.getNowTime()))));
         this.userInfo= userInfoService.updateUserInfoPassword(userInfo);
-        session.setAttribute("user",this.userInfo);
         Map<String ,String > map=new HashMap<>();
         map.put("msg","密码修改成功！");
         return map;
@@ -198,9 +237,12 @@ public class providerController {
         List<VoucherApply> voucherApplyList = voucherApplyService.selectVoucherApplyByProviderId(this.provider.getId());
         if(voucherApplyList.size()!=0){
             Map<String, Enterprise> enterpriseMap = enterpriseService.voucherApplyListToEnterpriseMap(voucherApplyList);
-            Map<String,String> providerServiceMap=providerServiceService.voucherApplyListToProviderServiceMap(voucherApplyList);
+            //Map<String,String> providerServiceMap=providerServiceService.voucherApplyListToProviderServiceMap(voucherApplyList);
+            Map<String,Voucher> voucherMap=voucherService.voucherApplyListToVoucherMap(voucherApplyList);
+
             model.addAttribute("enterpriseMap",enterpriseMap);
-            model.addAttribute("providerServiceMap",providerServiceMap);
+           // model.addAttribute("providerServiceMap",providerServiceMap);
+            model.addAttribute("voucherMap",voucherMap);
         }
         model.addAttribute("voucherApplyList",voucherApplyList);
         model.addAttribute("provider",this.provider);
@@ -211,14 +253,14 @@ public class providerController {
      * ajax服务商对创新券的申请同意的处理
      * id 为voucherApply的id
      */
-    @PostMapping("ajax-provider-agree-apply")
-    @ResponseBody
-    public Map<String,String> ajaxProviderAgreeApply(String id){
-        Map<String ,String> map =new HashMap<>();
-        voucherApplyService.updateIsUseById(id,"1");
-        map.put("msg","通过审核!");
-        return map;
-    }
+    //@PostMapping("ajax-provider-agree-apply")
+    //@ResponseBody
+    //public Map<String,String> ajaxProviderAgreeApply(String id){
+    //    Map<String ,String> map =new HashMap<>();
+    //    voucherApplyService.updateIsUseById(id,"1");
+    //    map.put("msg","通过审核!");
+    //    return map;
+    //}
     /**
      * 查看合同详情
      * @return 来到合同列表页面
@@ -333,7 +375,16 @@ public class providerController {
      * @return 提供商添加人员列表
      */
     @GetMapping("provider-add-staff.html")
-    public String providerAddStaff(){
+    public String providerAddStaff(Model model){
+        //人才类型
+        model.addAttribute("MEMBER_HIGH",WebConst.MEMBER_HIGH);
+        model.addAttribute("MEMBER_MIDDLE",WebConst.MEMBER_MIDDLE);
+        model.addAttribute("MEMBER_LOW",WebConst.MEMBER_LOW);
+        //核心领军人员学位
+        model.addAttribute("DEGREE_COLLAGE",WebConst.DEGREE_COLLAGE);
+        model.addAttribute("DEGREE_MASTER",WebConst.DEGREE_MASTER);
+        model.addAttribute("DEGREE_DOCTOR",WebConst.DEGREE_DOCTOR);
+
         return "provider/provider-add-staff";
     }
     /**

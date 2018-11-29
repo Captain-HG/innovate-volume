@@ -1,15 +1,18 @@
 package com.qilinxx.innovatevolume.service.serviceImpl;
 
 import com.qilinxx.innovatevolume.domain.mapper.VoucherMapper;
-import com.qilinxx.innovatevolume.domain.model.ProviderService;
 import com.qilinxx.innovatevolume.domain.model.Voucher;
+import com.qilinxx.innovatevolume.domain.model.VoucherApply;
 import com.qilinxx.innovatevolume.domain.model.VoucherExample;
 import com.qilinxx.innovatevolume.service.VoucherService;
 import com.qilinxx.innovatevolume.util.DateKit;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
 @Service
 public class VoucherServiceImpl implements VoucherService {
     @Autowired
@@ -49,6 +52,17 @@ public class VoucherServiceImpl implements VoucherService {
         VoucherExample voucherExample=new VoucherExample();
         voucherExample.createCriteria().andProviderIdEqualTo(providerId);
         return  voucherMapper.selectByExample(voucherExample);
+    }
+
+    @Override
+    public Map<String, Voucher> voucherApplyListToVoucherMap(List<VoucherApply> voucherApplyList) {
+        Map<String,Voucher> voucherMap =new HashMap<>();
+        for (VoucherApply v:voucherApplyList) {
+            if(!voucherMap.containsKey(v.getServiceId())){
+                voucherMap.put(v.getServiceId(),voucherMapper.selectByPrimaryKey(v.getServiceId()));
+            }
+        }
+        return voucherMap;
     }
 
     @Override

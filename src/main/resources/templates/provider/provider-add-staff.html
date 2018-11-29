@@ -53,13 +53,27 @@
         <div class="row cl">
             <label class="form-label col-xs-4 col-sm-3">【学位】<span class="c-red">*</span></label>
             <div class="formControls col-xs-8 col-sm-9">
-                <input type="text" name="degree" class="input-text radius" />
+                <span class="select-box">
+                    <select class="select radius" id="degree" size="1" name="degree" >
+                        <option value="" selected>请选择内容</option>
+                         <option  th:if="${DEGREE_COLLAGE!=null}"  th:value="${DEGREE_COLLAGE}" th:text="${DEGREE_COLLAGE}"></option>
+                        <option  th:if="${DEGREE_MASTER!=null}"  th:value="${DEGREE_MASTER}" th:text="${DEGREE_MASTER}"></option>
+                        <option  th:if="${DEGREE_DOCTOR!=null}"  th:value="${DEGREE_DOCTOR}" th:text="${DEGREE_DOCTOR}"></option>
+                    </select>
+				</span>
             </div>
         </div>
         <div class="row cl">
-            <label class="form-label col-xs-4 col-sm-3">【人才类别】</label>
+            <label class="form-label col-xs-4 col-sm-3">【人才类别】<span class="c-red">*</span></label>
             <div class="formControls col-xs-8 col-sm-9">
-                <input type="text" name="category" class="input-text radius" />
+                <span class="select-box">
+                    <select class="select radius" id="category" size="1" name="category" >
+                        <option value="" selected>请选择内容</option>
+                         <option  th:if="${MEMBER_HIGH!=null}"  th:value="${MEMBER_HIGH}" th:text="${MEMBER_HIGH}"></option>
+                        <option  th:if="${MEMBER_MIDDLE!=null}"  th:value="${MEMBER_MIDDLE}" th:text="${MEMBER_MIDDLE}"></option>
+                        <option  th:if="${MEMBER_LOW!=null}"  th:value="${MEMBER_LOW}" th:text="${MEMBER_LOW}"></option>
+                    </select>
+				</span>
             </div>
         </div>
         <div class="row cl">
@@ -106,6 +120,9 @@
                     number:true
                 },
                 title:{
+                    required:true
+                },
+                category:{
                     required:true
                 },
                 degree:{

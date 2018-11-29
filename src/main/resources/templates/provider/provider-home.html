@@ -29,13 +29,13 @@
 <header class="navbar-wrapper">
     <div class="navbar navbar-fixed-top">
         <div class="container-fluid cl"> <a class="logo navbar-logo f-l mr-10 hidden-xs" href="/aboutHui.shtml">服务提供商</a> <a class="logo navbar-logo-m f-l mr-10 visible-xs" href="/aboutHui.shtml">H-ui</a>
-            <span class="logo navbar-slogan f-l mr-10 hidden-xs" th:text="${provider.name}">麒麟信息</span>
+            <span class="logo navbar-slogan f-l mr-10 hidden-xs" th:text="${user.name}">麒麟信息</span>
             <a aria-hidden="false" class="nav-toggle Hui-iconfont visible-xs" href="javascript:;">&#xe667;</a>
             <nav id="Hui-userbar" class="nav navbar-nav navbar-userbar hidden-xs">
                 <ul class="cl">
                     <li>服务商管理员</li>
                     <li class="dropDown dropDown_hover">
-                        <a href="#" class="dropDown_A" th:text="${user.name}">王五<i class="Hui-iconfont">&#xe6d5;</i></a>
+                        <a href="#" class="dropDown_A" th:text="${user.account}">王五<i class="Hui-iconfont">&#xe6d5;</i></a>
                         <ul class="dropDown-menu menu radius box-shadow">
                             <li><a href="#">退出</a></li>
                         </ul>
@@ -60,23 +60,27 @@
         <dl id="menu-article">
             <dt><i class="Hui-iconfont">&#xe62d;</i> 个人主页<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
             <dd>
-                <ul>
+                <ul th:if="${user.isUse=='1'}">
                     <li><a data-href="provider-info.html" data-title="个人资料" href="javascript:void(0)">个人资料</a></li>
                     <li><a data-href="provider-change-info.html"  data-title="修改资料" href="javascript:void(0)">修改资料</a></li>
                     <li><a data-href="provider-change-password.html" data-title="更改密码" href="javascript:void(0)">更改密码</a></li>
                 </ul>
-            </dd>
-        </dl>
-        <dl >
-            <dt><i class="Hui-iconfont">&#xe620;</i> 附件信息<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
-            <dd>
-                <ul>
-                    <li><a data-href="article-list.html" data-title="查看附件" href="javascript:void(0)">查看附件</a></li>
-                    <li><a data-href="article-list.html" data-title="修改附件" href="javascript:void(0)">修改附件</a></li>
+                <ul th:if="${user.isUse=='0'}">
+                    <li><a data-href="provider-first-info.html"  data-title="完善信息" href="javascript:void(0)">完善信息</a></li>
+                    <li><a data-href="provider-change-password.html" data-title="更改密码" href="javascript:void(0)">更改密码</a></li>
                 </ul>
             </dd>
         </dl>
-        <dl >
+        <!--<dl >-->
+            <!--<dt><i class="Hui-iconfont">&#xe620;</i> 附件信息<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>-->
+            <!--<dd>-->
+                <!--<ul>-->
+                    <!--<li><a data-href="article-list.html" data-title="查看附件" href="javascript:void(0)">查看附件</a></li>-->
+                    <!--<li><a data-href="article-list.html" data-title="修改附件" href="javascript:void(0)">修改附件</a></li>-->
+                <!--</ul>-->
+            <!--</dd>-->
+        <!--</dl>-->
+        <dl th:if="${user.isUse=='1'}">
             <dt><i class="Hui-iconfont">&#xe60d;</i> 人员信息<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
             <dd>
                 <ul>
@@ -85,7 +89,16 @@
                 </ul>
             </dd>
         </dl>
-        <dl th:if="${provider.isUse=='1'}">
+        <dl th:if="${user.isUse=='0'}">
+            <dt><i class="Hui-iconfont">&#xe60d;</i> 人员信息<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+            <dd>
+                <ul>
+                    <li><a data-href="provider-welcome" onclick="no_authority()" data-title="添加人员" href="javascript:void(0)">添加人员</a></li>
+                    <li><a data-href="provider-welcome" onclick="no_authority()" data-title="查看人员信息" href="javascript:void(0)">查看人员信息</a></li>
+                </ul>
+            </dd>
+        </dl>
+        <dl th:if="${user.isUse=='1'}">
             <dt><i class="Hui-iconfont">&#xe61a;</i> 创新券服务<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
             <dd>
                 <ul>
@@ -94,7 +107,7 @@
                 </ul>
             </dd>
         </dl>
-        <dl th:if="${provider.isUse=='0'}">
+        <dl th:if="${user.isUse=='0'}">
             <dt><i class="Hui-iconfont">&#xe61a;</i> 创新券服务<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
             <dd>
                 <ul>
@@ -103,7 +116,7 @@
                 </ul>
             </dd>
         </dl>
-        <dl th:if="${provider.isUse=='1'}">
+        <dl th:if="${user.isUse=='1'}">
             <dt><i class="Hui-iconfont">&#xe61a;</i> 创新券<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
             <dd>
                 <ul>
@@ -113,7 +126,7 @@
                 </ul>
             </dd>
         </dl>
-        <dl th:if="${provider.isUse=='0'}">
+        <dl th:if="${user.isUse=='0'}">
             <dt><i class="Hui-iconfont">&#xe61a;</i> 创新券<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
             <dd>
                 <ul>
@@ -123,7 +136,7 @@
                 </ul>
             </dd>
         </dl>
-        <dl th:if="${provider.isUse=='1'}">
+        <dl th:if="${user.isUse=='1'}">
             <dt><i class="Hui-iconfont">&#xe616;</i> 创新券合同<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
             <dd>
                 <ul>
@@ -131,7 +144,7 @@
                 </ul>
             </dd>
         </dl>
-        <dl th:if="${provider.isUse=='0'}">
+        <dl th:if="${user.isUse=='0'}">
             <dt><i class="Hui-iconfont">&#xe616;</i> 创新券合同<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
             <dd>
                 <ul>
@@ -177,22 +190,14 @@
 <script type="text/javascript" src="lib/jquery.contextmenu/jquery.contextmenu.r2.js"></script>
 <script type="text/javascript">
     $(function(){
-        /*$("#min_title_list li").contextMenu('Huiadminmenu', {
-            bindings: {
-                'closethis': function(t) {
-                    console.log(t);
-                    if(t.find("i")){
-                        t.find("i").trigger("click");
-                    }
-                },
-                'closeall': function(t) {
-                    alert('Trigger was '+t.id+'\nAction was Email');
-                },
-            }
-        });*/
+       var isUser='[[${user.isUse}]]';
+       var id='[[${user.id}]]';
+       if(isUser=='0'){
+           layer_show('首次登录，请完善信息!','/provider-first-info.html?id='+id,1100,600);
+       }
     });
     function no_authority(){
-        layer.alert('账户权限不够,请完善信息!', {
+        layer.alert('账户权限不够,请完善信息待审核!', {
             skin: 'layui-layer-lan' //样式类名
             ,closeBtn: 0
             ,anim: 4

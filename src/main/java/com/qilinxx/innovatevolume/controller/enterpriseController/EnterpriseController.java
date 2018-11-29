@@ -1,5 +1,6 @@
 package com.qilinxx.innovatevolume.controller.enterpriseController;
 
+import com.qilinxx.innovatevolume.configure.WebConst;
 import com.qilinxx.innovatevolume.domain.model.*;
 import com.qilinxx.innovatevolume.service.*;
 import com.qilinxx.innovatevolume.service.ProviderService;
@@ -50,13 +51,8 @@ public class EnterpriseController {
      */
     @GetMapping({"/1","enterprise-home"})
     public String enterpriseHome(Model model, HttpSession session){
-//以下是测试代码（回来删除）
-        String code="654321";
-        UserInfo userInfo = userInfoService.selectByCode(code);
-        session.setAttribute("user",userInfo);
-//以上是测试代码
-
-        this.userInfo= (UserInfo) session.getAttribute("user");
+        String account= (String) session.getAttribute(WebConst.SESSION_USER_NAME);
+        this.userInfo=userInfoService.selectUseInfoByAccount(account);
         this.enterprise= enterpriseService.selectEnterpriseByCode(this.userInfo.getOrgcode());
         model.addAttribute("user",this.userInfo);
         model.addAttribute("enterprise",this.enterprise);
@@ -88,6 +84,18 @@ public class EnterpriseController {
      */
     @GetMapping("enterprise-change-info.html")
     public String enterpriseChangeInfo(Model model){
+        //企业单位性质
+        model.addAttribute("ENTERPRISE_UNIT_TEAM",WebConst.ENTERPRISE_UNIT_TEAM);
+        model.addAttribute("ENTERPRISE_UNIT_SCIENCE",WebConst.ENTERPRISE_UNIT_SCIENCE);
+        model.addAttribute("ENTERPRISE_UNIT_OTHER",WebConst.ENTERPRISE_UNIT_OTHER);
+        //企业认定情况
+        model.addAttribute("ENTERPRISE_IDENTIFY_YES",WebConst.ENTERPRISE_IDENTIFY_YES);
+        model.addAttribute("ENTERPRISE_IDENTIFY_NO",WebConst.ENTERPRISE_IDENTIFY_NO);
+        //创新科技企业的产业领域
+        model.addAttribute("ENTERPRISE_DOMAIN_TECHNOLOGY",WebConst.ENTERPRISE_DOMAIN_TECHNOLOGY);
+        model.addAttribute("ENTERPRISE_DOMAIN_SERVICE",WebConst.ENTERPRISE_DOMAIN_SERVICE);
+        model.addAttribute("ENTERPRISE_DOMAIN_FARMING",WebConst.ENTERPRISE_DOMAIN_FARMING);
+
         model.addAttribute("dateKit",new DateKit());
         model.addAttribute("enterprise",enterprise);
         return "enterprise/enterprise-change-info";
@@ -135,12 +143,11 @@ public class EnterpriseController {
      */
     @ResponseBody
     @PostMapping("ajax-enterprise-change-password")
-    public Map<String,String> enterpriseChangePassword(UserInfo userInfo,HttpSession session){
+    public Map<String,String> enterpriseChangePassword(UserInfo userInfo){
         userInfo.setId(this.userInfo.getId());
         userInfo.setUpdater(this.userInfo.getName());
         userInfo.setUpdateTime(Long.parseLong(String.valueOf(DateKit.getUnixTimeByDate(DateKit.getNowTime()))));
         this.userInfo= userInfoService.updateUserInfoPassword(userInfo);
-        session.setAttribute("user",this.userInfo);
         Map<String ,String > map=new HashMap<>();
         map.put("msg","密码修改成功！");
         return map;
@@ -212,9 +219,13 @@ public class EnterpriseController {
         List<VoucherApply> voucherApplyList = voucherApplyService.selectVoucherApplyByEnterpriseId(this.enterprise.getId());
         if(voucherApplyList.size()!=0){
             Map<String, Provider> providerMap = providerService.voucherApplyListToProviderMap(voucherApplyList);
-            Map<String, String> providerServiceMap = providerServiceService.voucherApplyListToProviderServiceMap(voucherApplyList);
+           // Map<String, String> providerServiceMap = providerServiceService.voucherApplyListToProviderServiceMap(voucherApplyList);
+            Map<String, Voucher> voucherMap=voucherService.voucherApplyListToVoucherMap(voucherApplyList);
+
             model.addAttribute("providerMap",providerMap);
-            model.addAttribute("providerServiceMap",providerServiceMap);
+            //model.addAttribute("providerServiceMap",providerServiceMap);
+            model.addAttribute("voucherMap",voucherMap);
+
         }
         model.addAttribute("voucherApplyList",voucherApplyList);
         model.addAttribute("enterprise",this.enterprise);
@@ -258,7 +269,6 @@ public class EnterpriseController {
      */
     @GetMapping("enterprise-provider-info.html")
     public String enterpriseProviderInfo(String id,Model model){
-        System.out.println(id);
         model.addAttribute("provider",providerService.selectById(id));
         model.addAttribute("dateKit",new DateKit());
         return "enterprise/enterprise-provider-info";
@@ -284,7 +294,6 @@ public class EnterpriseController {
     @ResponseBody
     public Map<String,String> ajaxEnterpriseDeleteStaff(String id){
         Map<String,String> map=new HashMap<>();
-        System.out.println(id);
         enterpriseStaffService.deleteEnterpriseStaff(id);
         map.put("msg","删除成功！");
         return map;
@@ -295,7 +304,10 @@ public class EnterpriseController {
      * @return 来到添加人员表单
      */
     @GetMapping("enterprise-add-staff.html")
-    public String enterpriseAddStaff(){
+    public String enterpriseAddStaff(Model model){
+        model.addAttribute("DEGREE_COLLAGE", WebConst.DEGREE_COLLAGE);
+        model.addAttribute("DEGREE_MASTER", WebConst.DEGREE_MASTER);
+        model.addAttribute("DEGREE_DOCTOR", WebConst.DEGREE_DOCTOR);
         return "enterprise/enterprise-add-staff";
     }
     /**

@@ -127,10 +127,10 @@ public class FrontIndexController {
             //路径转发
             switch (UserType) {
                 case "1":
-                    dispatcher = "/1";
+                    dispatcher = "/enterprise-home";
                     break;
                 case "2":
-                    dispatcher = "/2";
+                    dispatcher = "/provider-home";
                     break;
                 case "3":
                     dispatcher = "/admin-index";

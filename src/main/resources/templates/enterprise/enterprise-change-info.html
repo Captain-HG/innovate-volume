@@ -135,7 +135,7 @@
             <tr>
                 <td>
                     <div class="row cl">
-                        <label class="form-label col-xs-4 col-sm-2">上一年净资产：</label>
+                        <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>上一年净资产：</label>
                         <div class="formControls col-xs-8 col-sm-9">
                             <input id="netAssets" type="text" class="input-text" th:value="${enterprise.netAssets}" name="netAssets">
                         </div>
@@ -154,17 +154,31 @@
             <tr>
                 <td>
                     <div class="row cl">
-                        <label class="form-label col-xs-4 col-sm-2">单位性质：</label>
-                        <div class="formControls col-xs-8 col-sm-9">
-                            <input id="type" type="text" class="input-text" th:value="${enterprise.type}" name="type">
+                        <label class="form-label col-xs-1 col-sm-1"><span class="c-red">*</span>单位性质：</label>
+                        <div class="formControls col-xs-8 col-sm-9" >
+                <div class="select-box" style="margin-left: 55px;">
+                    <select class="select radius" id="type" size="1" name="type" th:width="20px">
+                        <option value="" selected>请选择内容</option>
+                         <option  th:if="${ENTERPRISE_UNIT_TEAM!=null}"  th:value="${ENTERPRISE_UNIT_TEAM}" th:text="${ENTERPRISE_UNIT_TEAM}" th:selected="${enterprise.type eq ENTERPRISE_UNIT_TEAM}"></option>
+                        <option  th:if="${ENTERPRISE_UNIT_SCIENCE!=null}"  th:value="${ENTERPRISE_UNIT_SCIENCE}" th:text="${ENTERPRISE_UNIT_SCIENCE}" th:selected="${enterprise.type eq ENTERPRISE_UNIT_SCIENCE}"></option>
+                        <option  th:if="${ENTERPRISE_UNIT_OTHER!=null}"  th:value="${ENTERPRISE_UNIT_OTHER}" th:text="${ENTERPRISE_UNIT_OTHER}" th:selected="${enterprise.type eq ENTERPRISE_UNIT_OTHER}"></option>
+                    </select>
+				</div>
                         </div>
                     </div>
                 </td>
                 <td>
                     <div class="row cl">
-                        <label class="form-label col-xs-4 col-sm-2">产业领域：</label>
+                        <label class="form-label col-xs-1 col-sm-1"><span class="c-red">*</span>产业领域：</label>
                         <div class="formControls col-xs-8 col-sm-9">
-                            <input id="domain" type="text" class="input-text" th:value="${enterprise.domain}" name="domain">
+                <span class="select-box" style="margin-left: 55px;">
+                    <select class="select radius" id="domain" size="1" name="domain" >
+                        <option value="" selected>请选择内容</option>
+                         <option  th:if="${ENTERPRISE_DOMAIN_TECHNOLOGY!=null}"  th:value="${ENTERPRISE_DOMAIN_TECHNOLOGY}" th:text="${ENTERPRISE_DOMAIN_TECHNOLOGY}" th:selected="${enterprise.domain eq ENTERPRISE_DOMAIN_TECHNOLOGY}"></option>
+                        <option  th:if="${ENTERPRISE_DOMAIN_SERVICE!=null}"  th:value="${ENTERPRISE_DOMAIN_SERVICE}" th:text="${ENTERPRISE_DOMAIN_SERVICE}" th:selected="${enterprise.domain eq ENTERPRISE_DOMAIN_SERVICE}"></option>
+                        <option  th:if="${ENTERPRISE_DOMAIN_FARMING!=null}"  th:value="${ENTERPRISE_DOMAIN_FARMING}" th:text="${ENTERPRISE_DOMAIN_FARMING}" th:selected="${enterprise.domain eq ENTERPRISE_DOMAIN_FARMING}"></option>
+                    </select>
+				</span>
                         </div>
                     </div>
                 </td>
@@ -180,10 +194,16 @@
                     </div>
                 </td>
                 <td>
-                    <div class="row cl">
-                        <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>企业认定情况：</label>
+                    <div class="row cl" align="right">
+                        <label class="form-label col-xs-1 col-sm-1"><span class="c-red">*</span>企业认定情况：</label>
                         <div class="formControls col-xs-8 col-sm-9">
-                            <input id="identify" type="text" class="input-text" th:value="${enterprise.identify}" name="identify">
+                <span class="select-box" style="margin-left: 55px;">
+                    <select class="select radius" id="identify" size="1" name="identify" >
+                        <option value="" selected>请选择内容</option>
+                         <option  th:if="${ENTERPRISE_IDENTIFY_YES!=null}"  th:value="${ENTERPRISE_IDENTIFY_YES}" th:text="${ENTERPRISE_IDENTIFY_YES}" th:selected="${enterprise.identify eq ENTERPRISE_IDENTIFY_YES}"></option>
+                        <option  th:if="${ENTERPRISE_IDENTIFY_NO!=null}"  th:value="${ENTERPRISE_IDENTIFY_NO}" th:text="${ENTERPRISE_IDENTIFY_NO}" th:selected="${enterprise.identify eq ENTERPRISE_IDENTIFY_NO}"></option>
+                    </select>
+				</span>
                         </div>
                     </div>
                 </td>
@@ -317,7 +337,17 @@
                     required:true,
                     minlength:2
                 },
+                domain :{
+                    required:true
+                },
+                netAssets :{
+                    required:true,
+                    number:true
+                },
                 code :{
+                    required:true
+                },
+                type :{
                     required:true
                 },
                 admin :{
@@ -343,9 +373,6 @@
                     number:true
                 },
                 taxs :{
-                    number:true
-                },
-                netAssets :{
                     number:true
                 },
                 amount :{
