@@ -91,13 +91,24 @@
 					<input type="text" class="input-text" placeholder="100" name="voumoney" id="voumoney" th:value="${contractVo.voumoney}" />
 				</div>
 			</div>
+			<!--<div class="row cl">-->
+				<!--<label class="form-label col-xs-4 col-sm-2">合同类型：</label>-->
+				<!--<div class="formControls col-xs-4 col-sm-1" style="padding-right: 0px">-->
+				<!--</div>-->
+				<!--<div class="formControls col-xs-4 col-sm-8" style="padding-left: 0px">-->
+					<!--<input type="text" class="input-text" placeholder="100" name="type" id="typeId" th:value="${contractVo.type}" />-->
+				<!--</div>-->
+			<!--</div>-->
 			<div class="row cl">
-				<label class="form-label col-xs-4 col-sm-2">合同类型：</label>
-				<div class="formControls col-xs-4 col-sm-1" style="padding-right: 0px">
-				</div>
-				<div class="formControls col-xs-4 col-sm-8" style="padding-left: 0px">
-					<input type="text" class="input-text" placeholder="100" name="type" id="typeId" th:value="${contractVo.type}" />
-				</div>
+				<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>合同类型：</label>
+				<div class="formControls col-xs-8 col-sm-9"> <span class="select-box">
+				<select name="type" class="select">
+					<option value="单务" th:text="单务" th:selected="${contractVo.type eq '单务'}"></option>
+					<option value="双务" th:text="双务" th:selected="${contractVo.type eq '双务'}"></option>
+                    <option value="有偿" th:text="有偿" th:selected="${contractVo.type eq '有偿'}"></option>
+					<option value="无偿" th:text="无偿" th:selected="${contractVo.type eq '无偿'}"></option>
+				</select>
+				</span> </div>
 			</div>
 			<div class="row cl">
 				<label class="form-label col-xs-4 col-sm-2">合同起始日期：</label>
@@ -177,8 +188,16 @@
                 minlength:5,
                 maxlength:20
             },
-            code :{
+            type :{
                 required:true
+            },
+            voumoney :{
+                required:true,
+				number:true
+            },
+            money :{
+                required:true,
+				number:true
             },
             // aEndTime :{
             //     required:true

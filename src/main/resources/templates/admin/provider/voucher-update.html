@@ -48,15 +48,26 @@
 				</div>
 			</div>
 
+			<!--<div class="row cl">-->
+				<!--<label class="form-label col-xs-4 col-sm-2">类别：</label>-->
+				<!--<div class="formControls col-xs-4 col-sm-1" style="padding-right: 0px">-->
+				<!--</div>-->
+				<!--<div class="formControls col-xs-4 col-sm-8" style="padding-left: 0px">-->
+					<!--<input type="text" class="input-text" placeholder="" name="type" id="typeId" th:value="${voucher.type}" />-->
+				<!--</div>-->
+			<!--</div>-->
 			<div class="row cl">
-				<label class="form-label col-xs-4 col-sm-2">类别：</label>
-				<div class="formControls col-xs-4 col-sm-1" style="padding-right: 0px">
-				</div>
-				<div class="formControls col-xs-4 col-sm-8" style="padding-left: 0px">
-					<input type="text" class="input-text" placeholder="" name="type" id="typeId" th:value="${voucher.type}" />
-				</div>
+				<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>人才类别：</label>
+				<div class="formControls col-xs-8 col-sm-9"> <span class="select-box">
+				<select name="type" class="select">
+					<option value="一般创新券" th:text="一般创新券" th:selected="${voucher.type eq '一般创新券'}"></option>
+					<option value="合作协议创新券" th:text="合作协议创新券" th:selected="${voucher.type eq '合作协议创新券'}"></option>
+                    <option value="公共技术创新券" th:text="公共技术创新券" th:selected="${voucher.type eq '公共技术创新券'}"></option>
+				    <option value="扩展型创新券" th:text="扩展型创新券" th:selected="${voucher.type eq '扩展型创新券'}"></option>
+				<option value="专项券" th:text="专项券" th:selected="${voucher.type eq '专项券'}"></option>
+				</select>
+				</span> </div>
 			</div>
-
 
 			<div class="row cl">
 				<label class="form-label col-xs-4 col-sm-2">创建人：</label>

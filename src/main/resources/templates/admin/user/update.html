@@ -48,22 +48,31 @@
 				</div>
 			</div>
 			<div class="row cl">
-				<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>商家18位社会统一信用代码或9位组织机构代码：</label>
+				<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>商家组织机构代码：</label>
 				<div class="formControls col-xs-4 col-sm-1" style="padding-right: 0px">
 				</div>
 				<div class="formControls col-xs-4 col-sm-8" style="padding-left: 0px">
-					<input type="text" class="input-text" placeholder="" name="orgcode" id="orgcodeId" th:value="${userInfo.orgcode}" readonly />
+					<input type="text" class="input-text" placeholder="" name="orgcode" id="orgcodeId" th:value="${userInfo.orgcode}" onchange="ajaxRegister()" />
 				</div>
 			</div>
+			<!--<div class="row cl">-->
+				<!--<label class="form-label col-xs-4 col-sm-2">账号类别：</label>-->
+				<!--<div class="formControls col-xs-4 col-sm-1" style="padding-right: 0px">-->
+				<!--</div>-->
+				<!--<div class="formControls col-xs-4 col-sm-8" style="padding-left: 0px">-->
+					<!--<input type="text" class="input-text" placeholder="" name="userType" id="userTypeId" th:value="${userInfo.userType}" />-->
+				<!--</div>-->
+			<!--</div>-->
 			<div class="row cl">
-				<label class="form-label col-xs-4 col-sm-2">账号类别：</label>
-				<div class="formControls col-xs-4 col-sm-1" style="padding-right: 0px">
-				</div>
-				<div class="formControls col-xs-4 col-sm-8" style="padding-left: 0px">
-					<input type="text" class="input-text" placeholder="" name="userType" id="userTypeId" th:value="${userInfo.userType}" />
-				</div>
+				<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>账号类别：</label>
+				<div class="formControls col-xs-8 col-sm-9"> <span class="select-box">
+				<select name="userType" class="select">
+					<option value="provider" th:text="提供商" th:selected="${userInfo.userType eq 'provider'}"></option>
+					<option value="enterprise" th:text="科技企业" th:selected="${userInfo.userType eq 'enterprise'}"></option>
+                    <option value="admin" th:text="管理员" th:selected="${userInfo.userType eq 'admin'}"></option>
+				</select>
+				</span> </div>
 			</div>
-
 			<div class="row cl">
 				<label class="form-label col-xs-4 col-sm-2">联系手机：</label>
 				<div class="formControls col-xs-4 col-sm-1" style="padding-right: 0px">
@@ -117,7 +126,28 @@
 <script type="text/javascript" src="lib/ueditor/1.4.3/lang/zh-cn/zh-cn.js"></script>
 
 <script type="text/javascript" th:inline="javascript">
+    var fys="error";
+    function ajaxRegister(){
+        var code = $("#orgcodeId").val();
+        var id = $("#idId").val();
+        $.ajax({
+            url : "admin-user-codeAjaxRegister",
+            data :{"code" : code,"id":id},
+            success: function(str) {
+                if ("true" == str) {
+                    fys="true";
+                    //账号未存在
 
+                }
+                else {
+
+                    //帐号已经被注册
+                    alert(str);
+                    fys="error";
+                }
+            }
+        });
+    }
     $('.skin-minimal input').iCheck({
         checkboxClass: 'icheckbox-blue',
         radioClass: 'iradio-blue',
@@ -142,21 +172,28 @@
 			email:{
                 email:true
 			},
+
         },
         onkeyup:false,
         focusCleanup:true,
         success:"valid",
         submitHandler:function(form){
+            ajaxRegister();
+            alert("更新完成");
+            if (fys=="true") {
                 $("form").ajaxSubmit(function (data) {
                     var index = parent.layer.getFrameIndex(window.name);
-                   // parent.$('#btn-refresh').click();
+                    // parent.$('#btn-refresh').click();
                     parent.location.reload();
                     parent.layer.close(index);
                 });
-
+            }
+            else {
+                alert("确认信息");
+                return false;
+            }
         }
     });
-
 </script>
 <!--/请在上方写此页面业务相关的脚本-->
 </body>

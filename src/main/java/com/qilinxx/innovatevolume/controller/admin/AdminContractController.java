@@ -80,6 +80,7 @@ public class AdminContractController {
     @RequestMapping("admin-contract-update")
     @ResponseBody
     public String updateContract(Contract contract){
+        System.out.println(contract);
         contractService.updateContract(contract);
         return "success";
     }

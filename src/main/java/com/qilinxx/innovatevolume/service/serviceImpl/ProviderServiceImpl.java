@@ -3,19 +3,22 @@ package com.qilinxx.innovatevolume.service.serviceImpl;
 import com.qilinxx.innovatevolume.domain.mapper.ProviderMapper;
 import com.qilinxx.innovatevolume.domain.model.*;
 import com.qilinxx.innovatevolume.service.ProviderService;
+import com.qilinxx.innovatevolume.service.UserInfoService;
 import com.qilinxx.innovatevolume.util.DateKit;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
+@Transactional
 @Service
 public class ProviderServiceImpl implements ProviderService {
     @Autowired
     ProviderMapper providerMapper;
-
+    @Autowired
+    UserInfoService userInfoService;
     @Override
     public void insertProvider(Provider provider) {
         providerMapper.insert(provider);
@@ -30,6 +33,7 @@ public class ProviderServiceImpl implements ProviderService {
     @Override
     public Provider updateProviderInfo(Provider provider) {
         providerMapper.updateByPrimaryKeySelective(provider);
+
         return providerMapper.selectByPrimaryKey(provider.getId());
     }
 
@@ -120,6 +124,11 @@ public class ProviderServiceImpl implements ProviderService {
         //provider.setUpdater();//这里相应的进行修改，如果管理员修改添加管理员的信息
         provider.setIsUse("0");
         providerMapper.updateByPrimaryKeySelective(provider);
+        UserInfo userInfo = userInfoService.selectByCode(provider.getCode());
+        userInfo.setOrgcode(provider.getCode());
+        //userInfo.setUpdater();
+        userInfo.setUpdateTime((long) DateKit.getCurrentUnixTime());
+        userInfoService.updateUserInfo(userInfo);
     }
 
     @Override

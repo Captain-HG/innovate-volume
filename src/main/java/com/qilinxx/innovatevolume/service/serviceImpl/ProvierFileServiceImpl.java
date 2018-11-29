@@ -34,4 +34,9 @@ public class ProvierFileServiceImpl implements ProviderFileService {
         providerFile.setIsUse("1");
         providerFileMapper.updateByPrimaryKeySelective(providerFile);
     }
+
+    @Override
+    public ProviderFile selectById(Integer id) {
+        return providerFileMapper.selectByPrimaryKey(id);
+    }
 }

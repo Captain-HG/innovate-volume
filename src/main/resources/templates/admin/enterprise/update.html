@@ -52,7 +52,7 @@
 				<div class="formControls col-xs-4 col-sm-1" style="padding-right: 0px">
 				</div>
 				<div class="formControls col-xs-4 col-sm-8" style="padding-left: 0px">
-					<input type="text" class="input-text" placeholder="" name="code" id="codeId" th:value="${enterprise.code}" />
+					<input type="text" class="input-text" placeholder="" name="code" id="codeId" th:value="${enterprise.code}"  onchange="ajaxRegister()"/>
 				</div>
 			</div>
 			<div class="row cl">
@@ -186,6 +186,7 @@
 <script type="text/javascript" th:inline="javascript">
     var fys="error";
     function ajaxRegister(){
+        alert("mmp");
         var code = $("#codeId").val();
         var id = $("#idId").val();
         $.ajax({

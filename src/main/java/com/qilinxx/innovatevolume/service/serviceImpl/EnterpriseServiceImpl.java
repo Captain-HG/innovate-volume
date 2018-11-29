@@ -2,25 +2,26 @@ package com.qilinxx.innovatevolume.service.serviceImpl;
 
 import com.qilinxx.innovatevolume.configure.WebConst;
 import com.qilinxx.innovatevolume.domain.mapper.EnterpriseMapper;
-import com.qilinxx.innovatevolume.domain.model.Contract;
-import com.qilinxx.innovatevolume.domain.model.Enterprise;
-import com.qilinxx.innovatevolume.domain.model.EnterpriseExample;
-import com.qilinxx.innovatevolume.domain.model.VoucherApply;
+import com.qilinxx.innovatevolume.domain.model.*;
 import com.qilinxx.innovatevolume.service.EnterpriseService;
+import com.qilinxx.innovatevolume.service.UserInfoService;
 import com.qilinxx.innovatevolume.util.DateKit;
 import com.qilinxx.innovatevolume.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
+@Transactional
 @Service
 public class EnterpriseServiceImpl implements EnterpriseService {
     @Autowired
     EnterpriseMapper enterpriseMapper;
+    @Autowired
+    UserInfoService userInfoService;
 
     @Override
     public Enterprise selectById(String id) {
@@ -67,6 +68,11 @@ public class EnterpriseServiceImpl implements EnterpriseService {
         //enterprise.setUpdater();//相对应的设置修改者
         enterprise.setUpdateTime((long) DateKit.getCurrentUnixTime());
         enterprise.setIsUse("0");
+        UserInfo userInfo = userInfoService.selectByCode(enterprise.getCode());
+        userInfo.setOrgcode(enterprise.getCode());
+        //userInfo.setUpdater();
+        userInfo.setUpdateTime((long) DateKit.getCurrentUnixTime());
+        userInfoService.updateUserInfo(userInfo);
         enterpriseMapper.updateByPrimaryKeySelective(enterprise);
     }
 

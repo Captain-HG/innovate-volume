@@ -60,15 +60,24 @@
 					<input type="text" class="input-text" placeholder="199" name="title" id="titleId" th:value="${enterpriseStaff.title}" />
 				</div>
 			</div>
+			<!--<div class="row cl">-->
+				<!--<label class="form-label col-xs-4 col-sm-2">学位：</label>-->
+				<!--<div class="formControls col-xs-4 col-sm-1" style="padding-right: 0px">-->
+				<!--</div>-->
+				<!--<div class="formControls col-xs-4 col-sm-8" style="padding-left: 0px">-->
+					<!--<input type="text" class="input-text" placeholder="199" name="degree" id="degreeId" th:value="${enterpriseStaff.degree}" />-->
+				<!--</div>-->
+			<!--</div>-->
 			<div class="row cl">
-				<label class="form-label col-xs-4 col-sm-2">学位：</label>
-				<div class="formControls col-xs-4 col-sm-1" style="padding-right: 0px">
-				</div>
-				<div class="formControls col-xs-4 col-sm-8" style="padding-left: 0px">
-					<input type="text" class="input-text" placeholder="199" name="degree" id="degreeId" th:value="${enterpriseStaff.degree}" />
-				</div>
+				<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>学位：</label>
+				<div class="formControls col-xs-8 col-sm-9"> <span class="select-box">
+				<select name="degree" class="select">
+					<option value="本科" th:text="本科" th:selected="${enterpriseStaff.degree eq '本科'}"></option>
+					<option value="硕士" th:text="硕士" th:selected="${enterpriseStaff.degree eq '硕士'}"></option>
+                    <option value="博士" th:text="博士" th:selected="${enterpriseStaff.degree eq '博士'}"></option>
+				</select>
+				</span> </div>
 			</div>
-
 			<div class="row cl">
 				<label class="form-label col-xs-4 col-sm-2">创建人：</label>
 				<div class="formControls col-xs-4 col-sm-1" style="padding-right: 0px">
@@ -87,7 +96,6 @@
 			</div>
 
 			<div><input type="text" th:value="${enterpriseStaff.id}" name="id" id="idId" hidden="true"></div>
-			<div><input type="text" th:value="${enterpriseStaff.enterpriseId}" name="enterpriseId" id="enterpriseId" hidden="true"></div>
 
 			<div class="row cl">
 				<div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-2">
@@ -128,8 +136,8 @@
 
             name :{
                 required:true,
-                minlength:5,
-                maxlength:20
+                minlength:2,
+                maxlength:5
             },
             age :{
                 required:true,

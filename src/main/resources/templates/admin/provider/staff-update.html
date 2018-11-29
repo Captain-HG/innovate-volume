@@ -65,21 +65,41 @@
 					<input type="text" class="input-text" placeholder="199" name="title" id="titleId" th:value="${providerStaff.title}" />
 				</div>
 			</div>
+			<!--<div class="row cl">-->
+				<!--<label class="form-label col-xs-4 col-sm-2">学位：</label>-->
+				<!--<div class="formControls col-xs-4 col-sm-1" style="padding-right: 0px">-->
+				<!--</div>-->
+				<!--<div class="formControls col-xs-4 col-sm-8" style="padding-left: 0px">-->
+					<!--<input type="text" class="input-text" placeholder="大学" name="degree" id="degreeId" th:value="${providerStaff.degree}" />-->
+				<!--</div>-->
+			<!--</div>-->
 			<div class="row cl">
-				<label class="form-label col-xs-4 col-sm-2">学位：</label>
-				<div class="formControls col-xs-4 col-sm-1" style="padding-right: 0px">
-				</div>
-				<div class="formControls col-xs-4 col-sm-8" style="padding-left: 0px">
-					<input type="text" class="input-text" placeholder="大学" name="degree" id="degreeId" th:value="${providerStaff.degree}" />
-				</div>
+				<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>学位：</label>
+				<div class="formControls col-xs-8 col-sm-9"> <span class="select-box">
+				<select name="degree" class="select">
+					<option value="本科" th:text="本科" th:selected="${providerStaff.degree eq '本科'}"></option>
+					<option value="硕士" th:text="硕士" th:selected="${providerStaff.degree eq '硕士'}"></option>
+                    <option value="博士" th:text="博士" th:selected="${providerStaff.degree eq '博士'}"></option>
+				</select>
+				</span> </div>
 			</div>
+			<!--<div class="row cl">-->
+				<!--<label class="form-label col-xs-4 col-sm-2">人才类别：</label>-->
+				<!--<div class="formControls col-xs-4 col-sm-1" style="padding-right: 0px">-->
+				<!--</div>-->
+				<!--<div class="formControls col-xs-4 col-sm-8" style="padding-left: 0px">-->
+					<!--<input type="text" class="input-text" placeholder="优秀" name="category" id="categoryId" th:value="${providerStaff.category}" />-->
+				<!--</div>-->
+			<!--</div>-->
 			<div class="row cl">
-				<label class="form-label col-xs-4 col-sm-2">人才类别：</label>
-				<div class="formControls col-xs-4 col-sm-1" style="padding-right: 0px">
-				</div>
-				<div class="formControls col-xs-4 col-sm-8" style="padding-left: 0px">
-					<input type="text" class="input-text" placeholder="优秀" name="category" id="categoryId" th:value="${providerStaff.category}" />
-				</div>
+				<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>人才类别：</label>
+				<div class="formControls col-xs-8 col-sm-9"> <span class="select-box">
+				<select name="category" class="select">
+					<option value="高级人才" th:text="高级人才" th:selected="${providerStaff.category eq '高级人才'}"></option>
+					<option value="中级人才" th:text="中级人才" th:selected="${providerStaff.category eq '中级人才'}"></option>
+                    <option value="初级人才" th:text="初级人才" th:selected="${providerStaff.category eq '初级人才'}"></option>
+				</select>
+				</span> </div>
 			</div>
 			<div class="row cl">
 				<label class="form-label col-xs-4 col-sm-2">创建人：</label>

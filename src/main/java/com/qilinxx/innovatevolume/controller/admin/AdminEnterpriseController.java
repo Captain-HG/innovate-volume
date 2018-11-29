@@ -387,4 +387,17 @@ public class AdminEnterpriseController {
        voucherApplyService.update(voucherApply);
         return "success";
     }
+    /**
+     * 图片显示
+     * @param id 文件id
+     * @param model 传递
+     * @return 跳转
+     */
+    @RequestMapping("admin-enterprise-file-show")
+    public String enterpriseFileShow(Integer id,Model model){
+        EnterpriseFile enterpriseFile = enterpriseFileService.selectById(id);
+        model.addAttribute("path",enterpriseFile.getPath());
+        return "admin/enterprise/file-show";
+    }
+
 }

@@ -130,6 +130,7 @@ public class ContractServiceImpl implements ContractService {
         contractVo.setMoney(contract.getMoney());
         contractVo.setName(contract.getName());
         contractVo.setPath(contract.getPath());
+        contractVo.setType(contract.getType());
         contractVo.setVoumoney(contract.getVoumoney());
         contractVo.setStartDate(contract.getStartDate());
         contractVo.setSignDate(contract.getSignDate());

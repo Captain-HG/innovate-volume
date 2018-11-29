@@ -85,7 +85,7 @@ public class UserInfoServiceImpl implements UserInfoService {
         userInfoVo.setTel(userInfo.getTel());
         userInfoVo.setState(userInfo.getState());
         userInfoVo.setRemark(userInfo.getRemark());
-        if (userInfo.getUserType().equals(WebConst.USER_TYPE[0])){//判定他为那种企业
+        if (WebConst.USER_TYPE_PROVIDER.equals(userInfo.getUserType())){//判定他为那种企业
             //根据code获得对象
             List<Provider> providerList = providerService.selectByCode(userInfo.getOrgcode());
             if (providerList.size()==1){
@@ -96,7 +96,7 @@ public class UserInfoServiceImpl implements UserInfoService {
                 userInfoVo.setCompanyName("null");
             }
         }
-        else if (userInfo.getUserType().equals(WebConst.USER_TYPE[1])){//科技企业
+        else if (WebConst.USER_TYPE_ENTERPRISE.equals(userInfo.getUserType())){//科技企业
             List<Enterprise> enterpriseList = enterpriseService.selectByCode(userInfo.getOrgcode());
             if(enterpriseList.size()==1){
                 userInfoVo.setCompanyName(enterpriseList.get(0).getName());
@@ -148,6 +148,15 @@ public class UserInfoServiceImpl implements UserInfoService {
         if (userInfo==null||!userInfo.getUserType().equals(type)) return "无此用户";
         if (!pwd.equals(userInfo.getPassword())) return "密码错误";
         return "success";
+    }
+
+    @Override
+    public String ifCodeUse(String code) {
+        UserInfo userInfo = userInfoMapper.selectByCode(code);
+        if (userInfo!= null ) {
+            return "已被注册的商家码";
+        }
+        return "true";
     }
 
 

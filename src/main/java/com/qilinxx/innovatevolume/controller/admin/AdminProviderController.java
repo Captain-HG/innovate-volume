@@ -149,12 +149,11 @@ public class AdminProviderController {
     public String userAjaxRegister(String code,String id) {
         System.out.println("id和编码："+code+id);
         Provider provider = providerService.selectById(id);
-        if (code.equals(provider.getCode())) {
-
+        if (code.equals(provider.getCode())) {//是否和之前的相同，即未发生改变
             return "true";
-        } else {
-
-            return providerService.ifCodeUse(code);
+        } else {//发生改变
+//            return providerService.ifCodeUse(code);
+            return userInfoService.ifCodeUse(code);
         }
     }
     /**
@@ -441,5 +440,18 @@ public class AdminProviderController {
          model.addAttribute("commons",new Commons());
         return "admin/contract/list";
     }
+
+    /**
+     * 图片显示
+     * @param id 文件id
+     * @param model 传递
+     * @return 跳转
+     */
+   @RequestMapping("admin-provider-file-show")
+    public String providerFileShow(Integer id,Model model){
+       ProviderFile providerFile = providerFileService.selectById(id);
+       model.addAttribute("path",providerFile.getPath());
+       return "admin/provider/file-show";
+   }
 
 }

@@ -76,4 +76,9 @@ public interface UserInfoService {
      * @return 验证状态，success未成功，其他为错误信息
      */
     String loginUser(String name,String pwd,String type);
+
+    /**
+     *判定code是否被使用
+     */
+    String ifCodeUse(String code);
 }

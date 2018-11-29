@@ -1,5 +1,6 @@
 package com.qilinxx.innovatevolume.controller.admin;
 
+import com.qilinxx.innovatevolume.domain.model.Provider;
 import com.qilinxx.innovatevolume.domain.model.UserInfo;
 import com.qilinxx.innovatevolume.service.UserInfoService;
 import com.qilinxx.innovatevolume.util.Commons;
@@ -75,6 +76,23 @@ public class AdminUserController {
         System.out.println("userId:"+id);
         userInfoService.startUserInfo(id);
         return "success";
+    }
+    /**
+     * 验证商家码是否已经被注册
+     * @param code 商家码
+     * @return
+     */
+    @RequestMapping("admin-user-codeAjaxRegister")
+    @ResponseBody
+    public String userAjaxRegister(String code,String id) {
+        System.out.println("id和编码："+code+id);
+        UserInfo userInfo = userInfoService.selectById(id);
+        if (code.equals(userInfo.getOrgcode())) {
+            return "true";
+        } else {
+
+            return userInfoService.ifCodeUse(code);
+        }
     }
 }
 

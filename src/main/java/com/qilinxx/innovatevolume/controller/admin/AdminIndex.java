@@ -9,4 +9,9 @@ public class AdminIndex {
     public String index(){
         return "admin/index";
     }
+
+    @RequestMapping("admin-index-show")
+    public String  indexShow(){
+        return "admin/show";
+    }
 }

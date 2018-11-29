@@ -13,4 +13,6 @@ public interface EnterpriseFileService {
     void startFile(Integer id);
 
     String addFile(String enterpriseId,String path,String filename,String create);
+    /** 根据id查询*/
+    EnterpriseFile selectById(Integer id);
 }

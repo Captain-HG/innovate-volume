@@ -45,4 +45,9 @@ public class EnterpriseFileServiceImpl implements EnterpriseFileService {
         enterpriseFileMapper.insert(file);
         return "已完成";
     }
+
+    @Override
+    public EnterpriseFile selectById(Integer id) {
+        return enterpriseFileMapper.selectByPrimaryKey(id);
+    }
 }

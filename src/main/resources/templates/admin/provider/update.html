@@ -48,20 +48,31 @@
 				</div>
 			</div>
 			<div class="row cl">
-				<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>商家18位社会统一信用代码或9位组织机构代码：</label>
+				<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>商家组织机构代码：</label>
 				<div class="formControls col-xs-4 col-sm-1" style="padding-right: 0px">
 				</div>
 				<div class="formControls col-xs-4 col-sm-8" style="padding-left: 0px">
 					<input type="text" class="input-text" placeholder="" name="code" id="codeId" th:value="${provider.code}" onchange="ajaxRegister()" />
 				</div>
 			</div>
+			<!--<div class="row cl">-->
+				<!--<label class="form-label col-xs-4 col-sm-2">机构类型：</label>-->
+				<!--<div class="formControls col-xs-4 col-sm-1" style="padding-right: 0px">-->
+				<!--</div>-->
+				<!--<div class="formControls col-xs-4 col-sm-8" style="padding-left: 0px">-->
+					<!--<input type="text" class="input-text" placeholder="" name="type" id="typeId" th:value="${provider.type}" />-->
+				<!--</div>-->
+			<!--</div>-->
 			<div class="row cl">
-				<label class="form-label col-xs-4 col-sm-2">机构类型：</label>
-				<div class="formControls col-xs-4 col-sm-1" style="padding-right: 0px">
-				</div>
-				<div class="formControls col-xs-4 col-sm-8" style="padding-left: 0px">
-					<input type="text" class="input-text" placeholder="" name="type" id="typeId" th:value="${provider.type}" />
-				</div>
+				<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>账号类别：</label>
+				<div class="formControls col-xs-8 col-sm-9"> <span class="select-box">
+				<select name="type" class="select">
+					<option value="科技" th:text="科技" th:selected="${provider.type eq '科技'}"></option>
+					<option value="农业" th:text="农业" th:selected="${provider.type eq '农业'}"></option>
+                    <option value="电子信息" th:text="电子信息" th:selected="${provider.type eq '电子信息'}"></option>
+				 <option value="其他" th:text="其他" th:selected="${provider.type eq '其他'}"></option>
+				</select>
+				</span> </div>
 			</div>
 			<div class="row cl">
 				<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>商家成立时间：</label>
@@ -200,7 +211,7 @@
 					<input type="text" class="input-text" placeholder="" name="supportAdmin" id="supportAdminId" th:value="${provider.supportAdmin}" />
 				</div>
 			</div>
-			<div><input type="text" name="creater" id="creater" hidden="true" value=""></div>
+
 			<div class="row cl">
 				<label class="form-label col-xs-4 col-sm-2">机构简介：</label>
 				<div class="formControls col-xs-8 col-sm-9">
